@@ -172,17 +172,18 @@ fun Topbar(){
         verticalAlignment = CenterVertically
 
     ){
+        //Dropdown menu icon
         IconButton(
-            onClick ={}
+            onClick ={/*TODO*/}
 
         ){
             Icon(modifier= Modifier
-                .height(10.dp)
-                .width(15.dp)
+                .height(20.dp)
+                .width(18.dp)
                 .align(CenterVertically),
                 imageVector = Icons.Default.Menu,
             contentDescription = null)}
-        Spacer(modifier = Modifier.width(25.dp))
+        Spacer(modifier = Modifier.width(15.dp))
         Text(modifier= Modifier
             .width(194.dp)
             .align(CenterVertically),
@@ -190,13 +191,15 @@ fun Topbar(){
         style = MaterialTheme.typography.h5
             )
         Spacer(modifier = Modifier.width(10.dp))
+
+        //Magnifying glass icon
         IconButton(
-            onClick ={}
+            onClick ={/*TODO*/}
 
         ){
             Icon(modifier= Modifier
-                .height(17.dp)
-                .width(15.dp)
+                .height(20.dp)
+                .width(18.dp)
                 .align(CenterVertically),
                 imageVector = Icons.Default.Search,
                 contentDescription = null)}

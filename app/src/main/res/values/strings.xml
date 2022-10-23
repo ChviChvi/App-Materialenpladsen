@@ -5,6 +5,7 @@
     <string name="Brugernavn">Brugernavn</string>
     <string name="Adgangskode">Adgangskode</string>
     <string name="Glemt">Glemt adgangskode eller brugernavn</string>
+
     <string name="se_produkter">Se produkter</string>
     <string name="Bestil_levering">Bestil levering</string>
     <string name="Velkommen">Velkommen til en verden af granit,\n sten, grus, muld og flis</string>
@@ -15,4 +16,36 @@
     <string name="skal_du_bruge">Skal du bruge granit, sten, grus, muld eller flis? Så er\n du kommet til det rigtige sted.\n\n Hos os kan du handle både som privatperson og\n erhvervskunde, og uanset om du skal bruge et par\n kilo sand til sandkassen eller et ton grus til en ny\n terasse, kan vi hjælpe dig.\n\n Du kan bestille dine materialer online og få dem\n leveret lige til døren allerede næste hverdag. Eller du\n kan selv hente materialerne på en af vores\n materialepladser, der har åbent døgnet rundt 365\n dage om året.\n\n Husk, at du kan låne en gratis læssemaskine og\n trailer, når du henter materialer hos os.\n</string>
     <string name="førsteknap">Beregn pris ved levering</string>
     <string name="andenknap">Hent selv</string>
+
+    <string name="Materialer">Materialer</string>
+    <string name="askvægt">15Kg ask i stammer</string>
+    <string name="askalder">1,5 år gammelt</string>
+    <string name="askpris">789,00</string>
+    <string name="bøgvægt">25kg bøgestammer</string>
+    <string name="bøgalder">0,5 år gammelt</string>
+    <string name="bøgpris">1200,00</string>
+    <string name="Træsorter">Træsorter</string>
+
+    <string name="Metaller">Metaller</string>
+    <string name="Sølvpladetykkelse">Sølvplade 0,4mm</string>
+    <string name="sølvpladeinfo">Fast bredde 14,0 cm\n(14 x 10 cm = ca. 58g)</string>
+    <string name="Sølvpladepris">8,84</string>
+    <string name="ASølvplade">Argentium Sølvplade 1,0mm</string>
+    <string name="AInfo">Fast bredde 14,0 cm\n(14 x 10 cm = ca. 174g)</string>
+    <string name="Apris">9,16</string>
+
+    <string name="Sten">Sten</string>
+    <string name="Hvide">Hvide granitskærver</string>
+    <string name="Røde">Røde granitskærver</string>
+    <string name="Hvideinfo">1 ton, 11-16mm</string>
+    <string name="RødeInfo">1 ton, 8-11mm</string>
+    <string name="HvidePris">1.545,50</string>
+    <string name="RødePris">1.195,00</string>
+
+
+
+
+
+
+
 </resources>

@@ -14,7 +14,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
@@ -59,12 +58,18 @@ fun Login () {
 
 
                 ) {
+                // Login registrer knapper
                 LoginReg()
+
                 Spacer(modifier = Modifier.height(27.dp))
 
+                // Bruger og adganskode textfields
+                //Grøn Login knap
                 BrugerAdgang()
+
                 Spacer(modifier = Modifier.height(300.dp))
 
+                //Glemt adgangskode eller brugernavn knap
                 TextButton(
                     modifier = Modifier.padding(bottom=31.dp),
                     onClick = { /*TODO*/ },
@@ -105,6 +110,7 @@ fun Logo(){
     }
 }
 
+//Login registrer knapper
 @Composable
 fun LoginReg (){
     Row(
@@ -116,6 +122,8 @@ fun LoginReg (){
     }
 }
 
+//Login registrer knapper
+//Login register knapper samles i en?
 @Composable
 fun Logreg (@StringRes id:Int){
 
@@ -139,6 +147,8 @@ fun Logreg (@StringRes id:Int){
     }
 }
 
+// bruger og adgangskode texfields
+//Grøn Login knap
 @Composable
 fun BrugerAdgang (
 ) {

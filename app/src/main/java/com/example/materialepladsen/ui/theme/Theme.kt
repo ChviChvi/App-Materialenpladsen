@@ -16,6 +16,7 @@ private val LightColorPalette = lightColors(
     primary = Purple500,
     primaryVariant = Purple700,
     secondary = cyangreen,
+    secondaryVariant = oceanbla
 
 
 

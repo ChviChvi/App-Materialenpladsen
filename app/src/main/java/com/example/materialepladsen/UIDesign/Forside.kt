@@ -1,5 +1,6 @@
 package com.example.materialepladsen.ui.theme
 
+import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -7,7 +8,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
-import com.example.materialepladsen.ui.theme.Login
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
@@ -36,7 +36,7 @@ fun Forside () {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
     topBar={
-        Topbar()
+        TopBar(R.string.forside)
 
     }
     ) {
@@ -56,6 +56,7 @@ fun Forside () {
             item {
                 Divider(color = Color.Black, thickness = 1.2.dp)
             }
+            //Velkomsttekst
             item {
                 Text(
                     modifier = Modifier
@@ -65,6 +66,8 @@ fun Forside () {
                     style = MaterialTheme.typography.h6
                 )
             }
+            //Velkomsttekst 2.
+            // Velkomst test 1 og 2 samles til en tekst.
             item {
                 Text(
                     modifier = Modifier
@@ -74,6 +77,7 @@ fun Forside () {
                     style = MaterialTheme.typography.h3
                 )
             }
+            //Se produkter og Bestil Levering knapper
             item {
                 Buttons()
             }
@@ -83,6 +87,7 @@ fun Forside () {
                     thickness = 1.dp,
                     modifier = Modifier.width(360.dp)
                 )}
+            //Billeder
             item{
             Image(
                     painterResource(id = R.drawable.unknown__3__1),
@@ -110,6 +115,7 @@ fun Forside () {
             item{
                 Spacer(modifier = Modifier.height(15.dp))
             }
+            //Se Anmeldelser knap
             item{
                 TextButton(
                     onClick = { /*TODO*/ },
@@ -134,6 +140,7 @@ fun Forside () {
                 item {
                     Spacer(modifier = Modifier.height(20.dp))
                 }
+            // Bestil i dag of få leveret tekst 1
                 item{
                 Text(text= stringResource(id = R.string.Bestil),
                     textAlign = TextAlign.Center,
@@ -144,12 +151,15 @@ fun Forside () {
             item{
                 Spacer(modifier = Modifier.height(20.dp))
             }
+            //Bestil i dag og få leveret tekst 2
+            // 1 og 2 samles
             item{
                 Text(text= stringResource(id = R.string.skal_du_bruge),
                 textAlign = TextAlign.Center,
                 style=MaterialTheme.typography.body1,
                 lineHeight = 20.sp)
             }
+            // Hent selv knap og beregn pris knap
             item{
                 Buttons2()
 
@@ -163,7 +173,8 @@ fun Forside () {
 
 
 @Composable
-fun Topbar(){
+fun TopBar(@StringRes id: Int){
+
     Row (modifier= Modifier
         .height(60.dp)
         .fillMaxWidth()
@@ -187,7 +198,7 @@ fun Topbar(){
         Text(modifier= Modifier
             .width(194.dp)
             .align(CenterVertically),
-            text = stringResource(id = R.string.forside),
+            text = stringResource(id),
         style = MaterialTheme.typography.h5
             )
         Spacer(modifier = Modifier.width(10.dp))
@@ -208,6 +219,7 @@ fun Topbar(){
     }
 }
 
+// Hent selv og beregn pris knapper
 @Composable
 fun Buttons2(){
     Row (
@@ -240,6 +252,7 @@ fun Buttons2(){
     }
 }
 
+//Se produkter og bestil elvering knapper
 @Composable
 fun Buttons () {
     Row(modifier = Modifier

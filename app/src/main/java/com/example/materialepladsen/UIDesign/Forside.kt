@@ -119,7 +119,8 @@ fun Forside () {
                     )
                 ) {
                     Text(text = stringResource(id = R.string.sevores),
-                    style = MaterialTheme.typography.caption)
+                    style = MaterialTheme.typography.caption,
+                    )
                 }}
             item {
                 Spacer(modifier = Modifier.height(15.dp))

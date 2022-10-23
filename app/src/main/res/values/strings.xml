@@ -7,9 +7,12 @@
     <string name="Glemt">Glemt adgangskode eller brugernavn</string>
     <string name="se_produkter">Se produkter</string>
     <string name="Bestil_levering">Bestil levering</string>
-    <string name="Velkommen">Velkommen til en verden af granit, sten, grus, muld og flis</string>
-    <string name="hent">Hent selv dine materialer døgnet rundt eller få dem leveret lige til døren</string>
-    <string name="Bestil_idag...">Bestil i dag og få leveret næste hverdag, eller hent selv med det samme. Skal du bruge granit, sten, grus, muld eller flis? Så er du kommet til det rigtige sted.Hos os kan du handle både som privatperson og erhvervskunde, og uanset om du skal bruge et par kilo sand til sandkassen eller et ton grus til en ny terasse, kan vi hjælpe dig.Du kan bestille dine materialer online og få dem leveret lige til døren allerede næste hverdag. Eller du kan selv hente materialerne på en af vores materialepladser, der har åbent døgnet rundt 365 dage om året.Husk, at du kan låne en gratis læssemaskine og trailer, når du henter materialer hos os.</string>
+    <string name="Velkommen">Velkommen til en verden af granit,\n sten, grus, muld og flis</string>
+    <string name="hent">Hent selv dine materialer døgnet rundt\n eller få dem leveret lige til døren</string>
     <string name="forside">Forside</string>
     <string name="sevores">Se vores 38 anmeldelser på Trustpilot</string>
+    <string name="Bestil">Bestil i dag og få leveret næste hverdag,\n eller hent selv med det samme</string>
+    <string name="skal_du_bruge">Skal du bruge granit, sten, grus, muld eller flis? Så er\n du kommet til det rigtige sted.\n\n Hos os kan du handle både som privatperson og\n erhvervskunde, og uanset om du skal bruge et par\n kilo sand til sandkassen eller et ton grus til en ny\n terasse, kan vi hjælpe dig.\n\n Du kan bestille dine materialer online og få dem\n leveret lige til døren allerede næste hverdag. Eller du\n kan selv hente materialerne på en af vores\n materialepladser, der har åbent døgnet rundt 365\n dage om året.\n\n Husk, at du kan låne en gratis læssemaskine og\n trailer, når du henter materialer hos os.\n</string>
+    <string name="førsteknap">Beregn pris ved levering</string>
+    <string name="andenknap">Hent selv</string>
 </resources>

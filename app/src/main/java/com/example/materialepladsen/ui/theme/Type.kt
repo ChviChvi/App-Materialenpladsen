@@ -34,7 +34,27 @@ val Typography = Typography(
         fontFamily = Inter,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
-    )
+    ),
+    h5=TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.Thin,
+        fontSize = 16.sp
+    ),
+    h6=TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.Bold,
+        fontSize = 18.sp
+    ),
+    caption  =TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.Thin,
+        fontSize = 12.sp
+    ),
+    body1  =TextStyle(
+        fontFamily = Inter,
+        fontWeight = FontWeight.Thin,
+        fontSize = 12.sp
+    ),
     /* Other default text styles to override
     button = TextStyle(
         fontFamily = FontFamily.Default,

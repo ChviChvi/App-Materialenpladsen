@@ -98,8 +98,8 @@ fun Logo(){
             contentDescription =null,
             modifier= Modifier
                 .width(118.dp)
-                .height(32.dp)
-                .padding(start = 18.dp, top = 13.dp)
+                .height(35.dp)
+                .padding(start = 18.dp, top = 5.dp)
         )
 
     }

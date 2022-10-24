@@ -2,15 +2,15 @@ package com.example.materialepladsen.UIDesign
 
 import androidx.compose.foundation.Image
 import androidx.annotation.StringRes
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Divider
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
@@ -29,7 +29,7 @@ import com.example.materialepladsen.ui.theme.TopBar
 
 @Composable
 fun Udvejning() {
-    Scaffold(
+        Scaffold(
         modifier = Modifier.fillMaxWidth(),
         topBar = {
             TopBar(id = R.string.Udvejning)
@@ -72,17 +72,34 @@ fun Udvejning() {
                 contentDescription =null,
                 modifier= Modifier
                     .padding(top = 20.dp)
-                    .height(127.dp)
-                    .width(146.dp)
+                    .height(150.dp)
+                    .width(180.dp)
             )
 
-            Billedetekst(tekst = R.string.infotekst,
-                varenr = R.string.varenr,
-                krprkg =R.string.krprkg )
+            Spacer(modifier = Modifier.height(20.dp))
 
+            Billedetekst(tekst = R.string.Infotekst,
+                varenr = R.string.Varenr,
+                krprkg =R.string.Krprkg )
 
+            Spacer(modifier = Modifier.height(40.dp))
 
-            
+            TextButton(
+                modifier = Modifier.width(150.dp).height(45.dp),
+                onClick = { /*TODO*/ },
+                colors = ButtonDefaults.buttonColors(
+                    contentColor = Color.White,
+                    backgroundColor = colorResource(id = R.color.Betalgrøn),
+                    )
+            ) {
+                Text(text = stringResource(id =R.string.Betal),
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.Normal,
+                    fontFamily = Inter,
+                    lineHeight = 24.sp,
+                    )
+
+            }
         }
     }
 }
@@ -130,7 +147,10 @@ fun Billedetekst (@StringRes tekst: Int,
     Column(
         modifier = Modifier
             .width(330.dp)
-            .height(400.dp)
+            .height(105.dp)
+            .background(color = colorResource(id = R.color.LyseGrå))
+
+
     ) {
 
         Text(
@@ -139,7 +159,6 @@ fun Billedetekst (@StringRes tekst: Int,
             fontSize = 16.sp,
             fontWeight = FontWeight.Normal,
             fontFamily = Inter,
-            modifier=Modifier.padding(top=10.dp)
         )
         Spacer(modifier = Modifier.height(30.dp))
 
@@ -151,8 +170,9 @@ fun Billedetekst (@StringRes tekst: Int,
                 fontWeight = FontWeight.Bold,
                 fontFamily = Inter,
                 color = Color.Gray,
-            modifier = Modifier.padding(start=10.dp))
+            modifier = Modifier.padding())
 
+            Spacer(modifier = Modifier.width(140.dp))
 
 
             Text(text = stringResource(id = krprkg),
@@ -165,7 +185,7 @@ fun Billedetekst (@StringRes tekst: Int,
     }
 }
 
-@Preview(showBackground = true)
+@Preview (showBackground = true)
 @Composable
 fun DefaultPreview12() {
     MaterialepladsenTheme {

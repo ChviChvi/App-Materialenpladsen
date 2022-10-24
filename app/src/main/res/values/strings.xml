@@ -79,5 +79,31 @@
     <string name="Ordrenummer5">102000–000001</string>
 
     <!--Omos-->
-    <string name="Omos">Købshistorik</string>
+    <string name="Omos">Om os</string>
+
+    <string name="Main_title1">Om Materialepladsen</string>
+    <string name="Under_title1">Let, hurtig og fleksibel adgang til materialer</string>
+    <string name="Main_text1">Siden 2014 har vi solgt læssevis af granit, sten, grus, muld og flis til både private og virksomheder. I dag er der en Materialeplads i Roskilde, Ringsted, Næstved og Vordingborg.</string>
+    <string name="Main_text2">Alle vores Materialepladser har døgnåbent og er baseret på selvbetjening, hvor du selv vælger materiale, mængde og tidspunkt – og du betaler kun for det, du læsser. Der er intet minimumskøb, så du kan købe fra 5 kg til masser af tons.</string>
+
+    <string name="Main_title2">Bestil på webshoppen og få levert næste hverdag</string>
+    <string name="Main_text3">Du kan også få dine materialer leveret, når du bestiller på vores webshop. Her kan du få dag-til-dag levering på alle hverdage, hvis du bestiller inden klokken 24. Du vælger selv, hvilken hverdag du vil have dine materialer leveret.</string>
+    <string name="Button_text1">Beregn pris ved levering</string>
+
+    <string name="Main_title3">Få adgang til en gratis læssemaskine</string>
+    <string name="Main_text4">På alle Materialepladser kan du få adgang til en læssemaskine. Det betyder, at du kan læsse dine materialer hurtigt og effektivt. Når du kommer ind på vores materialepladser, er der skilte, der viser vej til læssemaskinen. Her står der også udførlig vejledning i, hvordan du får adgang og bruger den.</string>
+
+    <string name="Main_title4">Lån en gratis trailer</string>
+    <string name="Main_text5">Vi har suppleret vores ydelser med udlejning af store trailere i samarbejde med Freetrailer. På alle vores materialepladser er det gratis, hvis traileren er ledig. Du kan også reservere den mod et mindre gebyr.</string>
+    <string name="Button_text2">Læs mere om trailerudvejning</string>
+
+    <string name="Main_title5">Certificerede vejninger til private og erhverv</string>
+    <string name="Main_text6">Du kan også få udført certificerede vejninger som for eksempel vejning af campingvogne for private og synsvejninger og aftalevejninger for virksomheder.</string>
+    <string name="Button_text3">Læs mere om vejning for private</string>
+    <string name="Button_text4">Læs mere om vejning for virksomheder</string>
+
+    <string name="Main_title6">Kontakt os</string>
+    <string name="Main_text7">Hvis du er i tvivl om noget eller har spørgsmål, er du altid velkommen til at kontakte os på 55 44 20 20 eller info@materialepladsen.dk</string>
+
+    <string name="Button_text5">Find din materialeplads her</string>
 </resources>

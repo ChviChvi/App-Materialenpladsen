@@ -24,7 +24,7 @@ import com.example.materialepladsen.R
 
 
 @Composable
-fun Material () {
+fun Materialer () {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         topBar = {
@@ -33,7 +33,6 @@ fun Material () {
     ) {
 
         Column() {
-
             Logo2()
 
             Divider(modifier = Modifier.fillMaxWidth(),
@@ -68,7 +67,7 @@ fun Material () {
                     billede = R.drawable.woodpile_6364896_960_720_3,
                 )
                 
-                Spacer(modifier = Modifier.width(35.dp))
+                Spacer(modifier = Modifier.width(13.dp))
 
                 Icon(imageVector=Icons.Default.ArrowForwardIos,
                     contentDescription = null,
@@ -93,6 +92,7 @@ fun Material () {
 
             Spacer(modifier = Modifier.height(21.dp))
 
+            //Anden række
             //Måske laves til LazyRow?
             Row(modifier=Modifier.padding(start=28.dp)) {
                 Materialeitem(
@@ -111,7 +111,7 @@ fun Material () {
                     billede = R.drawable.as_lvplade,
                 )
 
-                Spacer(modifier = Modifier.width(35.dp))
+                Spacer(modifier = Modifier.width(13.dp))
 
                 Icon(imageVector=Icons.Default.ArrowForwardIos,
                     contentDescription = null,
@@ -137,6 +137,7 @@ fun Material () {
 
             Spacer(modifier = Modifier.height(21.dp))
 
+            //Tredje række
             //Måske laves til LazyRow?
             Row(modifier=Modifier.padding(start=28.dp)) {
                 Materialeitem(
@@ -155,7 +156,7 @@ fun Material () {
                     billede = R.drawable.r_de,
                 )
 
-                Spacer(modifier = Modifier.width(35.dp))
+                Spacer(modifier = Modifier.width(13.dp))
 
                 Icon(imageVector=Icons.Default.ArrowForwardIos,
                     contentDescription = null,
@@ -203,18 +204,18 @@ fun Logo2(){
 //tekst
 //kald en liste med billeder
 // icon button
+
+
 @Composable
 fun Materialeitem(
+    //Strings for product - Product/
     @StringRes id_et: Int,
     @StringRes id_to: Int,
     @StringRes id_tre: Int,
     @DrawableRes billede: Int,
 ) {
 
-
     Column(modifier = Modifier.width(140.dp)) {
-
-
         Image(
             modifier = Modifier
                 .height(81.dp)
@@ -224,37 +225,32 @@ fun Materialeitem(
             contentDescription = null
         )
         Text(text = stringResource(id = id_et),
-        style=MaterialTheme.typography.subtitle1,
+            style=MaterialTheme.typography.subtitle1,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
             lineHeight = 14.sp
         )
 
         Text(text = stringResource(id = id_to),
-        style=MaterialTheme.typography.subtitle2,
-            modifier = Modifier.fillMaxWidth(),
+            style=MaterialTheme.typography.subtitle2,
             textAlign = TextAlign.Center,
+            modifier = Modifier.fillMaxWidth(),
             lineHeight = 14.sp
         )
 
         Text(text ="DKK "+ stringResource(id = id_tre),
+            style=MaterialTheme.typography.h3,
             textAlign = TextAlign.Center,
             modifier = Modifier.fillMaxWidth(),
-        lineHeight = 14.sp,
-            color = MaterialTheme.colors.secondaryVariant,
-            style=MaterialTheme.typography.h3
-
+            lineHeight = 14.sp,
+            color = MaterialTheme.colors.secondaryVariant
         )
-
-
     }
 }
-
-
 
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview6() {
     MaterialepladsenTheme {
-        Material()
+        Materialer()
     }}

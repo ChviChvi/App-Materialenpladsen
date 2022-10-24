@@ -36,7 +36,7 @@ fun Forside () {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
     topBar={
-        TopBar(R.string.forside)
+        TopBar(R.string.Forside)
     }
     ) {
 

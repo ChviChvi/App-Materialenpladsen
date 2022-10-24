@@ -8,6 +8,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForwardIos
+import androidx.compose.material.icons.filled.Menu
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
@@ -21,6 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.materialepladsen.R
+import com.example.materialepladsen.ui.theme.MaterialepladsenTheme
 
 
 @Composable
@@ -165,12 +168,8 @@ fun Materialer () {
                         .width(26.dp)
                         .align(CenterVertically)
                 )
-
             }
-
-
         }
-
     }
 }
 
@@ -199,12 +198,6 @@ fun Logo2(){
             contentDescription = null)
     }
 }
-
-
-//tekst
-//kald en liste med billeder
-// icon button
-
 
 @Composable
 fun Materialeitem(

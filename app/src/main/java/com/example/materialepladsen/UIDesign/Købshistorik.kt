@@ -73,7 +73,6 @@ fun Købshistorik (){
                 pris =R.string.Pris5,
                 ordrenr = R.string.Ordrenummer5)
         }
-
     }
 }
 

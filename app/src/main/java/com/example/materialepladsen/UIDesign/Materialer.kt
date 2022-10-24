@@ -191,8 +191,8 @@ fun Logo2(){
         Spacer(modifier = Modifier.width(200.dp))
 
         Icon(modifier= Modifier
-            .height(30.dp)
-            .width(30.dp)
+            .height(25.dp)
+            .width(25.dp)
             .align(CenterVertically),
             imageVector = Icons.Default.ShoppingCart,
             contentDescription = null)

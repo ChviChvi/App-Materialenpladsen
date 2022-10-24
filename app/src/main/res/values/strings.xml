@@ -42,6 +42,36 @@
     <string name="HvidePris">1.545,50</string>
     <string name="RødePris">1.195,00</string>
 
+    <string name="første">Røde granitskærver - </string>
+    <string name="førstevægt">4,423 ton</string>
+    <string name="førstepris">5285,49 kr</string>
+    <string name="førstedato">26/09/202</string>
+    <string name="førsteordrenummer">102000-000005</string>
+
+    <string name="anden">Røde granitskærver - </string>
+    <string name="andenvægt">2,901 ton</string>
+    <string name="andendato">25/09/2022</string>
+    <string name="andenpris">3.466,70 kr</string>
+    <string name="andenordrenr">102000-000004</string>
+
+    <string name="tredje">Bøgestammer - </string>
+    <string name="tredjevægt">829kg</string>
+    <string name="tredjedato">15/09/2022</string>
+    <string name="tredjepris">39.792.00 kr</string>
+    <string name="tredjeordrenr">102000-000003</string>
+
+    <string name="fjerde">Bøgestammer - </string>
+    <string name="fjerdevægt">924 kg</string>
+    <string name="fjerdedato">15/09/2022</string>
+    <string name="fjerdepris">44.352.00 kr</string>
+    <string name="fjerdeordrenr">102000-000002</string>
+
+    <string name="femte">Sølvplade - </string>
+    <string name="femtevægt">25000 gram</string>
+    <string name="femtedato">12/09/2022</string>
+    <string name="femtepris">3.810,49 kr</string>
+    <string name="femteordrenr">102000-000001</string>
+
 
 
 

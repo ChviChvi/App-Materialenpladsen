@@ -37,7 +37,6 @@ fun Forside () {
         modifier = Modifier.fillMaxWidth(),
     topBar={
         TopBar(R.string.forside)
-
     }
     ) {
 
@@ -281,7 +280,6 @@ fun Buttons () {
             Text(text = stringResource(id = R.string.Bestil_levering))
 
         }
-
     }
 }
 

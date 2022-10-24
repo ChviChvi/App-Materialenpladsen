@@ -59,7 +59,7 @@ fun Omos () {
                     modifier = Modifier
                         .padding(start = 10.dp, top = 20.dp)
                         .width(350.dp),
-                    text = stringResource(id = R.string.Main_text1),
+                    text = stringResource(id = R.string.Main_title1),
                     style = MaterialTheme.typography.h6,
                     fontWeight = FontWeight.Bold
                 )
@@ -67,7 +67,7 @@ fun Omos () {
             item {
                 Text(
                     modifier = Modifier
-                        .padding(start = 10.dp, top = 6.dp)
+                        .padding(start = 10.dp, top = 3.dp)
                         .width(350.dp),
                     text = stringResource(id = R.string.Under_title1),
                     style = MaterialTheme.typography.h4,
@@ -75,21 +75,205 @@ fun Omos () {
                 )
             }
             item{
-                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text= stringResource(id = R.string.Main_text1),
+                    style=MaterialTheme.typography.body1,
+                    lineHeight = 15.sp
+                )
             }
+
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text= stringResource(id = R.string.Main_text2),
+                    style=MaterialTheme.typography.body1,
+                    lineHeight = 15.sp
+                )
+            }
+
             item{
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            //Text Field 2
+            item{
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text= stringResource(id = R.string.Main_title2),
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Main_text3),
+                    style = MaterialTheme.typography.body1,
+                    lineHeight = 15.sp
+                )
+            }
+            item {
                 Text(
                     modifier = Modifier
                         .padding(start = 10.dp, top = 8.dp)
                         .width(350.dp),
-                    text= stringResource(id = R.string.Main_text1),
-                    textAlign = TextAlign.Left,
-                    style=MaterialTheme.typography.body1,
-                    lineHeight = 20.sp)
+                    text = stringResource(id = R.string.Link1),
+                    style = MaterialTheme.typography.body2,
+                    lineHeight = 15.sp
+                )
             }
 
-            //Text Field 2
+            item {
+                Spacer(modifier = Modifier.height(20.dp))
+            }
 
+            //Text Field 3
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Main_title3),
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            item{
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text= stringResource(id = R.string.Main_text4),
+                    style=MaterialTheme.typography.body1,
+                    lineHeight = 15.sp
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            //Text Field 4
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Main_title4),
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            item{
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text= stringResource(id = R.string.Main_text5),
+                    style=MaterialTheme.typography.body1,
+                    lineHeight = 15.sp
+                )
+            }
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 8.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Link2),
+                    style = MaterialTheme.typography.body2,
+                    lineHeight = 15.sp
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            //Text Field 5
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Main_title5),
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            item{
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text= stringResource(id = R.string.Main_text6),
+                    style=MaterialTheme.typography.body1,
+                    lineHeight = 15.sp
+                )
+            }
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 8.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Link3),
+                    style = MaterialTheme.typography.body2,
+                    lineHeight = 15.sp
+                )
+            }
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 8.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Link4),
+                    style = MaterialTheme.typography.body2,
+                    lineHeight = 15.sp
+                )
+            }
+
+            item {
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            //Text Field 3
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Main_title6),
+                    style = MaterialTheme.typography.h6,
+                    fontWeight = FontWeight.Bold
+                )
+            }
+            item{
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 5.dp)
+                        .width(350.dp),
+                    text= stringResource(id = R.string.Main_text7),
+                    style=MaterialTheme.typography.body1,
+                    lineHeight = 15.sp)
+            }
+            item {
+                Text(
+                    modifier = Modifier
+                        .padding(start = 10.dp, top = 8.dp)
+                        .width(350.dp),
+                    text = stringResource(id = R.string.Link5),
+                    style = MaterialTheme.typography.body2,
+                    lineHeight = 15.sp
+                )
+            }
         }
     }
 }

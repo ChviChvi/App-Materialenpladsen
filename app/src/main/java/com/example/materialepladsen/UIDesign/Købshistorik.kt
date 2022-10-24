@@ -162,17 +162,8 @@ fun KøbItem (@StringRes materiale: Int,
         Divider(modifier = Modifier.fillMaxWidth(),
             thickness = 1.dp,
             color = Color.Black)
-
-
     }
-
-
 }
-
-
-
-
-
 
 @Preview(showBackground = true)
 @Composable

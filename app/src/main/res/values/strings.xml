@@ -89,9 +89,10 @@
     <string name="Udvejning_Pris">Pris:</string>
     <string name="Udvejning_Pris_Værdi">89,00 DK</string>
     <string name="Valgt_Materiale">Valgt materiale</string>
-    <string name="infotekst">Granit i grå med lille rød nist. Velegnet til indkørsler. Pynt i haven</string>
-    <string name="varenr">813:</string>
-    <string name="krprkg">0,80 pr.kg</string>
+    <string name="Infotekst">Granit i grå med lille rød nist. Velegnet til indkørsler. Pynt i haven</string>
+    <string name="Varenr">813:</string>
+    <string name="Krprkg">0,80 pr.kg</string>
+    <string name="Betal">Betal</string>
 
     <!--Omos-->
     <string name="Omos">Om os</string>

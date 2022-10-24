@@ -43,36 +43,35 @@ fun Købshistorik (){
                 thickness = 1.dp,
                 color = Color.Black)
             
-            KøbItem(materiale = R.string.første,
-                vægt = R.string.førstevægt,
-                dato = R.string.førstedato,
-                pris =R.string.førstepris ,
-                ordrenr = R.string.førsteordrenummer)
+            KøbItem(materiale = R.string.Vare1,
+                vægt = R.string.Vægt1,
+                dato = R.string.Dato1,
+                pris =R.string.Pris1 ,
+                ordrenr = R.string.Ordrenummer1)
 
-            KøbItem(materiale = R.string.anden,
-                vægt = R.string.andenvægt,
-                dato = R.string.andendato,
-                pris =R.string.andenpris ,
-                ordrenr = R.string.andenordrenr)
+            KøbItem(materiale = R.string.Vare2,
+                vægt = R.string.Vægt2,
+                dato = R.string.Dato2,
+                pris =R.string.Pris2,
+                ordrenr = R.string.Ordrenummer2)
 
-            KøbItem(materiale = R.string.tredje,
-                vægt = R.string.tredjevægt,
-                dato = R.string.tredjedato,
-                pris =R.string.tredjepris ,
-                ordrenr = R.string.tredjeordrenr)
+            KøbItem(materiale = R.string.Vare3,
+                vægt = R.string.Vægt3,
+                dato = R.string.Dato3,
+                pris =R.string.Pris3,
+                ordrenr = R.string.Ordrenummer3)
 
-            KøbItem(materiale = R.string.fjerde,
-                vægt = R.string.fjerdevægt,
-                dato = R.string.fjerdedato,
-                pris =R.string.fjerdepris ,
-                ordrenr = R.string.fjerdeordrenr)
+            KøbItem(materiale = R.string.Vare4,
+                vægt = R.string.Vægt4,
+                dato = R.string.Dato4,
+                pris =R.string.Pris4,
+                ordrenr = R.string.Ordrenummer4)
 
-            KøbItem(materiale = R.string.femte,
-                vægt = R.string.femtevægt,
-                dato = R.string.femtedato,
-                pris =R.string.femtepris ,
-                ordrenr = R.string.femteordrenr)
-
+            KøbItem(materiale = R.string.Vare5,
+                vægt = R.string.Vægt5,
+                dato = R.string.Dato5,
+                pris =R.string.Pris5,
+                ordrenr = R.string.Ordrenummer5)
         }
 
     }

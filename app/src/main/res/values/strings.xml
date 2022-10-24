@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Materialepladsen</string>
+    <!--Login-->
     <string name="Login">Login</string>
+
+    <string name="app_name">Materialepladsen</string>
     <string name="Registrer">Registrer</string>
     <string name="Brugernavn">Brugernavn</string>
     <string name="Adgangskode">Adgangskode</string>
@@ -9,12 +11,17 @@
     <string name="Bestil_levering">Bestil levering</string>
     <string name="Velkommen">Velkommen til en verden af granit,\n sten, grus, muld og flis</string>
     <string name="hent">Hent selv dine materialer døgnet rundt\n eller få dem leveret lige til døren</string>
-    <string name="forside">Forside</string>
+
+    <!--Forside-->
+    <string name="Forside">Forside</string>
+
     <string name="sevores">Se vores 38 anmeldelser på Trustpilot</string>
     <string name="Bestil">Bestil i dag og få leveret næste hverdag,\n eller hent selv med det samme</string>
     <string name="skal_du_bruge">Skal du bruge granit, sten, grus, muld eller flis? Så er\n du kommet til det rigtige sted.\n\n Hos os kan du handle både som privatperson og\n erhvervskunde, og uanset om du skal bruge et par\n kilo sand til sandkassen eller et ton grus til en ny\n terasse, kan vi hjælpe dig.\n\n Du kan bestille dine materialer online og få dem\n leveret lige til døren allerede næste hverdag. Eller du\n kan selv hente materialerne på en af vores\n materialepladser, der har åbent døgnet rundt 365\n dage om året.\n\n Husk, at du kan låne en gratis læssemaskine og\n trailer, når du henter materialer hos os.\n</string>
     <string name="førsteknap">Beregn pris ved levering</string>
     <string name="andenknap">Hent selv</string>
+
+    <!--Materialer-->
     <string name="Materialer">Materialer</string>
     <string name="askvægt">15Kg ask i stammer</string>
     <string name="askalder">1,5 år gammelt</string>
@@ -37,30 +44,37 @@
     <string name="RødeInfo">1 ton, 8–11mm</string>
     <string name="HvidePris">1.545,50</string>
     <string name="RødePris">1.195,00</string>
+
+    <!--Købshistorik-->
     <string name="Købshistorik">Købshistorik</string>
-    <string name="første">Røde granitskærver - </string>
-    <string name="førstevægt">4,423 ton</string>
-    <string name="førstepris">5285,49 kr</string>
-    <string name="førstedato">26/09/2022</string>
-    <string name="førsteordrenummer">102000–000005</string>
-    <string name="anden">Røde granitskærver - </string>
-    <string name="andenvægt">2,901 ton</string>
-    <string name="andendato">25/09/2022</string>
-    <string name="andenpris">3.466,70 kr</string>
-    <string name="andenordrenr">102000–000004</string>
-    <string name="tredje">Bøgestammer - </string>
-    <string name="tredjevægt">829kg</string>
-    <string name="tredjedato">15/09/2022</string>
-    <string name="tredjepris">39.792.00 kr</string>
-    <string name="tredjeordrenr">102000–000003</string>
-    <string name="fjerde">Bøgestammer - </string>
-    <string name="fjerdevægt">924 kg</string>
-    <string name="fjerdedato">15/09/2022</string>
-    <string name="fjerdepris">44.352.00 kr</string>
-    <string name="fjerdeordrenr">102000–000002</string>
-    <string name="femte">Sølvplade - </string>
-    <string name="femtevægt">25000 gram</string>
-    <string name="femtedato">12/09/2022</string>
-    <string name="femtepris">3.810,49 kr</string>
-    <string name="femteordrenr">102000–000001</string>
+
+    <string name="Vare1">Røde granitskærver - </string>
+    <string name="Vægt1">4,423 ton</string>
+    <string name="Dato1">26/09/2022</string>
+    <string name="Pris1">5285,49 kr</string>
+    <string name="Ordrenummer1">102000–000005</string>
+
+    <string name="Vare2">Røde granitskærver - </string>
+    <string name="Vægt2">2,901 ton</string>
+    <string name="Dato2">25/09/2022</string>
+    <string name="Pris2">3.466,70 kr</string>
+    <string name="Ordrenummer2">102000–000004</string>
+
+    <string name="Vare3">Bøgestammer - </string>
+    <string name="Vægt3">829kg</string>
+    <string name="Dato3">15/09/2022</string>
+    <string name="Pris3">39.792.00 kr</string>
+    <string name="Ordrenummer3">102000–000003</string>
+
+    <string name="Vare4">Bøgestammer - </string>
+    <string name="Vægt4">924 kg</string>
+    <string name="Dato4">15/09/2022</string>
+    <string name="Pris4">44.352.00 kr</string>
+    <string name="Ordrenummer4">102000–000002</string>
+
+    <string name="Vare5">Sølvplade - </string>
+    <string name="Vægt5">25000 gram</string>
+    <string name="Dato5">12/09/2022</string>
+    <string name="Pris5">3.810,49 kr</string>
+    <string name="Ordrenummer5">102000–000001</string>
 </resources>

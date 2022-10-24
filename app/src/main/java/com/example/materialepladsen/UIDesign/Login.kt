@@ -183,7 +183,7 @@ fun BrugerAdgang (
             backgroundColor =MaterialTheme.colors.secondary
         )
     ) {
-        Text(text = stringResource(id =R.string.Login ),
+        Text(text = stringResource(id =R.string.Login),
             style = MaterialTheme.typography.h2)
     }
 

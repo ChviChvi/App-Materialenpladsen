@@ -78,6 +78,21 @@
     <string name="Pris5">3.810,49 kr</string>
     <string name="Ordrenummer5">102000–000001</string>
 
+
+
+    <!--Udvejning-->
+
+    <string name="Udvejning">Udvejning:</string>
+
+    <string name="Udvjening_Vægt">Vægt:</string>
+    <string name="Udvejning_Vægt_Værdi">100,00 kg</string>
+    <string name="Udvejning_Pris">Pris:</string>
+    <string name="Udvejning_Pris_Værdi">89,00 DK</string>
+    <string name="Valgt_Materiale">Valgt materiale</string>
+    <string name="infotekst">Granit i grå med lille rød nist. Velegnet til indkørsler. Pynt i haven</string>
+    <string name="varenr">813:</string>
+    <string name="krprkg">0,80 pr.kg</string>
+
     <!--Omos-->
     <string name="Omos">Om os</string>
 

@@ -77,4 +77,7 @@
     <string name="Dato5">12/09/2022</string>
     <string name="Pris5">3.810,49 kr</string>
     <string name="Ordrenummer5">102000–000001</string>
+
+    <!--Omos-->
+    <string name="Omos">Købshistorik</string>
 </resources>

@@ -122,4 +122,10 @@
     <string name="Main_text7">Hvis du er i tvivl om noget eller har spørgsmål, er du altid velkommen til at kontakte os på 55 44 20 20 eller info@materialepladsen.dk</string>
 
     <string name="Link5"><a href="https://tutorial.eyehunts.com//">Find din materialeplads her</a></string>
+
+
+    <!--Findos-->
+    <string name="Findos">Findos</string>
+    <string name="Find_Nærmeste">Find nærmeste materialeplads</string>
+    <string name="Find_Åbent">Åbent hele døgnet</string>
 </resources>

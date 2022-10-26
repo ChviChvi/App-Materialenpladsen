@@ -34,7 +34,6 @@ fun Udvejning() {
         topBar = {
             TopBar(id = R.string.Udvejning)
         }
-
     ){
         Column (
             horizontalAlignment = Alignment.CenterHorizontally
@@ -98,7 +97,6 @@ fun Udvejning() {
                     fontFamily = Inter,
                     lineHeight = 24.sp,
                     )
-
             }
         }
     }
@@ -112,10 +110,8 @@ fun Udvejning() {
             .height(120.dp)
             .padding(start = 29.dp, top = 20.dp, end = 30.dp)
             .border(width = 1.dp, color = Color.Black),
-            horizontalArrangement = Arrangement.Center,
-
+            horizontalArrangement = Arrangement.Center
         ) {
-
             Text(
             buildAnnotatedString {
                 withStyle(style= SpanStyle(
@@ -134,10 +130,7 @@ fun Udvejning() {
             },
             modifier=Modifier.padding(top=20.dp),
                 textAlign=TextAlign.Center)
-
-
         }
-
 }
 
 @Composable
@@ -149,10 +142,7 @@ fun Billedetekst (@StringRes tekst: Int,
             .width(330.dp)
             .height(105.dp)
             .background(color = colorResource(id = R.color.LyseGrå))
-
-
     ) {
-
         Text(
             text = stringResource(id = tekst),
             textAlign = TextAlign.Start,
@@ -160,6 +150,7 @@ fun Billedetekst (@StringRes tekst: Int,
             fontWeight = FontWeight.Normal,
             fontFamily = Inter,
         )
+
         Spacer(modifier = Modifier.height(30.dp))
 
         Row() {

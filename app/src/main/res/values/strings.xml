@@ -127,11 +127,13 @@
 
     <!--Findos-->
     <string name="Findos">Findos</string>
+
     <string name="Find_Nærmeste">Find nærmeste materialeplads</string>
     <string name="Find_Åbent">Åbent hele døgnet</string>
 
     <!--Betaling-->
     <string name="Betaling">Betaling:</string>
+
     <string name="Indvejningsvægt">Indvejningsvægt Tal(KG)</string>
     <string name="Udvejningsvægt">Udvejningsvægt Tal(KG)</string>
     <string name="Afrejningsvægt">Afrejningsvægt Tal(KG)</string>

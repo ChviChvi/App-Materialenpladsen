@@ -79,7 +79,7 @@ fun Betaling () {
             )
             Spacer(modifier = Modifier.height(15.dp))
 
-// Det valgte materiale
+            // Det valgte materiale
             Row(modifier = Modifier.padding(start = 0.dp)) {
                 Spacer(modifier = Modifier.width(1.dp))
                 Initialize_Map(
@@ -87,19 +87,23 @@ fun Betaling () {
                 )
                 Spacer(modifier = Modifier.height(15.dp))
             }
-//Materiale
+
+            //Materiale
             Text(
                 text = stringResource(id = R.string.Materiale),
                 modifier = Modifier.padding(start = 15.dp),
                 style = MaterialTheme.typography.h6,
             )
+
             Spacer(modifier = Modifier.height(30.dp))
-//Pris
+
+            //Pris
             Text(
                 text = stringResource(id = R.string.Samletpris),
                 modifier = Modifier.padding(start = 15.dp),
                 style = MaterialTheme.typography.h6,
             )
+
             Spacer(modifier = Modifier.height(15.dp))
 
             Divider(
@@ -109,7 +113,7 @@ fun Betaling () {
             )
             Spacer(modifier = Modifier.height(15.dp))
 
-// Button 1: Betalingskort
+            // Button 1: Betalingskort
             TextButton(
                 modifier = Modifier.width(200.dp).height(50.dp),
                 onClick = { /*TODO*/ },
@@ -126,9 +130,10 @@ fun Betaling () {
                     lineHeight = 24.sp,
                 )
             }
+
             Spacer(modifier = Modifier.height(15.dp))
 
-// Button 2: Mobilepay
+            // Button 2: Mobilepay
             TextButton(
                 modifier = Modifier.width(200.dp).height(50.dp),
                 onClick = { /*TODO*/ },
@@ -147,7 +152,7 @@ fun Betaling () {
             }
             Spacer(modifier = Modifier.height(15.dp))
 
-// Button 3: Pay by Plate
+            // Button 3: Pay by Plate
             TextButton(
                 modifier = Modifier.width(200.dp).height(50.dp),
                 onClick = { /*TODO*/ },
@@ -167,7 +172,6 @@ fun Betaling () {
         }
     }
 }
-
 
 
 @Preview(showBackground = true)

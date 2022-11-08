@@ -33,7 +33,7 @@ fun PriceCalculatorScreen(
         DeliveryMethods(tabs = uiState.value.deliveryMethods)
         WeightSlider(priceCalculatorViewModel = priceCalculatorViewModel)
         ChosenMaterial(material = uiState.value.materialName)
-        Purchase(text = uiState.value.totalPrice.toString() + " Kr. inkl. moms", onClick = { navController.navigate("payment") })
+        Purchase(text = uiState.value.totalPrice.toString() + " Kr. inkl. moms", onClick = { navController.navigate("Betaling") })
     }
 }
 

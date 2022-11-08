@@ -1,5 +1,6 @@
 package com.example.materialepladsen.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -28,6 +29,7 @@ import androidx.compose.ui.unit.sp
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Omos () {
 

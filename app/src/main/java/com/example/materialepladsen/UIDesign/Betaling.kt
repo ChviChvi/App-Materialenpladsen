@@ -1,5 +1,6 @@
 package com.example.materialepladsen.UIDesign
 
+import android.annotation.SuppressLint
 import android.graphics.Paint.Align
 import android.location.GnssAntennaInfo.PhaseCenterOffset
 import android.view.Gravity
@@ -30,6 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Betaling () {
 
@@ -39,7 +41,6 @@ fun Betaling () {
             TopBar(R.string.Betaling)
         }
     ) {
-
         Column() {
             Logo3()
 
@@ -113,61 +114,63 @@ fun Betaling () {
             )
             Spacer(modifier = Modifier.height(15.dp))
 
-            // Button 1: Betalingskort
-            TextButton(
-                modifier = Modifier.width(200.dp).height(50.dp),
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = Color.Blue,
-                    backgroundColor = colorResource(id = R.color.LyseGrå),
-                )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.Betalingkort),
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Normal,
-                    fontFamily = Inter,
-                    lineHeight = 24.sp,
-                )
-            }
+            Column(Modifier.padding(start = 90.dp)) {
+                // Button 1: Betalingskort
+                TextButton(
+                    modifier = Modifier.width(200.dp).height(50.dp),
+                    onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = Color.Blue,
+                        backgroundColor = colorResource(id = R.color.LyseGrå),
+                    )
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.Betalingkort),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = Inter,
+                        lineHeight = 24.sp,
+                    )
+                }
 
-            Spacer(modifier = Modifier.height(15.dp))
+                Spacer(modifier = Modifier.height(15.dp))
 
-            // Button 2: Mobilepay
-            TextButton(
-                modifier = Modifier.width(200.dp).height(50.dp),
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = Color.Blue,
-                    backgroundColor = colorResource(id = R.color.LyseGrå),
-                )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.Mobilepay),
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Normal,
-                    fontFamily = Inter,
-                    lineHeight = 24.sp,
-                )
-            }
-            Spacer(modifier = Modifier.height(15.dp))
+                // Button 2: Mobilepay
+                TextButton(
+                    modifier = Modifier.width(200.dp).height(50.dp),
+                    onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = Color.Blue,
+                        backgroundColor = colorResource(id = R.color.LyseGrå),
+                    )
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.Mobilepay),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = Inter,
+                        lineHeight = 24.sp,
+                    )
+                }
+                Spacer(modifier = Modifier.height(15.dp))
 
-            // Button 3: Pay by Plate
-            TextButton(
-                modifier = Modifier.width(200.dp).height(50.dp),
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(
-                    contentColor = Color.Blue,
-                    backgroundColor = colorResource(id = R.color.LyseGrå),
-                )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.PaybyPlate),
-                    fontSize = 20.sp,
-                    fontWeight = FontWeight.Normal,
-                    fontFamily = Inter,
-                    lineHeight = 24.sp,
-                )
+                // Button 3: Pay by Plate
+                TextButton(
+                    modifier = Modifier.width(200.dp).height(50.dp),
+                    onClick = { /*TODO*/ },
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = Color.Blue,
+                        backgroundColor = colorResource(id = R.color.LyseGrå),
+                    )
+                ) {
+                    Text(
+                        text = stringResource(id = R.string.PaybyPlate),
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Normal,
+                        fontFamily = Inter,
+                        lineHeight = 24.sp,
+                    )
+                }
             }
         }
     }

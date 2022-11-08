@@ -1,5 +1,6 @@
 package com.example.materialepladsen.UIDesign
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.annotation.StringRes
 import androidx.compose.foundation.background
@@ -27,6 +28,7 @@ import com.example.materialepladsen.ui.theme.Logo2
 import com.example.materialepladsen.ui.theme.MaterialepladsenTheme
 import com.example.materialepladsen.ui.theme.TopBar
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Udvejning() {
         Scaffold(

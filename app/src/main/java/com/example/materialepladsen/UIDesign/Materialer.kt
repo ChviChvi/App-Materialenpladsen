@@ -1,5 +1,6 @@
 package com.example.materialepladsen.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
@@ -26,6 +27,7 @@ import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.MaterialepladsenTheme
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Materialer () {
     Scaffold(

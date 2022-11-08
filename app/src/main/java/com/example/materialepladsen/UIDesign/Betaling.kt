@@ -28,13 +28,13 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Betaling () {
-
+fun Betaling (navController: NavController) {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         topBar = {
@@ -181,5 +181,5 @@ fun Betaling () {
 @Composable
 fun DefaultPreview10() {
     MaterialepladsenTheme {
-        Betaling()
+        //Betaling()
     }}

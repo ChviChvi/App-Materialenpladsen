@@ -13,12 +13,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.materialepladsen.viewmodel.PriceCalculatorViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.viewmodel.cities
 
 @Composable
 fun PriceCalculatorScreen(
     modifier: Modifier = Modifier,
+    navController: NavController,
     priceCalculatorViewModel: PriceCalculatorViewModel = viewModel()
 ) {
     val uiState = priceCalculatorViewModel.uiState.collectAsState()
@@ -31,14 +33,14 @@ fun PriceCalculatorScreen(
         DeliveryMethods(tabs = uiState.value.deliveryMethods)
         WeightSlider(priceCalculatorViewModel = priceCalculatorViewModel)
         ChosenMaterial(material = uiState.value.materialName)
-        Purchase(text = uiState.value.totalPrice.toString() + " Kr. inkl. moms")
+        Purchase(text = uiState.value.totalPrice.toString() + " Kr. inkl. moms", onClick = { navController.navigate("payment") })
     }
 }
 
 @Composable
-fun Purchase(text: String) {
+fun Purchase(text: String, onClick: () -> Unit) {
     TextButton(
-        onClick = { /*TODO*/ },
+        onClick = onClick,
         colors = ButtonDefaults.textButtonColors(backgroundColor = Color.hsl(156f, 1f, 0.67f)),
         modifier = Modifier.padding(vertical = 4.dp))
     {

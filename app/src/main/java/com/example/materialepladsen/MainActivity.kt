@@ -13,6 +13,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.materialepladsen.UIDesign.Købshistorik
 import com.example.materialepladsen.UIDesign.PriceCalculatorScreen
 import com.example.materialepladsen.ui.theme.Login
 
@@ -55,6 +56,7 @@ fun DefaultPreview() {
             }
         ) {
             PriceCalculatorScreen()
+            Købshistorik()
         }
     }
 }

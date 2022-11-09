@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
+import com.example.materialepladsen.viewmodel.addToBuyHistory
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -28,7 +29,9 @@ fun Betaling (
     weighOut: Float,
     @DrawableRes materialPicture: Int,
     material: String,
-    price: Float
+    price: Double,
+    dato:String,
+    ordernr:Int
 ) {
 val weight=weighOut-weigIn
 
@@ -123,7 +126,7 @@ val weight=weighOut-weigIn
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = { /*TODO*/ },
+                    onClick = {addToBuyHistory(material,weight,dato,price,ordernr, navController) },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
                         backgroundColor = colorResource(id = R.color.LyseGrå),
@@ -145,7 +148,7 @@ val weight=weighOut-weigIn
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = { /*TODO*/ },
+                    onClick = { addToBuyHistory(material,weight,dato,price,ordernr, navController) },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
                         backgroundColor = colorResource(id = R.color.LyseGrå),
@@ -166,7 +169,7 @@ val weight=weighOut-weigIn
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = { /*TODO*/ },
+                    onClick = { addToBuyHistory(material,weight,dato,price,ordernr, navController) },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
                         backgroundColor = colorResource(id = R.color.LyseGrå),

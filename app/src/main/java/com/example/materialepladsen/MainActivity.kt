@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -19,11 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -36,6 +31,7 @@ import com.example.materialepladsen.UIDesign.Findos
 import com.example.materialepladsen.UIDesign.Købshistorik
 import com.example.materialepladsen.UIDesign.PriceCalculatorScreen
 import com.example.materialepladsen.ui.theme.*
+import com.example.materialepladsen.viewmodel.Købshistorikliste
 
 import kotlinx.coroutines.launch
 
@@ -80,10 +76,10 @@ class MainActivity : ComponentActivity() {
                             PriceCalculatorScreen(navController = navController)
                         }
                         composable(route = "Betaling") {
-                            Betaling(navController,100f,200f,R.drawable.s_lvplade,"sølvplade",300.00f)
+                            Betaling(navController,100f,200f,R.drawable.s_lvplade,"sølvplade",300.00,"31/10",32)
                         }
                         composable(route = "Købshistorik") {
-                            Købshistorik(navController = navController)
+                            Købshistorik(navController = navController,Købshistorikliste)
                         }
                         composable(route = "Materialer") {
                             Materialer(navController = navController)

@@ -1,5 +1,6 @@
 package com.example.materialepladsen.viewmodel
 
+import java.util.*
 
 
 data class KøbHistorikUIState (
@@ -13,8 +14,8 @@ val Købshistorikliste = mutableListOf<Order>()
 data class Order (
     val materiale: String,
     val vægt: Float,
-    val dato: String,
-    val pris: Double,
+    val dato: Date,
+    val pris: Float,
     val ordrenr: Int,
 )
 

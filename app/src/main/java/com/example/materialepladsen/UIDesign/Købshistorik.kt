@@ -155,7 +155,7 @@ fun KøbItem ( order: Order
             
             Spacer(modifier = Modifier.width(80.dp))
 
-            Text(text = order.dato,
+            Text(text = order.dato.toString(),
                 lineHeight = 12.sp,
             style=MaterialTheme.typography.subtitle2)
         }

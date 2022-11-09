@@ -52,7 +52,7 @@ fun Betaling (
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Indvejningsvægt)+ uiState.value.weigIn.toString(),
+                text = stringResource(id = R.string.Indvejningsvægt)+ uiState.value.weighIn.toString(),
                 modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )

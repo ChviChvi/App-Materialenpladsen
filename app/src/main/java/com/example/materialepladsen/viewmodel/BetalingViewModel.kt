@@ -6,6 +6,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import java.util.*
 
 class BetalingViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(BetalingsUiState())
@@ -18,15 +19,15 @@ class BetalingViewModel : ViewModel() {
         totalWeight: Float,
         material: String,
         materialPicture: Int,
-        price: Double,
+        price: Float,
 
 
-    ){
+        ) {
         _uiState.update { currentState ->
             currentState.copy(
-                weigIn=weigIn,
-                weighOut=weighOut,
-                totalWeight=totalWeight,
+                weighIn = weigIn,
+                weighOut = weighOut,
+                totalWeight = totalWeight,
                 material = material,
                 materialPicture = materialPicture,
                 price = price
@@ -35,18 +36,18 @@ class BetalingViewModel : ViewModel() {
 
 
     }
+
     //tilføjer købet til købshistoriklisten
     fun addToBuyHistory(
-        materiale:String,
+        materiale: String,
         vægt: Float,
-        dato: String,
-        pris: Double,
+        dato: Date,
+        pris: Float,
         ordrenr: Int,
         navController: NavController
-    ){
-        Købshistorikliste.add(Order(materiale,vægt,dato,pris,ordrenr))
+    ) {
+        Købshistorikliste.add(Order(materiale, vægt, dato, pris, ordrenr))
         navController.navigate("Købshistorik")
+
     }
-
-
 }

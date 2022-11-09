@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -19,6 +20,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -54,7 +56,9 @@ class MainActivity : ComponentActivity() {
                         TopAppBar(
                             elevation = 4.dp,
                             title = {
-                                Text(text = stringResource(id = R.string.app_name))
+                                Row(modifier = Modifier.fillMaxSize(1f).padding(10.dp)) {
+                                    Image(painterResource(R.drawable.logo_materialepladsen), null)
+                                }
                             },
                             backgroundColor =  MaterialTheme.colors.primarySurface,
                             navigationIcon = {
@@ -64,13 +68,6 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }) {
                                     Icon(Icons.Filled.Menu, null)
-                                }
-                            }, actions = {
-                                IconButton(onClick = {/* Do Something*/ }) {
-                                    Icon(Icons.Filled.Share, null)
-                                }
-                                IconButton(onClick = {/* Do Something*/ }) {
-                                    Icon(Icons.Filled.Settings, null)
                                 }
                             })
                     }

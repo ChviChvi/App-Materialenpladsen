@@ -1,18 +1,17 @@
 package com.example.materialepladsen.UIDesign
 
 import android.annotation.SuppressLint
-import androidx.annotation.StringRes
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
@@ -22,10 +21,36 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
+import com.example.materialepladsen.viewmodel.Købshistorikliste
+import com.example.materialepladsen.viewmodel.Order
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@Composable
+fun Købshistorik (
+    navController: NavController,
+    buyHistory: List<Order>
+    ){
+    val Orders= remember{
+        Købshistorikliste
+    }
+    LazyColumn(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(800.dp)
+    ){
+        items(Orders){Order->
+            KøbItem(order = Order)
+        }
+    }
+
+    }
+
+
+/*@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Købshistorik (navController: NavController){
     LazyColumn(
@@ -97,14 +122,10 @@ fun Købshistorik (navController: NavController){
             )
         }
     }
-}
+}*/
 
 @Composable
-fun KøbItem (@StringRes materiale: Int,
-             @StringRes vægt: Int,
-             @StringRes dato: Int,
-             @StringRes pris: Int,
-             @StringRes ordrenr: Int
+fun KøbItem ( order: Order
     ){
 
     Column(
@@ -123,18 +144,18 @@ fun KøbItem (@StringRes materiale: Int,
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = Inter)){
-                        append(stringResource(id = materiale)) }
+                        append(order.materiale) }
                     append(" ")
                     withStyle(SpanStyle(
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Normal,
                         fontFamily = Inter)){
-                        append(stringResource(id = vægt)) } },
+                        append(order.vægt.toString()) } },
                 modifier=Modifier.width(200.dp))
             
             Spacer(modifier = Modifier.width(80.dp))
 
-            Text(text = stringResource(id = dato),
+            Text(text = order.dato,
                 lineHeight = 12.sp,
             style=MaterialTheme.typography.subtitle2)
         }
@@ -152,7 +173,7 @@ fun KøbItem (@StringRes materiale: Int,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = Inter)){
-                    append(stringResource(id = pris))
+                    append(order.pris.toString())
                 }
                 append("\n")
             },
@@ -173,7 +194,7 @@ fun KøbItem (@StringRes materiale: Int,
                     fontSize = 12.sp,
                     fontWeight = FontWeight.Normal,
                     fontFamily = Inter)){
-                    append(stringResource(id = ordrenr))
+                    append(order.ordrenr.toString())
                 }
             },
             modifier=Modifier.padding(start=20.dp),

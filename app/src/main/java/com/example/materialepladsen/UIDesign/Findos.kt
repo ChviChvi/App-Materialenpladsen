@@ -1,5 +1,6 @@
 package com.example.materialepladsen.UIDesign
 
+import android.annotation.SuppressLint
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -18,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Findos () {
 

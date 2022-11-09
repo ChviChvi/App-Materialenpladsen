@@ -32,6 +32,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.unit.Dp
+import androidx.navigation.NavController
 import com.example.materialepladsen.viewmodel.MaterialList
 import com.example.materialepladsen.viewmodel.Material_list
 
@@ -57,120 +58,112 @@ class Materials : ComponentActivity() {
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Materialer () {
-    Scaffold(
-        modifier = Modifier.fillMaxWidth(),
-        topBar = {
-            TopBar(id = R.string.Materialer)
-        }
-    ) {
+fun Materialer (navController: NavController) {
+    Column() {
+        Logo2()
 
-        Column() {
-            Logo2()
-
-            Divider(modifier = Modifier.fillMaxWidth(),
+        Divider(modifier = Modifier.fillMaxWidth(),
             thickness = 1.dp,
             color = Color.Black)
 
-            Spacer(modifier = Modifier.height(18.dp))
+        Spacer(modifier = Modifier.height(18.dp))
 
-            Text(text = stringResource(id = R.string.Træsorter),
+        Text(text = stringResource(id = R.string.Træsorter),
             modifier = Modifier.padding(start=15.dp),
             style=MaterialTheme.typography.overline,
+        )
+
+        Spacer(modifier = Modifier.height(21.dp))
+
+        //Første række
+        //Måske laves til LazyRow?
+        Row(modifier=Modifier.padding(start=28.dp)) {
+
+            //CustomScrollableTabRow
+
+            Spacer(modifier = Modifier.width(50.dp))
+
+            //CustomScrollableTabRow
+
+            Spacer(modifier = Modifier.width(13.dp))
+
+            Icon(imageVector=Icons.Default.ArrowForwardIos,
+                contentDescription = null,
+                modifier= Modifier
+                    .height(45.dp)
+                    .width(26.dp)
+                    .align(CenterVertically)
             )
 
-            Spacer(modifier = Modifier.height(21.dp))
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        Divider(modifier = Modifier.fillMaxWidth(),
+            thickness = 1.dp,
+            color = Color.Black)
 
-            //Første række
-            //Måske laves til LazyRow?
-            Row(modifier=Modifier.padding(start=28.dp)) {
+        Spacer(modifier = Modifier.height(18.dp))
 
-                //CustomScrollableTabRow
+        Text(text = stringResource(id = R.string.Metaller),
+            modifier = Modifier.padding(start=15.dp),
+            style=MaterialTheme.typography.overline,
+        )
 
-                Spacer(modifier = Modifier.width(50.dp))
+        Spacer(modifier = Modifier.height(21.dp))
 
-                //CustomScrollableTabRow
-                
-                Spacer(modifier = Modifier.width(13.dp))
+        //Anden række
+        //Måske laves til LazyRow?
+        Row(modifier=Modifier.padding(start=28.dp)) {
 
-                Icon(imageVector=Icons.Default.ArrowForwardIos,
-                    contentDescription = null,
-                    modifier= Modifier
-                        .height(45.dp)
-                        .width(26.dp)
-                        .align(CenterVertically)
-                )
+            //CustomScrollableTabRow
 
-            }
-            Spacer(modifier = Modifier.height(20.dp))
-            Divider(modifier = Modifier.fillMaxWidth(),
-                thickness = 1.dp,
-                color = Color.Black)
+            Spacer(modifier = Modifier.width(50.dp))
 
-            Spacer(modifier = Modifier.height(18.dp))
+            //CustomScrollableTabRow
 
-            Text(text = stringResource(id = R.string.Metaller),
-                modifier = Modifier.padding(start=15.dp),
-                style=MaterialTheme.typography.overline,
+            Spacer(modifier = Modifier.width(13.dp))
+
+            Icon(imageVector=Icons.Default.ArrowForwardIos,
+                contentDescription = null,
+                modifier= Modifier
+                    .height(45.dp)
+                    .width(26.dp)
+                    .align(CenterVertically)
             )
 
-            Spacer(modifier = Modifier.height(21.dp))
+        }
 
-            //Anden række
-            //Måske laves til LazyRow?
-            Row(modifier=Modifier.padding(start=28.dp)) {
+        Spacer(modifier = Modifier.height(20.dp))
+        Divider(modifier = Modifier.fillMaxWidth(),
+            thickness = 1.dp,
+            color = Color.Black)
 
-                //CustomScrollableTabRow
+        Spacer(modifier = Modifier.height(18.dp))
 
-                Spacer(modifier = Modifier.width(50.dp))
+        Text(text = stringResource(id = R.string.Sten),
+            modifier = Modifier.padding(start=15.dp),
+            style=MaterialTheme.typography.overline,
+        )
 
-                //CustomScrollableTabRow
+        Spacer(modifier = Modifier.height(21.dp))
 
-                Spacer(modifier = Modifier.width(13.dp))
+        //Tredje række
+        //Måske laves til LazyRow?
+        Row(modifier=Modifier.padding(start=28.dp)) {
+            //CustomScrollableTabRow
 
-                Icon(imageVector=Icons.Default.ArrowForwardIos,
-                    contentDescription = null,
-                    modifier= Modifier
-                        .height(45.dp)
-                        .width(26.dp)
-                        .align(CenterVertically)
-                )
+            Spacer(modifier = Modifier.width(50.dp))
 
-            }
-            
-            Spacer(modifier = Modifier.height(20.dp))
-            Divider(modifier = Modifier.fillMaxWidth(),
-                thickness = 1.dp,
-                color = Color.Black)
+            //CustomScrollableTabRow
 
-            Spacer(modifier = Modifier.height(18.dp))
+            Spacer(modifier = Modifier.width(13.dp))
 
-            Text(text = stringResource(id = R.string.Sten),
-                modifier = Modifier.padding(start=15.dp),
-                style=MaterialTheme.typography.overline,
+            Icon(imageVector=Icons.Default.ArrowForwardIos,
+                contentDescription = null,
+                modifier= Modifier
+                    .height(45.dp)
+                    .width(26.dp)
+                    .align(CenterVertically)
             )
-
-            Spacer(modifier = Modifier.height(21.dp))
-
-            //Tredje række
-            //Måske laves til LazyRow?
-            Row(modifier=Modifier.padding(start=28.dp)) {
-                //CustomScrollableTabRow
-
-                Spacer(modifier = Modifier.width(50.dp))
-
-                //CustomScrollableTabRow
-
-                Spacer(modifier = Modifier.width(13.dp))
-
-                Icon(imageVector=Icons.Default.ArrowForwardIos,
-                    contentDescription = null,
-                    modifier= Modifier
-                        .height(45.dp)
-                        .width(26.dp)
-                        .align(CenterVertically)
-                )
-            }
         }
     }
 }
@@ -316,5 +309,5 @@ fun Modifier.customTabIndicatorOffset(
 @Composable
 fun DefaultPreview6() {
     MaterialepladsenTheme {
-        Materialer()
+        //Materialer()
     }}

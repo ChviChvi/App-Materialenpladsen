@@ -19,6 +19,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,11 +30,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.materialepladsen.UIDesign.Betaling
+import com.example.materialepladsen.UIDesign.Findos
+import com.example.materialepladsen.UIDesign.Købshistorik
 import com.example.materialepladsen.UIDesign.PriceCalculatorScreen
-import com.example.materialepladsen.ui.theme.Login
+import com.example.materialepladsen.ui.theme.*
 
-import com.example.materialepladsen.ui.theme.MaterialepladsenTheme
-import com.example.materialepladsen.ui.theme.TopBar
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -53,7 +54,7 @@ class MainActivity : ComponentActivity() {
                         TopAppBar(
                             elevation = 4.dp,
                             title = {
-                                Text("I'm a TopAppBar")
+                                Text(text = stringResource(id = R.string.app_name))
                             },
                             backgroundColor =  MaterialTheme.colors.primarySurface,
                             navigationIcon = {
@@ -82,7 +83,22 @@ class MainActivity : ComponentActivity() {
                             PriceCalculatorScreen(navController = navController)
                         }
                         composable(route = "Betaling") {
-                            Betaling(navController = navController)
+                            Betaling(navController,100f,200f,R.drawable.s_lvplade,"sølvplade",300.00f)
+                        }
+                        composable(route = "Købshistorik") {
+                            Købshistorik(navController = navController)
+                        }
+                        composable(route = "Materialer") {
+                            Materialer(navController = navController)
+                        }
+                        composable(route = "Forside") {
+                            Forside(navController = navController)
+                        }
+                        composable(route = "Om os") {
+                            Omos(navController = navController)
+                        }
+                        composable(route = "Find os") {
+                            Findos(navController = navController)
                         }
                     }
                 }
@@ -93,7 +109,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun DrawerView(navController: NavController) {
-    val pages = listOf("Forside", "Materialer", "Pris udregning", "Om os", "Find os")
+    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os")
     LazyColumn {
         items(pages.size){ index->
             AddDrawerContentView(title = pages[index], func = { navController.navigate(pages[index])})

@@ -21,90 +21,80 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Købshistorik (){
-
-    Scaffold(
-        modifier = Modifier.fillMaxWidth(),
-        topBar = {
-            TopBar(id = R.string.Købshistorik)
+fun Købshistorik (navController: NavController){
+    LazyColumn(
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Top,
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(800.dp)
+    ){
+        item{
+            Logo2()
         }
 
-    ){
-        //Lazycolum?
+        item {
+            Divider(
+                modifier = Modifier.fillMaxWidth(),
+                thickness = 1.dp,
+                color = Color.Black
+            )
+        }
 
-        LazyColumn(
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Top,
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(800.dp)
-        ){
-            item{
-                Logo2()
-            }
+        item {
+            KøbItem(
+                materiale = R.string.Vare1,
+                vægt = R.string.Vægt1,
+                dato = R.string.Dato1,
+                pris = R.string.Pris1,
+                ordrenr = R.string.Ordrenummer1
+            )
+        }
 
-            item {
-                Divider(
-                    modifier = Modifier.fillMaxWidth(),
-                    thickness = 1.dp,
-                    color = Color.Black
-                )
-            }
+        item {
+            KøbItem(
+                materiale = R.string.Vare2,
+                vægt = R.string.Vægt2,
+                dato = R.string.Dato2,
+                pris = R.string.Pris2,
+                ordrenr = R.string.Ordrenummer2
+            )
+        }
 
-            item {
-                KøbItem(
-                    materiale = R.string.Vare1,
-                    vægt = R.string.Vægt1,
-                    dato = R.string.Dato1,
-                    pris = R.string.Pris1,
-                    ordrenr = R.string.Ordrenummer1
-                )
-            }
+        item {
+            KøbItem(
+                materiale = R.string.Vare3,
+                vægt = R.string.Vægt3,
+                dato = R.string.Dato3,
+                pris = R.string.Pris3,
+                ordrenr = R.string.Ordrenummer3
+            )
+        }
 
-            item {
-                KøbItem(
-                    materiale = R.string.Vare2,
-                    vægt = R.string.Vægt2,
-                    dato = R.string.Dato2,
-                    pris = R.string.Pris2,
-                    ordrenr = R.string.Ordrenummer2
-                )
-            }
+        item {
+            KøbItem(
+                materiale = R.string.Vare4,
+                vægt = R.string.Vægt4,
+                dato = R.string.Dato4,
+                pris = R.string.Pris4,
+                ordrenr = R.string.Ordrenummer4
+            )
+        }
 
-            item {
-                KøbItem(
-                    materiale = R.string.Vare3,
-                    vægt = R.string.Vægt3,
-                    dato = R.string.Dato3,
-                    pris = R.string.Pris3,
-                    ordrenr = R.string.Ordrenummer3
-                )
-            }
-
-            item {
-                KøbItem(
-                    materiale = R.string.Vare4,
-                    vægt = R.string.Vægt4,
-                    dato = R.string.Dato4,
-                    pris = R.string.Pris4,
-                    ordrenr = R.string.Ordrenummer4
-                )
-            }
-
-            item {
-                KøbItem(
-                    materiale = R.string.Vare5,
-                    vægt = R.string.Vægt5,
-                    dato = R.string.Dato5,
-                    pris = R.string.Pris5,
-                    ordrenr = R.string.Ordrenummer5
-                )
-            }
+        item {
+            KøbItem(
+                materiale = R.string.Vare5,
+                vægt = R.string.Vægt5,
+                dato = R.string.Dato5,
+                pris = R.string.Pris5,
+                ordrenr = R.string.Ordrenummer5
+            )
         }
     }
 }
@@ -202,6 +192,6 @@ fun KøbItem (@StringRes materiale: Int,
 @Composable
 fun DefaultPreview7() {
     MaterialepladsenTheme {
-        Købshistorik()
+        //Købshistorik()
     }
 }

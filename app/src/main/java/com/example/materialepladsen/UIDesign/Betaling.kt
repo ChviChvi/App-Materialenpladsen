@@ -16,12 +16,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Betaling (
+    navController: NavController,
     weigIn: Float,
     weighOut: Float,
     @DrawableRes materialPicture: Int,
@@ -188,5 +190,5 @@ val weight=weighOut-weigIn
 @Composable
 fun DefaultPreview10() {
     MaterialepladsenTheme {
-        Betaling(100f,200f,R.drawable.s_lvplade,"sølvplade",300.00f)
+        //Betaling(100f,200f,R.drawable.s_lvplade,"sølvplade",300.00f)
     }}

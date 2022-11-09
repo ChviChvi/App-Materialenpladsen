@@ -16,82 +16,74 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Findos () {
+fun Findos(navController: NavController) {
+    Column() {
+        Logo3()
 
-    Scaffold(
-        modifier = Modifier.fillMaxWidth(),
-        topBar={
-            TopBar(R.string.Findos)
+        Divider(modifier = Modifier.fillMaxWidth(),
+            thickness = 2.dp,
+            color = Color.Black)
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        Text(text = stringResource(id = R.string.Find_Nærmeste),
+            modifier = Modifier.padding(start=15.dp),
+            style=MaterialTheme.typography.h6,
+        )
+        Text(text = stringResource(id = R.string.Find_Åbent),
+            modifier = Modifier.padding(start=15.dp),
+            style=MaterialTheme.typography.overline,
+        )
+
+        Spacer(modifier = Modifier.height(15.dp))
+
+        Row(modifier=Modifier.padding(start=0.dp)) {
+            Spacer(modifier = Modifier.width(1.dp))
+            Initialize_Map(
+                billede = R.drawable.pam,
+            )
+            Spacer(modifier = Modifier.width(1.dp))
         }
-    ) {
 
-        Column() {
-            Logo3()
+        Spacer(modifier = Modifier.height(15.dp))
 
-            Divider(modifier = Modifier.fillMaxWidth(),
-                thickness = 2.dp,
-                color = Color.Black)
-
-            Spacer(modifier = Modifier.height(15.dp))
-
-            Text(text = stringResource(id = R.string.Find_Nærmeste),
-                modifier = Modifier.padding(start=15.dp),
-                style=MaterialTheme.typography.h6,
+        Row(modifier=Modifier.padding(start=0.dp)) {
+            Spacer(modifier = Modifier.width(1.dp))
+            Rectanglefindos(
+                billede = R.drawable.naestved,
             )
-            Text(text = stringResource(id = R.string.Find_Åbent),
-                modifier = Modifier.padding(start=15.dp),
-                style=MaterialTheme.typography.overline,
+            Spacer(modifier = Modifier.width(1.dp))
+        }
+
+        Spacer(modifier = Modifier.height(15.dp))
+        Row(modifier=Modifier.padding(start=0.dp)) {
+            Spacer(modifier = Modifier.width(1.dp))
+            Rectanglefindos(
+                billede = R.drawable.ringsted,
             )
-
-            Spacer(modifier = Modifier.height(15.dp))
-
-            Row(modifier=Modifier.padding(start=0.dp)) {
-                Spacer(modifier = Modifier.width(1.dp))
-                Initialize_Map(
-                    billede = R.drawable.pam,
-                )
-                Spacer(modifier = Modifier.width(1.dp))
-            }
-
-            Spacer(modifier = Modifier.height(15.dp))
-
-            Row(modifier=Modifier.padding(start=0.dp)) {
-                Spacer(modifier = Modifier.width(1.dp))
-                Rectanglefindos(
-                    billede = R.drawable.naestved,
-                )
-                Spacer(modifier = Modifier.width(1.dp))
-            }
-
-            Spacer(modifier = Modifier.height(15.dp))
-            Row(modifier=Modifier.padding(start=0.dp)) {
-                Spacer(modifier = Modifier.width(1.dp))
-                Rectanglefindos(
-                    billede = R.drawable.ringsted,
-                )
-                Spacer(modifier = Modifier.width(1.dp))
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Row(modifier=Modifier.padding(start=0.dp)) {
-                Spacer(modifier = Modifier.width(1.dp))
-                Rectanglefindos(
-                    billede = R.drawable.roskilde,
-                )
-                Spacer(modifier = Modifier.width(1.dp))
-            }
-            Spacer(modifier = Modifier.height(15.dp))
-            Row(modifier=Modifier.padding(start=0.dp)) {
-                Spacer(modifier = Modifier.width(1.dp))
-                Rectanglefindos(
-                    billede = R.drawable.vordingsborg,
-                )
-                Spacer(modifier = Modifier.width(1.dp))
-            }
+            Spacer(modifier = Modifier.width(1.dp))
+        }
+        Spacer(modifier = Modifier.height(15.dp))
+        Row(modifier=Modifier.padding(start=0.dp)) {
+            Spacer(modifier = Modifier.width(1.dp))
+            Rectanglefindos(
+                billede = R.drawable.roskilde,
+            )
+            Spacer(modifier = Modifier.width(1.dp))
+        }
+        Spacer(modifier = Modifier.height(15.dp))
+        Row(modifier=Modifier.padding(start=0.dp)) {
+            Spacer(modifier = Modifier.width(1.dp))
+            Rectanglefindos(
+                billede = R.drawable.vordingsborg,
+            )
+            Spacer(modifier = Modifier.width(1.dp))
         }
     }
 }
@@ -162,5 +154,5 @@ fun Rectanglefindos(
 @Composable
 fun DefaultPreview14() {
     MaterialepladsenTheme {
-        Findos()
+        //Findos()
     }}

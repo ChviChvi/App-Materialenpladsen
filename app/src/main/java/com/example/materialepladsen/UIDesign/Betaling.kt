@@ -1,18 +1,10 @@
 package com.example.materialepladsen.UIDesign
 
 import android.annotation.SuppressLint
-import android.graphics.Paint.Align
-import android.location.GnssAntennaInfo.PhaseCenterOffset
-import android.view.Gravity
-import android.widget.LinearLayout
+import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
-import androidx.annotation.StringRes
-import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -20,11 +12,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -33,7 +21,14 @@ import com.example.materialepladsen.ui.theme.*
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Betaling () {
+fun Betaling (
+    weigIn: Float,
+    weighOut: Float,
+    @DrawableRes materialPicture: Int,
+    material: String,
+    price: Float
+) {
+val weight=weighOut-weigIn
 
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
@@ -41,7 +36,9 @@ fun Betaling () {
             TopBar(R.string.Betaling)
         }
     ) {
-        Column() {
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
             Logo3()
 
             Divider(
@@ -53,22 +50,22 @@ fun Betaling () {
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Indvejningsvægt),
-                modifier = Modifier.padding(start = 15.dp),
+                text = stringResource(id = R.string.Indvejningsvægt)+ weigIn.toString(),
+                modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Udvejningsvægt),
-                modifier = Modifier.padding(start = 15.dp),
+                text = stringResource(id = R.string.Udvejningsvægt)+weighOut.toString(),
+                modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Afrejningsvægt),
-                modifier = Modifier.padding(start = 15.dp),
+                text = stringResource(id = R.string.Afrejningsvægt)+weight.toString(),
+                modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
             Spacer(modifier = Modifier.height(15.dp))
@@ -83,16 +80,20 @@ fun Betaling () {
             // Det valgte materiale
             Row(modifier = Modifier.padding(start = 0.dp)) {
                 Spacer(modifier = Modifier.width(1.dp))
-                Initialize_Map(
-                    billede = R.drawable.udvejning_billede,
+                Image(
+                    painterResource(materialPicture),
+                    contentDescription = null,
+                    modifier = Modifier
+                        .height(200.dp)
+                        .width(200.dp),
                 )
                 Spacer(modifier = Modifier.height(15.dp))
             }
 
             //Materiale
             Text(
-                text = stringResource(id = R.string.Materiale),
-                modifier = Modifier.padding(start = 15.dp),
+                text = stringResource(id = R.string.Materiale)+material,
+                modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
 
@@ -100,8 +101,8 @@ fun Betaling () {
 
             //Pris
             Text(
-                text = stringResource(id = R.string.Samletpris),
-                modifier = Modifier.padding(start = 15.dp),
+                text = stringResource(id = R.string.Samletpris)+price.toString()+"DKK",
+                modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
 
@@ -114,10 +115,12 @@ fun Betaling () {
             )
             Spacer(modifier = Modifier.height(15.dp))
 
-            Column(Modifier.padding(start = 90.dp)) {
+            Column(Modifier.padding(start = 90.dp).align(Alignment.Start)) {
                 // Button 1: Betalingskort
                 TextButton(
-                    modifier = Modifier.width(200.dp).height(50.dp),
+                    modifier = Modifier
+                        .width(200.dp)
+                        .height(50.dp),
                     onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
@@ -137,7 +140,9 @@ fun Betaling () {
 
                 // Button 2: Mobilepay
                 TextButton(
-                    modifier = Modifier.width(200.dp).height(50.dp),
+                    modifier = Modifier
+                        .width(200.dp)
+                        .height(50.dp),
                     onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
@@ -156,7 +161,9 @@ fun Betaling () {
 
                 // Button 3: Pay by Plate
                 TextButton(
-                    modifier = Modifier.width(200.dp).height(50.dp),
+                    modifier = Modifier
+                        .width(200.dp)
+                        .height(50.dp),
                     onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
@@ -181,5 +188,5 @@ fun Betaling () {
 @Composable
 fun DefaultPreview10() {
     MaterialepladsenTheme {
-        Betaling()
+        Betaling(100f,200f,R.drawable.s_lvplade,"sølvplade",300.00f)
     }}

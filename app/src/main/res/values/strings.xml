@@ -134,13 +134,14 @@
     <!--Betaling-->
     <string name="Betaling">Betaling:</string>
 
-    <string name="Indvejningsvægt">Indvejningsvægt Tal(KG)</string>
-    <string name="Udvejningsvægt">Udvejningsvægt Tal(KG)</string>
-    <string name="Afrejningsvægt">Afrejningsvægt Tal(KG)</string>
-    <string name="Materiale">Materiale | Tal(KG)</string>
-    <string name="Samletpris">Pris: Tal DKK</string>
+    <string name="Indvejningsvægt">Indvejningsvægt: </string>
+    <string name="Udvejningsvægt">Udvejningsvægt: </string>
+    <string name="Afrejningsvægt">Afrejningsvægt: </string>
+    <string name="Materiale">Materiale: </string>
+    <string name="Samletpris">Pris: </string>
     <string name="Betalingkort">Betalingkort</string>
     <string name="Mobilepay">Mobilepay</string>
     <string name="PaybyPlate">Pay by Plate</string>
+
 
 </resources>

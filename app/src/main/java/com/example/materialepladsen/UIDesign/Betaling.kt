@@ -1,11 +1,11 @@
 package com.example.materialepladsen.UIDesign
 
 import android.annotation.SuppressLint
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -16,24 +16,21 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
-import com.example.materialepladsen.viewmodel.addToBuyHistory
+import com.example.materialepladsen.viewmodel.BetalingViewModel
+
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Betaling (
     navController: NavController,
-    weigIn: Float,
-    weighOut: Float,
-    @DrawableRes materialPicture: Int,
-    material: String,
-    price: Double,
-    dato:String,
-    ordernr:Int
+    betalingViewModel: BetalingViewModel = viewModel()
 ) {
-val weight=weighOut-weigIn
+    val uiState = betalingViewModel.uiState.collectAsState()
+
 
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
@@ -55,21 +52,21 @@ val weight=weighOut-weigIn
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Indvejningsvægt)+ weigIn.toString(),
+                text = stringResource(id = R.string.Indvejningsvægt)+ uiState.value.weigIn.toString(),
                 modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Udvejningsvægt)+weighOut.toString(),
+                text = stringResource(id = R.string.Udvejningsvægt)+uiState.value.weighOut.toString(),
                 modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Afrejningsvægt)+weight.toString(),
+                text = stringResource(id = R.string.Afrejningsvægt)+uiState.value.totalWeight.toString(),
                 modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
@@ -86,7 +83,7 @@ val weight=weighOut-weigIn
             Row(modifier = Modifier.padding(start = 0.dp)) {
                 Spacer(modifier = Modifier.width(1.dp))
                 Image(
-                    painterResource(materialPicture),
+                    painterResource(uiState.value.materialPicture),
                     contentDescription = null,
                     modifier = Modifier
                         .height(200.dp)
@@ -97,7 +94,7 @@ val weight=weighOut-weigIn
 
             //Materiale
             Text(
-                text = stringResource(id = R.string.Materiale)+material,
+                text = stringResource(id = R.string.Materiale)+uiState.value.material,
                 modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
@@ -106,7 +103,7 @@ val weight=weighOut-weigIn
 
             //Pris
             Text(
-                text = stringResource(id = R.string.Samletpris)+price.toString()+"DKK",
+                text = stringResource(id = R.string.Samletpris)+uiState.value.price.toString()+"DKK",
                 modifier = Modifier.padding(start = 15.dp).align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
@@ -126,7 +123,14 @@ val weight=weighOut-weigIn
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = {addToBuyHistory(material,weight,dato,price,ordernr, navController) },
+                    onClick = {betalingViewModel.addToBuyHistory(
+                        uiState.value.material,
+                        uiState.value.totalWeight,
+                        uiState.value.date,
+                        uiState.value.price,
+                        uiState.value.ordernr,
+                        navController=navController
+                    ) },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
                         backgroundColor = colorResource(id = R.color.LyseGrå),
@@ -148,7 +152,14 @@ val weight=weighOut-weigIn
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = { addToBuyHistory(material,weight,dato,price,ordernr, navController) },
+                    onClick = { betalingViewModel.addToBuyHistory(
+                        uiState.value.material,
+                        uiState.value.totalWeight,
+                        uiState.value.date,
+                        uiState.value.price,
+                        uiState.value.ordernr,
+                        navController=navController
+                    ) },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
                         backgroundColor = colorResource(id = R.color.LyseGrå),
@@ -169,7 +180,14 @@ val weight=weighOut-weigIn
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = { addToBuyHistory(material,weight,dato,price,ordernr, navController) },
+                    onClick = { betalingViewModel.addToBuyHistory(
+                        uiState.value.material,
+                        uiState.value.totalWeight,
+                        uiState.value.date,
+                        uiState.value.price,
+                        uiState.value.ordernr,
+                        navController=navController
+                    )  },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Blue,
                         backgroundColor = colorResource(id = R.color.LyseGrå),

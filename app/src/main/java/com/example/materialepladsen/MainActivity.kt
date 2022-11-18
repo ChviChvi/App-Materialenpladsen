@@ -76,7 +76,7 @@ class MainActivity : ComponentActivity() {
                             PriceCalculatorScreen(navController = navController)
                         }
                         composable(route = "Betaling") {
-                            Betaling(navController)
+                            Betaling(navController = navController)
                         }
                         composable(route = "Købshistorik") {
                             Købshistorik(navController = navController,Købshistorikliste)

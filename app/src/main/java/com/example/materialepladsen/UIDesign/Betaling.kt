@@ -26,6 +26,7 @@ import com.example.materialepladsen.viewmodel.BetalingViewModel
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Betaling (
+    modifier: Modifier = Modifier,
     navController: NavController,
     betalingViewModel: BetalingViewModel = viewModel()
 ) {

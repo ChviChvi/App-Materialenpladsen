@@ -1,5 +1,8 @@
 package com.example.materialepladsen.Spring
 
+import com.example.materialepladsen.Database.DBTablePrinter
+import com.example.materialepladsen.Database.DatabaseConstants
+import com.example.materialepladsen.Database.printTable
 import java.sql.DriverManager
 import java.sql.ResultSet
 import java.sql.SQLException
@@ -20,33 +23,10 @@ data class Product(
     val imageURL: String
 )
 
-// "jdbc:sqlserver://mssql.db.server\\mssql_instance;databaseName=my_database";
-// jdbc:sqlserver://[serverName[\instanceName][:portNumber]][;property=value[;property=value]]
-
 fun main() {
-    val host = "152.115.71.190"
-    val port = "48123"
-    val database = "materialepladsen_core_DTUMP3"
-    val cp = "utf8"
-
-    val username = "DTUMP3"
-    val password = "MPor2hRrSE"
-
-    /*
-    val connectionUrl = ("jdbc:sqlserver://$host:$port;"
-            + "database=$database;"
-            + "user=$username;"
-            + "password=$password;"
-            + "encrypt=true;"
-            + "trustServerCertificate=false;"
-            + "loginTimeout=30;")
-            */
-
-    val connectionUrl = "jdbc:sqlserver://$host:$port;DatabaseName=$database;" + "user=$username; password=$password;" +";encrypt=true;trustServerCertificate=true;"
-
     var resultSet: ResultSet? = null
     try {
-        val connection = DriverManager.getConnection(connectionUrl)
+        val connection = DriverManager.getConnection(DatabaseConstants().connectionUrl)
         if (connection.isValid(0)) {
             println("Connection established")
         }
@@ -54,9 +34,7 @@ fun main() {
         val statement: Statement = connection.createStatement()
         val selectSql = "SELECT * FROM [dbo].[v_mobileApp_products]"
         resultSet = statement.executeQuery(selectSql)
-        while (resultSet.next()) {
-            println(resultSet.getString(2) + " " + resultSet.getString(3));
-        }
+        DBTablePrinter.printResultSet(resultSet);
     } catch (e: SQLException) {
         e.printStackTrace()
     }

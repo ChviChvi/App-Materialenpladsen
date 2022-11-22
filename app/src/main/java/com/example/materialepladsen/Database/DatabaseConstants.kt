@@ -1,7 +1,6 @@
 package com.example.materialepladsen.Database
 
-import java.sql.ResultSet
-import java.sql.ResultSetMetaData
+import java.sql.*
 
 data class DatabaseConstants(
     val host: String = "152.115.71.190",
@@ -15,16 +14,24 @@ data class DatabaseConstants(
     val connectionUrl: String = "jdbc:$server://$host:$port;DatabaseName=$database;user=$username;password=$password;encrypt=$encrypt;trustServerCertificate=$trustServerCertificate;"
 )
 
-fun printTable(resultSet: ResultSet) {
-    val metaData: ResultSetMetaData = resultSet.metaData
-    val columnsNumber: Int = metaData.columnCount
-
-    while (resultSet.next()) {
-        for (i in 1..columnsNumber) {
-            if (i > 1) print(",  ")
-            val columnValue: String = resultSet.getString(i)
-            print(columnValue + " " + metaData.getColumnName(i))
+fun sqlQuery(query: String): ResultSet? {
+    var resultSet: ResultSet? = null
+    try {
+        val connection = DriverManager.getConnection(DatabaseConstants().connectionUrl)
+        if (connection.isValid(0)) {
+            println("Connection established")
         }
-        println("")
+
+        val statement: Statement = connection.createStatement()
+        resultSet = statement.executeQuery(query)
+    } catch (e: SQLException) {
+        e.printStackTrace()
     }
+    return resultSet
+}
+
+
+fun getSitesResultSet(): ResultSet {
+    val selectSql = "SELECT * FROM [dbo].[v_mobileApp_sites]"
+    return sqlQuery(selectSql)!!
 }

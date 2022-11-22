@@ -1,7 +1,11 @@
 package com.example.materialepladsen
 
 import android.annotation.SuppressLint
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.widget.FrameLayout
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
@@ -32,6 +36,11 @@ import com.example.materialepladsen.UIDesign.Købshistorik
 import com.example.materialepladsen.UIDesign.PriceCalculatorScreen
 import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.Købshistorikliste
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout.RESIZE_MODE_ZOOM
+import com.google.android.exoplayer2.ui.StyledPlayerView
 
 import kotlinx.coroutines.launch
 
@@ -70,8 +79,11 @@ class MainActivity : ComponentActivity() {
                 ) {
                     NavHost(
                         navController = navController,
-                        startDestination = "Pris udregning"
+                        startDestination = "login"
                     ) {
+                        composable(route = "login") {
+                            LoginPage(navController, videoUri = getVideoUri())
+                        }
                         composable(route = "Pris udregning") {
                             PriceCalculatorScreen(navController = navController)
                         }
@@ -97,6 +109,12 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+    }
+
+    private fun getVideoUri(): Uri {
+        val rawId = resources.getIdentifier("materialepladsenvideo", "raw", packageName)
+        val videoUri = "android.resource://$packageName/$rawId"
+        return Uri.parse(videoUri)
     }
 }
 

@@ -7,11 +7,11 @@ import okhttp3.*
 import java.io.IOException
 
 data class API(
-    val username: String = "DTUMP3",
-    val password: String = "MPor2hRrSE",
-    val newOrderRequest: String = "&request=EC02E425-B6BD-4D82-A9A2-F58507385B41&type=requestOrderNew&customerid=§&licenseplate=§", // dont use § - just for testing
-    val weighIn: String = "&request=412084F3-98C2-48BA-A322-5CFDCD4E5410&type=requestOrderWeighing&customerid=$&licenseplate=$&ordernumber=$",
-    val url: String = "http://152.115.71.190:41000/?user=$username&password=$password",
+    val username: String,
+    val password: String,
+    val newOrderRequest: String,
+    val weighIn: String,
+    val url: String,
     val client: OkHttpClient = OkHttpClient()
 )
 

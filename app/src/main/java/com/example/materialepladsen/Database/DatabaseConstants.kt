@@ -3,15 +3,15 @@ package com.example.materialepladsen.Database
 import java.sql.*
 
 data class DatabaseConstants(
-    val host: String = "152.115.71.190",
-    val port: String = "48123",
-    val database: String = "materialepladsen_core_DTUMP3",
-    val username: String = "DTUMP3",
-    val password: String = "MPor2hRrSE",
-    val server: String = "sqlserver",
-    val encrypt: String = "true",
-    val trustServerCertificate: String = "true",
-    val connectionUrl: String = "jdbc:$server://$host:$port;DatabaseName=$database;user=$username;password=$password;encrypt=$encrypt;trustServerCertificate=$trustServerCertificate;"
+    val host: String,
+    val port: String,
+    val database: String,
+    val username: String,
+    val password: String,
+    val server: String,
+    val encrypt: String,
+    val trustServerCertificate: String,
+    val connectionUrl: String
 )
 
 fun sqlQuery(query: String): ResultSet? {

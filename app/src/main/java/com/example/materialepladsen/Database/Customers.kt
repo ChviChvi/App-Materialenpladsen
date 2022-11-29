@@ -76,40 +76,7 @@ data class AddCustomerInfo(
 )
 
 fun addCustomer(customerInfo: AddCustomerInfo): ResultSet? {
-    val sql =
-        "DECLARE @return_value int,\n" +
-                "@output_customer_number int,\n" +
-                "@output_customer_guid uniqueidentifier,\n" +
-                "@output_customer_cardNumber int,\n" +
-                "@output_resultMessage nvarchar(100),\n" +
-                "@output_exceptionMessage nvarchar(1000)\n" +
-                "\n" +
-                "EXEC @return_value = [dbo].[usp_customer_add]\n" +
-                "@input_customer_firstName = ?,\n" +
-                "@input_customer_lastName = ?,\n" +
-                "@input_customer_address = ?,\n" +
-                "@input_customer_postalcode = ?,\n" +
-                "@input_customer_city = ?,\n" +
-                "@input_customer_phone = ?,\n" +
-                "@input_customer_mobile = ?,\n" +
-                "@input_customer_email = ?,\n" +
-                "@input_customer_password = ?,\n" +
-                "@input_customer_cardtag = ?,\n" +
-                "@input_customer_licensplate = ?,\n" +
-                "@output_customer_number = @output_customer_number OUTPUT,\n" +
-                "@output_customer_guid = @output_customer_guid OUTPUT,\n" +
-                "@output_customer_cardNumber = @output_customer_cardNumber OUTPUT,\n" +
-                "@output_resultMessage = @output_resultMessage OUTPUT,\n" +
-                "@output_exceptionMessage = @output_exceptionMessage OUTPUT\n" +
-                "\n" +
-                "SELECT @output_customer_number as N'@output_customer_number',\n" +
-                "@output_customer_guid as N'@output_customer_guid',\n" +
-                "@output_customer_cardNumber as N'@output_customer_cardNumber',\n" +
-                "@output_resultMessage as N'@output_resultMessage',\n" +
-                "@output_exceptionMessage as N'@output_exceptionMessage'\n" +
-                "\n" +
-                "SELECT 'Return Value' = @return_value"
-
+    val sql = ""
     val connection = DriverManager.getConnection(DatabaseConstants().connectionUrl)
     if (connection.isValid(0)) {
         println("Connection established")
@@ -133,25 +100,7 @@ fun addCustomer(customerInfo: AddCustomerInfo): ResultSet? {
 }
 
 fun removeCustomer(customerNumber: Int): ResultSet? {
-    val sql = "DECLARE @return_value int,\n" +
-            "@output_customer_number INT,\n" +
-            "@output_customer_guid UNIQUEIDENTIFIER,\n" +
-            "@output_resultMessage NVARCHAR(100),\n" +
-            "@output_exceptionMessage NVARCHAR(1000)\n" +
-            "\n" +
-            "EXEC @return_value = [dbo].[usp_customer_delete]\n" +
-            " @input_customer_number = ?,\n" +
-            " @output_customer_number = @output_customer_number OUTPUT,\n" +
-            " @output_customer_guid = @output_customer_guid OUTPUT,\n" +
-            " @output_resultMessage = @output_resultMessage OUTPUT,\n" +
-            " @output_exceptionMessage = @output_exceptionMessage OUTPUT\n" +
-            "\n" +
-            "SELECT @output_customer_number as N'@output_customer_number',\n" +
-            "   @output_customer_guid as N'@output_customer_guid',\n" +
-            "   @output_resultMessage as N'@output_resultMessage',\n" +
-            "   @output_exceptionMessage as N'@output_exceptionMessage'\n" +
-            "\n" +
-            "SELECT 'Return Value' = @return_value"
+    val sql = ""
 
     val connection = DriverManager.getConnection(DatabaseConstants().connectionUrl)
     if (connection.isValid(0)) {

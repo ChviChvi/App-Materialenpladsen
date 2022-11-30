@@ -83,7 +83,13 @@ fun Materialer (navController: NavController) {
 
             Spacer(modifier = Modifier.width(50.dp))
 
-            //CustomScrollableTabRow
+            Image(
+                modifier = Modifier
+                    .height(70.dp)
+                    .width(70.dp),
+                painter = painterResource(id = R.drawable.s_lvplade),
+                contentDescription = null
+            )
 
             Spacer(modifier = Modifier.width(13.dp))
 
@@ -118,7 +124,13 @@ fun Materialer (navController: NavController) {
 
             Spacer(modifier = Modifier.width(50.dp))
 
-            //CustomScrollableTabRow
+            Image(
+                modifier = Modifier
+                    .height(70.dp)
+                    .width(70.dp),
+                painter = painterResource(id = R.drawable.woodpile_6364896_960_720_3),
+                contentDescription = null
+            )
 
             Spacer(modifier = Modifier.width(13.dp))
 
@@ -154,6 +166,13 @@ fun Materialer (navController: NavController) {
             Spacer(modifier = Modifier.width(50.dp))
 
             //CustomScrollableTabRow
+            Image(
+                modifier = Modifier
+                    .height(70.dp)
+                    .width(70.dp),
+                painter = painterResource(id = R.drawable.woodpile_6364896_960_720_2),
+                contentDescription = null
+            )
 
             Spacer(modifier = Modifier.width(13.dp))
 
@@ -305,9 +324,3 @@ fun Modifier.customTabIndicatorOffset(
 //    }
 //}
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview6() {
-    MaterialepladsenTheme {
-        //Materialer()
-    }}

@@ -1,6 +1,5 @@
 package com.example.materialepladsen.ui.theme
 
-import android.annotation.SuppressLint
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 
@@ -22,7 +21,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.materialepladsen.R
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Login () {
     Scaffold(
@@ -33,6 +31,7 @@ fun Login () {
         }
 
     ) {
+
         Divider(color = Color.Black, thickness = 1.dp)
         Column(
             horizontalAlignment = Alignment.CenterHorizontally,

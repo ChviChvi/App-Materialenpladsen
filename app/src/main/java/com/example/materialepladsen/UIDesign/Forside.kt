@@ -44,9 +44,6 @@ fun Forside(navController: NavController) {
 
     ){
         item {
-            Logo()
-        }
-        item {
             Divider(color = Color.Black, thickness = 1.2.dp)
         }
         //Velkomsttekst

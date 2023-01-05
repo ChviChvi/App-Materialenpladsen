@@ -7,15 +7,15 @@ import okhttp3.*
 import java.io.IOException
 
 data class API(
-    val username: String,
-    val password: String,
-    val newOrder: String,
-    val weighIn: String,
-    val paymentOrder: String,
-    val iocBarrier: String,
-    val webcamSnapshot: Int,
-    val weightRequest: Int,
-    val url: String,
+    val username: String = "",
+    val password: String = "",
+    val newOrder: String = "",
+    val weighIn: String = "",
+    val paymentOrder: String = "",
+    val iocBarrier: String = "",
+    val webcamSnapshot: String = "",
+    val weightRequest: Int = 0,
+    val url: String = "",
     val client: OkHttpClient = OkHttpClient()
 )
 
@@ -38,6 +38,7 @@ data class API(
     "QueueStateId": -1
 
  */
+
 @Serializable
 data class NewOrderModel(
     val Created: String,
@@ -66,9 +67,9 @@ fun run(url: String, callback: Callback) {
     client.newCall(request).enqueue(callback)
 }
 
-fun newOrder(customerId: String, licensePlate: String): NewOrderModel? {
+fun newOrder(url: String, customerId: String, licensePlate: String): NewOrderModel? {
     var newOrder: NewOrderModel? = null
-    run(API().url + API().newOrder.replace("§", customerId).replace("§", licensePlate),
+    run(url + API().newOrder.replace("§", customerId).replace("§", licensePlate),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -80,65 +81,78 @@ fun newOrder(customerId: String, licensePlate: String): NewOrderModel? {
     return newOrder
 }
 
-fun weighIn(customerId: String, licensePlate: String, ordreNumber: String): NewOrderModel? {
-    var weighIn: NewOrderModel? = null
-    run(API().url + API().weighIn.replace("§", customerId).replace("§", licensePlate).replace("§", ordreNumber),
-        object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-
-            }
-            override fun onResponse(call: Call, response: Response) {
-                weighIn = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
-            }
-        })
-    return weighIn
-}
-
-fun paymentOrder(customerId: String, licensePlate: String, ordreNumber: String): NewOrderModel? {
-    var paymentOrder: NewOrderModel? = null
-    run(API().url + API().paymentOrder.replace("§", customerId).replace("§", licensePlate).replace("§", ordreNumber),
-        object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-
-            }
-            override fun onResponse(call: Call, response: Response) {
-                paymentOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
-            }
-        })
-    return paymentOrder
-}
-
-fun iocBarrier(siteID: String): NewOrderModel? {
-    var iocBarrier: NewOrderModel? = null
-    run(API().url + API().iocBarrier.replace("§", siteID),
-        object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-
-            }
-            override fun onResponse(call: Call, response: Response) {
-                iocBarrier = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
-            }
-        })
-    return iocBarrier
-}
-
-fun webcamSnapshot(siteID: String): NewOrderModel? {
-    var webcamSnapshot: NewOrderModel? = null
-    run(API().url + API().webcamSnapshot.replace("§", siteID),
-        object : Callback {
-            override fun onFailure(call: Call, e: IOException) {
-
-            }
-            override fun onResponse(call: Call, response: Response) {
-                webcamSnapshot = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
-            }
-        })
-    return webcamSnapshot
-}
-
-fun weightRequest(siteID: String): NewOrderModel? {
+//fun newOrder(customerId: String, licensePlate: String): NewOrderModel? {
+//    var newOrder: NewOrderModel? = null
+//    run(API().url + API().newOrder.replace("§", customerId).replace("§", licensePlate),
+//        object : Callback {
+//            override fun onFailure(call: Call, e: IOException) {
+//
+//            }
+//            override fun onResponse(call: Call, response: Response) {
+//                newOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+//            }
+//        })
+//    return newOrder
+//}
+//
+//fun weighIn(customerId: String, licensePlate: String, ordreNumber: String): NewOrderModel? {
+//    var weighIn: NewOrderModel? = null
+//    run(API().url + API().weighIn.replace("§", customerId).replace("§", licensePlate).replace("§", ordreNumber),
+//        object : Callback {
+//            override fun onFailure(call: Call, e: IOException) {
+//
+//            }
+//            override fun onResponse(call: Call, response: Response) {
+//                weighIn = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+//            }
+//        })
+//    return weighIn
+//}
+//
+//fun paymentOrder(customerId: String, licensePlate: String, ordreNumber: String): NewOrderModel? {
+//    var paymentOrder: NewOrderModel? = null
+//    run(API().url + API().paymentOrder.replace("§", customerId).replace("§", licensePlate).replace("§", ordreNumber),
+//        object : Callback {
+//            override fun onFailure(call: Call, e: IOException) {
+//
+//            }
+//            override fun onResponse(call: Call, response: Response) {
+//                paymentOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+//            }
+//        })
+//    return paymentOrder
+//}
+//
+//fun iocBarrier(siteID: String): NewOrderModel? {
+//    var iocBarrier: NewOrderModel? = null
+//    run(API().url + API().iocBarrier.replace("§", siteID),
+//        object : Callback {
+//            override fun onFailure(call: Call, e: IOException) {
+//
+//            }
+//            override fun onResponse(call: Call, response: Response) {
+//                iocBarrier = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+//            }
+//        })
+//    return iocBarrier
+//}
+//
+//fun webcamSnapshot(siteID: String): NewOrderModel? {
+//    var webcamSnapshot: NewOrderModel? = null
+//    run(API().url + API().webcamSnapshot.replace("§", siteID),
+//        object : Callback {
+//            override fun onFailure(call: Call, e: IOException) {
+//
+//            }
+//            override fun onResponse(call: Call, response: Response) {
+//                webcamSnapshot = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+//            }
+//        })
+//    return webcamSnapshot
+//}
+fun weightRequest(url: String, siteID: String): NewOrderModel? {
     var weightRequest: NewOrderModel? = null
-    run(API().url + API().weightRequest.replace("§", siteID),
+    run(url + API().weightRequest.replace("§", siteID),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -150,7 +164,8 @@ fun weightRequest(siteID: String): NewOrderModel? {
     return weightRequest
 }
 
+
 fun main() {
     val url = "http://152.115.71.190:41000/?user=DTUMP3&password=MPor2hRrSE&request=EC02E425-B6BD-4D82-A9A2-F58507385B41&type=requestOrderNew&customerid=215632&licenseplate=215721"
-    println(newOrder("215632", "215721")?.ErrCode ?: "null")
+    println(newOrder(url,"215632", "215721")?.ErrCode ?: "null")
 }

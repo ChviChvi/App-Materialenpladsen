@@ -1,5 +1,6 @@
 package com.example.materialepladsen.ui.theme
 
+import android.annotation.SuppressLint
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 
@@ -19,10 +20,16 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.materialepladsen.R
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Login () {
+fun Login (
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    videoUri:
+) {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         topBar = {
@@ -42,10 +49,7 @@ fun Login () {
 
         ) {
 
-
             Spacer(modifier = Modifier.height(26.dp))
-
-
 
             Column(
                 modifier = Modifier
@@ -53,9 +57,6 @@ fun Login () {
                     .height(691.dp)
                     .shadow(1.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-
-
-
 
                 ) {
                 // Login registrer knapper
@@ -76,15 +77,11 @@ fun Login () {
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Gray,
                         backgroundColor = Color.Transparent,
-
                     )
                 ) {
                     Text(text = stringResource(id = R.string.Glemt),
                         style=MaterialTheme.typography.h4)
-
                 }
-
-
             }
         }
     }
@@ -152,7 +149,6 @@ fun Logreg (@StringRes id:Int){
 @Composable
 fun BrugerAdgang (
 ) {
-    
     OutlinedTextField(
         modifier = Modifier
             .width(180.dp)

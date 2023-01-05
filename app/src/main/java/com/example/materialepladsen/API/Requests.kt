@@ -13,8 +13,8 @@ data class API(
     val weighIn: String,
     val paymentOrder: String,
     val iocBarrier: String,
-    val webcamSnapshot: String,
-    val weightRequest: String,
+    val webcamSnapshot: Int,
+    val weightRequest: Int,
     val url: String,
     val client: OkHttpClient = OkHttpClient()
 )
@@ -70,13 +70,13 @@ fun newOrder(customerId: String, licensePlate: String): NewOrderModel? {
     var newOrder: NewOrderModel? = null
     run(API().url + API().newOrder.replace("§", customerId).replace("§", licensePlate),
         object : Callback {
-        override fun onFailure(call: Call, e: IOException) {
+            override fun onFailure(call: Call, e: IOException) {
 
-        }
-        override fun onResponse(call: Call, response: Response) {
-            newOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
-        }
-    })
+            }
+            override fun onResponse(call: Call, response: Response) {
+                newOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+            }
+        })
     return newOrder
 }
 
@@ -108,9 +108,9 @@ fun paymentOrder(customerId: String, licensePlate: String, ordreNumber: String):
     return paymentOrder
 }
 
-fun iocBarrier(site: String): NewOrderModel? {
+fun iocBarrier(siteID: String): NewOrderModel? {
     var iocBarrier: NewOrderModel? = null
-    run(API().url + API().iocBarrier.replace("§", site),
+    run(API().url + API().iocBarrier.replace("§", siteID),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -122,9 +122,9 @@ fun iocBarrier(site: String): NewOrderModel? {
     return iocBarrier
 }
 
-fun webcamSnapshot(site: String): NewOrderModel? {
+fun webcamSnapshot(siteID: String): NewOrderModel? {
     var webcamSnapshot: NewOrderModel? = null
-    run(API().url + API().webcamSnapshot.replace("§", site),
+    run(API().url + API().webcamSnapshot.replace("§", siteID),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -136,9 +136,9 @@ fun webcamSnapshot(site: String): NewOrderModel? {
     return webcamSnapshot
 }
 
-fun weightRequest(site: String): NewOrderModel? {
+fun weightRequest(siteID: String): NewOrderModel? {
     var weightRequest: NewOrderModel? = null
-    run(API().url + API().weightRequest.replace("§", site),
+    run(API().url + API().weightRequest.replace("§", siteID),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 

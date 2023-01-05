@@ -201,5 +201,5 @@ fun BrugerAdgang (
 @Composable
 fun DefaultPreview2() {
     MaterialepladsenTheme {
-        Login()
+       // Login(videoUri = Uri)
     }}

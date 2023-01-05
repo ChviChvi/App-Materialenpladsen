@@ -82,7 +82,7 @@ class MainActivity : ComponentActivity() {
                         startDestination = "login"
                     ) {
                         composable(route = "login") {
-                            Login(navController = navController, videoUri = getVideoUri())
+                            Login(videoUri = getVideoUri())
                         }
                         composable(route = "Pris udregning") {
                             PriceCalculatorScreen(navController = navController)

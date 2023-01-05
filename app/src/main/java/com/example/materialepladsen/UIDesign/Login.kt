@@ -1,6 +1,7 @@
 package com.example.materialepladsen.ui.theme
 
 import android.annotation.SuppressLint
+import android.net.Uri
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 
@@ -20,11 +21,15 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.materialepladsen.R
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Login () {
+fun Login (
+    modifier: Modifier = Modifier,
+    videoUri: Uri
+) {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         topBar = {

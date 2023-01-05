@@ -6,18 +6,26 @@ import kotlinx.serialization.json.Json
 import okhttp3.*
 import java.io.IOException
 
+
 data class API(
-    val username: String,
-    val password: String,
-    val newOrder: String,
-    val weighIn: String,
-    val paymentOrder: String,
-    val iocBarrier: String,
-    val webcamSnapshot: Int,
-    val weightRequest: Int,
-    val url: String,
+    val username: String= "",
+    val password: String= "",
+    val newOrder: String= "",
+    val weighIn: String= "",
+    val paymentOrder: String= "",
+    val iocBarrier: String= "",
+    var webcamSnapshot: Int = 0,
+    var weightRequest: Int = 0,
+    val url: String = "",
     val client: OkHttpClient = OkHttpClient()
-)
+){
+    fun replacewebcamSnapshot(newSnapshot: Int) {
+        webcamSnapshot = newSnapshot
+    }
+    fun replaceweightRequest(newSnapshot: Int) {
+        weightRequest = newSnapshot
+    }
+}
 
 /* Data class matching the following json example
 
@@ -66,9 +74,10 @@ fun run(url: String, callback: Callback) {
     client.newCall(request).enqueue(callback)
 }
 
-fun newOrder(customerId: String, licensePlate: String): NewOrderModel? {
+fun newOrder(url: String,customerId: String, licensePlate: String): NewOrderModel? {
     var newOrder: NewOrderModel? = null
-    run(API().url + API().newOrder.replace("§", customerId).replace("§", licensePlate),
+    val api = API()
+    run(url + API().newOrder.replace("§", customerId).replace("§", licensePlate),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -80,9 +89,9 @@ fun newOrder(customerId: String, licensePlate: String): NewOrderModel? {
     return newOrder
 }
 
-fun weighIn(customerId: String, licensePlate: String, ordreNumber: String): NewOrderModel? {
+fun weighIn(url: String,customerId: String, licensePlate: String, ordreNumber: String): NewOrderModel? {
     var weighIn: NewOrderModel? = null
-    run(API().url + API().weighIn.replace("§", customerId).replace("§", licensePlate).replace("§", ordreNumber),
+    run(url + API().weighIn.replace("§", customerId).replace("§", licensePlate).replace("§", ordreNumber),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -94,9 +103,9 @@ fun weighIn(customerId: String, licensePlate: String, ordreNumber: String): NewO
     return weighIn
 }
 
-fun paymentOrder(customerId: String, licensePlate: String, ordreNumber: String): NewOrderModel? {
+fun paymentOrder(url: String,customerId: String, licensePlate: String, ordreNumber: String): NewOrderModel? {
     var paymentOrder: NewOrderModel? = null
-    run(API().url + API().paymentOrder.replace("§", customerId).replace("§", licensePlate).replace("§", ordreNumber),
+    run(url + API().paymentOrder.replace("§", customerId).replace("§", licensePlate).replace("§", ordreNumber),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -108,9 +117,9 @@ fun paymentOrder(customerId: String, licensePlate: String, ordreNumber: String):
     return paymentOrder
 }
 
-fun iocBarrier(siteID: String): NewOrderModel? {
+fun iocBarrier(url: String,siteID: String): NewOrderModel? {
     var iocBarrier: NewOrderModel? = null
-    run(API().url + API().iocBarrier.replace("§", siteID),
+    run(url + API().iocBarrier.replace("§", siteID),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -122,9 +131,9 @@ fun iocBarrier(siteID: String): NewOrderModel? {
     return iocBarrier
 }
 
-fun webcamSnapshot(siteID: String): NewOrderModel? {
+fun webcamSnapshot(url: String,siteID: Int): NewOrderModel? {
     var webcamSnapshot: NewOrderModel? = null
-    run(API().url + API().webcamSnapshot.replace("§", siteID),
+    run(url + API().replacewebcamSnapshot(siteID),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -136,9 +145,10 @@ fun webcamSnapshot(siteID: String): NewOrderModel? {
     return webcamSnapshot
 }
 
-fun weightRequest(siteID: String): NewOrderModel? {
+
+fun weightRequest(url: String, siteID: Int): NewOrderModel? {
     var weightRequest: NewOrderModel? = null
-    run(API().url + API().weightRequest.replace("§", siteID),
+    run(url + API().replaceweightRequest(siteID),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {
 
@@ -150,7 +160,9 @@ fun weightRequest(siteID: String): NewOrderModel? {
     return weightRequest
 }
 
+//url
+
 fun main() {
     val url = "http://152.115.71.190:41000/?user=DTUMP3&password=MPor2hRrSE&request=EC02E425-B6BD-4D82-A9A2-F58507385B41&type=requestOrderNew&customerid=215632&licenseplate=215721"
-    println(newOrder("215632", "215721")?.ErrCode ?: "null")
+    println(newOrder(url,"215632", "215721")?.ErrCode ?: "null")
 }

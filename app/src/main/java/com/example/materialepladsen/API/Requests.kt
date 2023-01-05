@@ -70,13 +70,13 @@ fun newOrder(customerId: String, licensePlate: String): NewOrderModel? {
     var newOrder: NewOrderModel? = null
     run(API().url + API().newOrder.replace("§", customerId).replace("§", licensePlate),
         object : Callback {
-        override fun onFailure(call: Call, e: IOException) {
+            override fun onFailure(call: Call, e: IOException) {
 
-        }
-        override fun onResponse(call: Call, response: Response) {
-            newOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
-        }
-    })
+            }
+            override fun onResponse(call: Call, response: Response) {
+                newOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+            }
+        })
     return newOrder
 }
 

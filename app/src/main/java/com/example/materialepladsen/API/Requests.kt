@@ -76,7 +76,6 @@ fun run(url: String, callback: Callback) {
 
 fun newOrder(url: String,customerId: String, licensePlate: String): NewOrderModel? {
     var newOrder: NewOrderModel? = null
-    val api = API()
     run(url + API().newOrder.replace("§", customerId).replace("§", licensePlate),
         object : Callback {
             override fun onFailure(call: Call, e: IOException) {

@@ -42,3 +42,33 @@ fun getProducts(): List<Product> {
     }
     return products
 }
+
+fun getProducts2(): List<Product> {
+
+    val products = mutableListOf<Product>()
+    val resultSet = getProductsResultSet()
+    getConnection()
+    while (resultSet.next()) {
+        val product = Product(
+            resultSet.getString("product_group"),
+            resultSet.getString("id"),
+            resultSet.getString("product_articlenumber"),
+            resultSet.getString("product_articleName"),
+            resultSet.getString("product_size"),
+            resultSet.getString("product_WeightM3"),
+            resultSet.getString("product_price_dkk_excludingTax"),
+            resultSet.getString("product_price_dkk_includingTax"),
+            resultSet.getString("unit"),
+            resultSet.getString("availability"),
+            resultSet.getString("product_image")
+        )
+        products.add(product)
+    }
+    return products
+}
+
+fun main(){
+    var productlist= getProducts2()
+    println()
+    println(productlist)
+}

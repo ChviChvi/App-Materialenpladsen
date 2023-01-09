@@ -143,5 +143,14 @@
     <string name="Mobilepay">Mobilepay</string>
     <string name="PaybyPlate">Pay by Plate</string>
 
-
+    <!--Flow-->
+    <string name="Start">Kør hen på vægten og tryk start</string>
+    <string name="FejlStart">Fejl i forbindelsen:\n Kør hen på vægten og tryk start</string>
+    <string name="Readytopickmaterials">Du er nu klar til at vælge dine materialer\n
+        Kør til vægten for at blive vejet igen eller betale</string>
+    <string name="vejigen">Vej igen</string>
+    <string name="vejigenogbetal">Vej igen og betal</string>
+    <string name="dinindvejning">Dette var din indvejning: </string>
+    <string name="dinvejning">Dette vejer du nu: </string>
+    <string name="Differens">Du har denne vægt at skulle betale for: </string>
 </resources>

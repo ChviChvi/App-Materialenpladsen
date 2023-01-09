@@ -30,10 +30,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.materialepladsen.UIDesign.Betaling
-import com.example.materialepladsen.UIDesign.Findos
-import com.example.materialepladsen.UIDesign.Købshistorik
-import com.example.materialepladsen.UIDesign.PriceCalculatorScreen
+import com.example.materialepladsen.UIDesign.*
 import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.Købshistorikliste
 import com.google.android.exoplayer2.ExoPlayer
@@ -105,6 +102,12 @@ class MainActivity : ComponentActivity() {
                         composable(route = "Find os") {
                             Findos(navController = navController)
                         }
+                        composable(route = "Start Screen") {
+                            StartScreen(navController = navController)
+                        }
+                        composable(route = "Ready Screen") {
+                            ReadyScreen(navController = navController)
+                        }
                     }
                 }
             }
@@ -120,7 +123,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun DrawerView(navController: NavController) {
-    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os")
+    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os","Start Screen")
     LazyColumn {
         items(pages.size){ index->
             AddDrawerContentView(title = pages[index], func = { navController.navigate(pages[index])})

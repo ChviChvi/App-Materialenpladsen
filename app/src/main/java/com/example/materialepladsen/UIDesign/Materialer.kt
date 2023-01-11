@@ -34,15 +34,51 @@ import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.unit.Dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.materialepladsen.Database.Product
+import com.example.materialepladsen.Database.getConnection
+import com.example.materialepladsen.Database.getProducts2
+import com.example.materialepladsen.Database.listreturner
 import com.example.materialepladsen.viewmodel.MaterialList
 import com.example.materialepladsen.viewmodel.Material_list
-
-
+import com.example.materialepladsen.viewmodel.ProductListUistate
+import com.example.materialepladsen.viewmodel.ProductListViewModel
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.launch
+private val _uiState = MutableStateFlow(ProductListUistate())
 
 class Materials : ComponentActivity() {
+
+//    private lateinit var viewModel: ProductListViewModel
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+//         val _uiState = MutableStateFlow(ProductListUistate())
+//        val uiState: StateFlow<ProductListUistate> = _uiState.asStateFlow()
+//
+//        CoroutineScope(Dispatchers.Main).launch {
+//            val results: List<Product> = getProducts2()
+//            _uiState.value = _uiState.value.copy(Productslist = results)
+//        }
+//        CoroutineScope(Dispatchers.Main).launch {
+//            val results = getProducts2()
+//            viewModel = ViewModelProvider(this).get(ProductListViewModel::class.java)
+//            viewModel.fetchData()
+//        }
+
+
+
+
+//        println(viewModel)
+
+
         setContent {
             var selectedTabIndex by remember { mutableStateOf(0) }
             val tabs = MaterialList.valueOf(Material_list.toString())
@@ -60,7 +96,23 @@ class Materials : ComponentActivity() {
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Materialer (navController: NavController) {
+fun Materialer (navController: NavController,
+                modifier: Modifier = Modifier
+                , productListViewModel: ProductListViewModel= viewModel(),
+                viewModel: ProductListViewModel
+) {
+
+    viewModel.fetchProducts()
+//    val products = viewModelScope.async(Dispatchers.IO) {
+//        repository.getAllProducts()
+//    }
+
+    //val productUI by productListViewModel.productListUiState.collectAsState()
+    //val productsList = productListViewModel.productsList.collectAsState()
+
+    //val hello = productUI.Productslist
+    //println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+productsList)
+    //println(listreturner())
     Column() {
 
         Logo2()
@@ -113,6 +165,12 @@ fun Materialer (navController: NavController) {
         Spacer(modifier = Modifier.height(18.dp))
 
         Text(text = stringResource(id = R.string.Metaller),
+            modifier = Modifier.padding(start=15.dp),
+            style=MaterialTheme.typography.overline,
+        )
+
+
+        Text( text = "hello",
             modifier = Modifier.padding(start=15.dp),
             style=MaterialTheme.typography.overline,
         )

@@ -5,11 +5,52 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+<<<<<<< HEAD
 import com.example.materialepladsen.ui.theme.*
+=======
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.*
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
+import com.example.materialepladsen.Database.getProducts2
+//import com.example.materialepladsen.Database.connectiontryout
+import com.example.materialepladsen.UIDesign.Betaling
+import com.example.materialepladsen.UIDesign.Findos
+import com.example.materialepladsen.UIDesign.Købshistorik
+import com.example.materialepladsen.UIDesign.PriceCalculatorScreen
+import com.example.materialepladsen.ui.theme.*
+import com.example.materialepladsen.viewmodel.Købshistorikliste
+import com.example.materialepladsen.viewmodel.ProductListViewModel
+import com.google.android.exoplayer2.ExoPlayer
+import com.google.android.exoplayer2.MediaItem
+import com.google.android.exoplayer2.Player
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout.RESIZE_MODE_ZOOM
+import com.google.android.exoplayer2.ui.StyledPlayerView
+>>>>>>> 3415c72 (Backup version for if everything turns get agai)
 
 
 
 class MainActivity : ComponentActivity() {
+
+
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -73,7 +114,9 @@ class MainActivity : ComponentActivity() {
                             Købshistorik(navController = navController,Købshistorikliste)
                         }
                         composable(route = "Materialer") {
-                            Materialer(navController = navController)
+                            Materialer(navController = navController,
+                                        viewModel = ProductListViewModel()
+                            )
                         }
                         composable(route = "Forside") {
                             Forside(navController = navController)
@@ -137,6 +180,7 @@ fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
+    getProducts2()
     MaterialepladsenTheme {
         // A surface container using the 'background' color from the theme
         Scaffold(

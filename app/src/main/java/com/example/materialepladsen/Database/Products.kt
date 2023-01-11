@@ -2,6 +2,8 @@ package com.example.materialepladsen.Database
 
 import java.sql.ResultSet
 
+
+
 data class Product(
     val group: String,
     val id: String,
@@ -18,7 +20,7 @@ data class Product(
 
 fun getProductsResultSet(): ResultSet {
     val selectSql = "SELECT * FROM [dbo].[v_mobileApp_products]"
-    return sqlQuery(selectSql)!!
+    return getConnection(selectSql)!!
 }
 
 fun getProducts(): List<Product> {
@@ -47,7 +49,7 @@ fun getProducts2(): List<Product> {
 
     val products = mutableListOf<Product>()
     val resultSet = getProductsResultSet()
-    getConnection()
+            //getConnection()
     while (resultSet.next()) {
         val product = Product(
             resultSet.getString("product_group"),
@@ -64,11 +66,19 @@ fun getProducts2(): List<Product> {
         )
         products.add(product)
     }
+    println(products)
     return products
+}
+
+fun listreturner(): List<Product>{
+    var productlist= getProducts2()
+    return productlist
 }
 
 fun main(){
     var productlist= getProducts2()
     println()
     println(productlist)
+    println()
+    println(productlist.get(1).articleName)
 }

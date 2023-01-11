@@ -4,38 +4,38 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Text
 import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.navigation.NavController
 import com.example.materialepladsen.R
-import com.example.materialepladsen.viewmodel.FlowUiState
-import com.example.materialepladsen.viewmodel.FlowViewModel
 
 @Composable
-fun StartScreen(navController: NavController,
-                flowViewModel: FlowViewModel = viewModel(),
-                flowUiState: FlowUiState
+fun StartScreen(
+                state: String,
+                userFound:Boolean,
+                navigateFunction :() -> Unit = {},
+                setFailState:() -> Unit = {},
+                weighInFunction:() -> Unit = {},
 ){
-    val uiState = flowViewModel.uiState.collectAsState()
+
 
     Column {
 
-       if (flowUiState.State=="FejlStart")
+       if (state=="FejlStart")
        {Text(text = stringResource(id = R.string.FejlStart))}
 
-        if (flowUiState.State=="Start")
+        if (state=="Start")
         {Text(text = stringResource(id = R.string.Start))}
 
 
         TextButton(
             onClick = {
 
-                if (flowUiState.userFound){
-                    navController.navigate("Ready Screen")
-                    flowUiState.weighInWeight=1850.00f
+                if (userFound){
+                    navigateFunction()
+                    weighInFunction()
+                    //navController.navigate("Ready Screen")
+
                 }
-                else {flowViewModel.Fejlstart()}
+                else {setFailState()}
             })
         {
             Text(text = "Start")

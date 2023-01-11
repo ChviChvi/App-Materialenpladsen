@@ -32,7 +32,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.unit.Dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+
 import com.example.materialepladsen.viewmodel.MaterialList
 import com.example.materialepladsen.viewmodel.Material_list
 
@@ -60,6 +62,7 @@ class Materials : ComponentActivity() {
 @Composable
 fun Materialer (navController: NavController) {
     Column() {
+
         Logo2()
 
         Divider(modifier = Modifier.fillMaxWidth(),
@@ -184,6 +187,8 @@ fun Materialer (navController: NavController) {
                     .align(CenterVertically)
             )
         }
+
+
     }
 }
 

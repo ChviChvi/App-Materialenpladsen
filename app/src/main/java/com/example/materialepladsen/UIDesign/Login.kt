@@ -28,7 +28,7 @@ import com.example.materialepladsen.R
 @Composable
 fun Login (
     modifier: Modifier = Modifier,
-    videoUri: Uri
+    //videoUri: Uri
 ) {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),

@@ -7,6 +7,8 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
+
+
 class FlowViewModel : ViewModel(){
     private val _uiState = MutableStateFlow(FlowUiState())
     val uiState: StateFlow<FlowUiState> = _uiState.asStateFlow()
@@ -60,7 +62,14 @@ class FlowViewModel : ViewModel(){
                 State = "Betal"
             )
         }
+    }
 
+    fun changeStateToVejning(){
+        _uiState.update { currentState ->
+            currentState.copy(
+                State = "Vejning"
+            )
+        }
 
     }
 

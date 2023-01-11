@@ -30,12 +30,15 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.materialepladsen.Database.getProducts2
+//import com.example.materialepladsen.Database.connectiontryout
 import com.example.materialepladsen.UIDesign.Betaling
 import com.example.materialepladsen.UIDesign.Findos
 import com.example.materialepladsen.UIDesign.Købshistorik
 import com.example.materialepladsen.UIDesign.PriceCalculatorScreen
 import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.Købshistorikliste
+import com.example.materialepladsen.viewmodel.ProductListViewModel
 import com.google.android.exoplayer2.ExoPlayer
 import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
@@ -45,6 +48,8 @@ import com.google.android.exoplayer2.ui.StyledPlayerView
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
+
+
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -94,7 +99,9 @@ class MainActivity : ComponentActivity() {
                             Købshistorik(navController = navController,Købshistorikliste)
                         }
                         composable(route = "Materialer") {
-                            Materialer(navController = navController)
+                            Materialer(navController = navController,
+                                        viewModel = ProductListViewModel()
+                            )
                         }
                         composable(route = "Forside") {
                             Forside(navController = navController)
@@ -147,6 +154,7 @@ fun AddDrawerContentView(title: String, func: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
+    getProducts2()
     MaterialepladsenTheme {
         // A surface container using the 'background' color from the theme
         Scaffold(

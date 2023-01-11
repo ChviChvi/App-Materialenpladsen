@@ -35,14 +35,14 @@ class FlowViewModel (): ViewModel(){
         //TODO
     }
 
-    fun mellemVægt(){
+    fun middleWeight(){
         _uiState.update { currentState ->
             currentState.copy(
                 weighInWeight = 1850.00f,
                 middleWeight = 1975.00f,
             )
         }
-        var weighToPay=_uiState.value.middleWeight-_uiState.value.weighInWeight
+        val weighToPay=_uiState.value.middleWeight-_uiState.value.weighInWeight
         _uiState.update { currentState ->
             currentState.copy(
                 weighToPay = weighToPay
@@ -54,7 +54,13 @@ class FlowViewModel (): ViewModel(){
 
 
     fun weighOutAndPay(){
-        mellemVægt()
+        middleWeight()
+        _uiState.update { currentState ->
+            currentState.copy(
+                State = "Betal"
+            )
+        }
+
 
     }
 

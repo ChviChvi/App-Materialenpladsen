@@ -32,9 +32,9 @@ fun ReadyScreen(
 
         }
 
-        Text(text = stringResource(id = R.string.dinindvejning)+weighInWeight+" Kg" )
-        Text(text = stringResource(id = R.string.dinvejning)+middleWeight+" Kg" )
-        Text(text = stringResource(id = R.string.Differens)+weighToPay+" Kg" )
+        Text(text = stringResource(id = R.string.dinindvejning)+weighInWeight+ stringResource(id = R.string.Kg) )
+        Text(text = stringResource(id = R.string.dinvejning)+middleWeight+stringResource(id = R.string.Kg))
+        Text(text = stringResource(id = R.string.Differens)+weighToPay+stringResource(id = R.string.Kg) )
 
     }
 }

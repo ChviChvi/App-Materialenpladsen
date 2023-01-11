@@ -19,11 +19,11 @@ fun StartScreen(
 
     Column {
 
-       if (state=="FejlStart")
-       {Text(text = stringResource(id = R.string.FejlStart))}
+       if (state== stringResource(id = R.string.FejlStart))
+       {Text(text = stringResource(id = R.string.ForbindelseFejlStart))}
 
-        if (state=="Start")
-        {Text(text = stringResource(id = R.string.Start))}
+        if (state==stringResource(id = R.string.Start))
+        {Text(text = stringResource(id = R.string.VægtStart))}
 
 
         TextButton(
@@ -32,13 +32,13 @@ fun StartScreen(
                 if (userFound){
                     navigateFunction()
                     weighInFunction()
-                    //navController.navigate("Ready Screen")
+
 
                 }
                 else {setFailState()}
             })
         {
-            Text(text = "Start")
+            Text(text = stringResource(id = R.string.Start))
         }
 
     }

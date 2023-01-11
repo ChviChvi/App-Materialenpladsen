@@ -9,11 +9,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.materialepladsen.R
+import com.example.materialepladsen.viewmodel.FlowUiState
 import com.example.materialepladsen.viewmodel.FlowViewModel
 
 @Composable
 fun ReadyScreen(navController: NavController,
                 flowViewModel: FlowViewModel = viewModel(),
+                flowUiState: FlowUiState
 
 
 ){
@@ -33,9 +35,9 @@ fun ReadyScreen(navController: NavController,
 
         }
 
-        Text(text = stringResource(id = R.string.dinindvejning)+uiState.value.weighInWeight+" Kg" )
-        Text(text = stringResource(id = R.string.dinvejning)+uiState.value.middleWeight+" Kg" )
-        Text(text = stringResource(id = R.string.Differens)+uiState.value.weighToPay+" Kg" )
-        Text(text = uiState.value.State )
+        Text(text = stringResource(id = R.string.dinindvejning)+flowUiState.weighInWeight+" Kg" )
+        Text(text = stringResource(id = R.string.dinvejning)+flowUiState.middleWeight+" Kg" )
+        Text(text = stringResource(id = R.string.Differens)+flowUiState.weighToPay+" Kg" )
+        Text(text = flowUiState.State )
     }
 }

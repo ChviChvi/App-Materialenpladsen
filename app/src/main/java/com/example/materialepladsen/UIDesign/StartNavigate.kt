@@ -34,7 +34,7 @@ fun StartNavigate(
             StartScreen(
                 state = uiState.value.State,
                 userFound = uiState.value.userFound,
-                navigateFunction = { navController2.navigate(StartNavigateScreen.ReadyScreen.name)},
+                navigateFunction = { navController2.navigate(StartNavigateScreen.ReadyScreen.name) },
                 setFailState = {flowViewModel.Fejlstart()},
                 weighInFunction = {flowViewModel.weighIn()}
 

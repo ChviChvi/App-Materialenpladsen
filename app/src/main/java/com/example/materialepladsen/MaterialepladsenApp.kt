@@ -31,6 +31,7 @@ import com.example.materialepladsen.ui.theme.Materialer
 import com.example.materialepladsen.ui.theme.Omos
 import com.example.materialepladsen.viewmodel.FlowViewModel
 import com.example.materialepladsen.viewmodel.Købshistorikliste
+import com.example.materialepladsen.viewmodel.StateOfStart
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -49,7 +50,7 @@ fun MaterialepladsenApp(
     Scaffold(
         scaffoldState = scaffoldState,
         modifier = Modifier.fillMaxWidth(),
-        drawerContent = { DrawerView(navController) { scope.launch { delay(350); scaffoldState.drawerState.close() } } },
+        drawerContent = { DrawerView(navController) { scope.launch { delay(250); scaffoldState.drawerState.close() } } },
         topBar = {
             TopAppBar(
                 elevation = 4.dp,
@@ -100,7 +101,7 @@ fun MaterialepladsenApp(
             }
 
             composable(route = "Start Screen") {
-                if(uiState.value.State=="korrekt startet"){
+                if(uiState.value.state==StateOfStart.KorrektStart ){
                     ReadyScreen(
                         onVejIgenButtonClicked = {flowViewModel.middleWeight()},
                         weighInWeight = uiState.value.weighInWeight,
@@ -111,7 +112,7 @@ fun MaterialepladsenApp(
                 }
                 else{
                 StartScreen(
-                    state = uiState.value.State,
+                    state = uiState.value.state,
                     userFound = uiState.value.userFound,
                     navigateFunction = {
                         navController.navigate("Ready Screen") },

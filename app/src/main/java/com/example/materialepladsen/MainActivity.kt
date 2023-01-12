@@ -5,9 +5,9 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-<<<<<<< HEAD
+
 import com.example.materialepladsen.ui.theme.*
-=======
+
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
@@ -44,9 +44,6 @@ import com.google.android.exoplayer2.MediaItem
 import com.google.android.exoplayer2.Player
 import com.google.android.exoplayer2.ui.AspectRatioFrameLayout.RESIZE_MODE_ZOOM
 import com.google.android.exoplayer2.ui.StyledPlayerView
->>>>>>> 3415c72 (Backup version for if everything turns get agai)
-
-
 
 class MainActivity : ComponentActivity() {
 
@@ -63,6 +60,8 @@ class MainActivity : ComponentActivity() {
 }
 /*
     class MainActivity : ComponentActivity() {
+=======
+>>>>>>> origin/SQLConnection
     @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -194,7 +193,9 @@ fun DefaultPreview() {
     }
 }
 
+<<<<<<< HEAD
  */
+
 
 
 

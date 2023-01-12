@@ -31,6 +31,7 @@ import com.example.materialepladsen.ui.theme.Materialer
 import com.example.materialepladsen.ui.theme.Omos
 import com.example.materialepladsen.viewmodel.FlowViewModel
 import com.example.materialepladsen.viewmodel.Købshistorikliste
+import com.example.materialepladsen.viewmodel.ProductListViewModel
 import com.example.materialepladsen.viewmodel.StateOfStart
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -55,7 +56,9 @@ fun MaterialepladsenApp(
             TopAppBar(
                 elevation = 4.dp,
                 title = {
-                    Row(modifier = Modifier.fillMaxSize(1f).padding(10.dp)) {
+                    Row(modifier = Modifier
+                        .fillMaxSize(1f)
+                        .padding(10.dp)) {
                         Image(painterResource(R.drawable.logo_materialepladsen), null)
                     }
                 },
@@ -88,7 +91,9 @@ fun MaterialepladsenApp(
                 Købshistorik(navController = navController, Købshistorikliste)
             }
             composable(route = "Materialer") {
-                Materialer(navController = navController)
+                Materialer(navController = navController,
+                            viewModel = ProductListViewModel()
+                )
             }
             composable(route = "Forside") {
                 Forside(navController = navController)
@@ -161,7 +166,7 @@ fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .clickable { func(); func1()  }
+            .clickable { func(); func1() }
             .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
         if (title.isNotEmpty()) {

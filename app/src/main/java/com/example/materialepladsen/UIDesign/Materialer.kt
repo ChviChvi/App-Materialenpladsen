@@ -36,6 +36,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
+
 import com.example.materialepladsen.Database.Product
 import com.example.materialepladsen.Database.getConnection
 import com.example.materialepladsen.Database.getProducts2

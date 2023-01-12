@@ -90,7 +90,16 @@ fun MaterialepladsenApp(
                 PriceCalculatorScreen(navController = navController)
             }
             composable(route = "Betaling") {
-                Betaling(navController = navController)
+                Betaling(
+                    navController = navController,
+                    weighInWeight = uiState.value.weighInWeight,
+                    outWeight = uiState.value.outWeight,
+                    weighToPay = uiState.value.weighToPay,
+                    materialeBillede = uiState.value.materialeBillede,
+                    materiale = uiState.value.materiale,
+                    price = uiState.value.price,
+                    addToBuyHistory = {flowViewModel.addToBuyHistory()}
+                    )
             }
             composable(route = "Købshistorik") {
                 Købshistorik(navController = navController, Købshistorikliste)
@@ -115,15 +124,28 @@ fun MaterialepladsenApp(
                         weighInWeight = uiState.value.weighInWeight,
                         middleWeight = uiState.value.middleWeight,
                         weighToPay = uiState.value.weighToPay,
-                        onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()}
+                        onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
+                        navigateToBetaling = { navController.navigate("Betaling") }
                     )
                 }
+                if(uiState.value.state==StateOfStart.Betal ){
+                    Betaling(
+                        navController = navController,
+                        weighInWeight = uiState.value.weighInWeight,
+                        outWeight = uiState.value.outWeight,
+                        weighToPay = uiState.value.weighToPay,
+                        materialeBillede = uiState.value.materialeBillede,
+                        materiale = uiState.value.materiale,
+                        price = uiState.value.price,
+                        addToBuyHistory = {flowViewModel.addToBuyHistory()}
+                    )
+                }
+
                 else{
                 StartScreen(
                     state = uiState.value.state,
                     userFound = uiState.value.userFound,
-                    navigateFunction = {
-                        navController.navigate("Ready Screen") },
+                    navigateFunction = { navController.navigate("Ready Screen") },
                     setFailState = {flowViewModel.Fejlstart()},
                     weighInFunction = {flowViewModel.weighIn()}
                     )}
@@ -135,7 +157,8 @@ fun MaterialepladsenApp(
                     weighInWeight = uiState.value.weighInWeight,
                     middleWeight = uiState.value.middleWeight,
                     weighToPay = uiState.value.weighToPay,
-                    onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()}
+                    onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
+                    navigateToBetaling = { navController.navigate("Betaling")}
                 )
             }
 

@@ -14,7 +14,8 @@ fun ReadyScreen(
                 onVejIgenOgBetalButtonClicked: () -> Unit = {},
                 weighInWeight:Float,
                 middleWeight:Float,
-                weighToPay: Float
+                weighToPay: Float,
+                navigateToBetaling:() -> Unit = {}
 ){
 
 
@@ -27,7 +28,11 @@ fun ReadyScreen(
 
         }
 
-        TextButton(onClick = { onVejIgenOgBetalButtonClicked() }) {
+        TextButton(onClick = {
+            onVejIgenOgBetalButtonClicked()
+
+            navigateToBetaling()
+        }) {
             Text(text = stringResource(id = R.string.vejigenogbetal))
 
         }

@@ -1,6 +1,8 @@
 package com.example.materialepladsen.viewmodel
 
 
+import com.example.materialepladsen.R
+
 
 data class FlowUiState(
     var weighInWeight: Float=0.0f,
@@ -9,7 +11,9 @@ data class FlowUiState(
     var middleWeight: Float=0.0f,
     var outWeight: Float=0.0f,
     var weighToPay: Float=0.0f,
-
+    var materialeBillede: Int = R.drawable.as_lvplade,
+    var materiale:Int=  R.string.ASølvplade,
+    var price:Float=200F,
     )
 
 enum class StateOfStart(){

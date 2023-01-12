@@ -56,11 +56,18 @@ class FlowViewModel : ViewModel(){
 
     fun weighOutAndPay(){
         middleWeight()
+        val outWeight=_uiState.value.middleWeight
         _uiState.update { currentState ->
             currentState.copy(
-                state = StateOfStart.Betal
+                state = StateOfStart.Betal,
+                outWeight = outWeight
             )
+
         }
+    }
+
+    fun addToBuyHistory(){
+
     }
 
 

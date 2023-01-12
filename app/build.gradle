@@ -49,15 +49,22 @@ android {
 
 dependencies {
 
-    implementation 'com.microsoft.sqlserver:mssql-jdbc:7.4.1.jre8'
-    implementation 'mysql:mysql-connector-java:8.0.22'
+    implementation 'com.microsoft.sqlserver:mssql-jdbc:8.2.2.jre8'
+    //implementation 'mysql:mysql-connector-java:8.0.22'
 
-//what is this?
     //implementation files('C:\\Users\\ldeir\\Downloads\\sqljdbc_11.2.0.0_enu\\sqljdbc_11.2\\enu\\mssql-jdbc-11.2.0.jre11.jar')
+    //implementation files('C:/Users/Christiaan Vink/sqljdbc_7.4')
+    //implementation files('C:/Users/Christiaan Vink/sqljdbc_11.2/enu/mssql-jdbc-11.2.1.jre.jar11')
+
     testImplementation 'org.junit.jupiter:junit-jupiter'
     def nav_version = "2.5.3"
     implementation("androidx.navigation:navigation-compose:$nav_version")
     implementation "androidx.navigation:navigation-compose:2.4.0-alpha04"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
+    implementation "androidx.navigation:navigation-compose:2.4.0-alpha04"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.2'
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.5.1'

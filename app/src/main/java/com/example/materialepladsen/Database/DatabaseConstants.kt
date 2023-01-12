@@ -16,8 +16,13 @@ data class DatabaseConstants(
 
 fun sqlQuery(query: String): ResultSet? {
     var resultSet: ResultSet? = null
+    val server = "152.115.71.190:48123"
+    val database = "materialepladsen_core_DTUMP3"
+    val username = "DTUMP3"
+    val password = "MPor2hRrSE"
+    val connectionUrl = "jdbc:sqlserver://$server;databaseName=$database;user=$username;password=$password"
     try {
-        val connection = DriverManager.getConnection(DatabaseConstants().connectionUrl)
+        val connection = DriverManager.getConnection(connectionUrl)
         if (connection.isValid(0)) {
             println("Connection established")
         }

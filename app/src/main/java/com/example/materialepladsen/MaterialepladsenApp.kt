@@ -31,6 +31,7 @@ import com.example.materialepladsen.ui.theme.Materialer
 import com.example.materialepladsen.ui.theme.Omos
 import com.example.materialepladsen.viewmodel.FlowViewModel
 import com.example.materialepladsen.viewmodel.Købshistorikliste
+import com.example.materialepladsen.viewmodel.ProductListViewModel
 import com.example.materialepladsen.viewmodel.StateOfStart
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -105,7 +106,9 @@ fun MaterialepladsenApp(
                 Købshistorik(navController = navController, Købshistorikliste)
             }
             composable(route = "Materialer") {
-                Materialer(navController = navController)
+                Materialer(navController = navController,
+                            viewModel = ProductListViewModel()
+                )
             }
             composable(route = "Forside") {
                 Forside(navController = navController)

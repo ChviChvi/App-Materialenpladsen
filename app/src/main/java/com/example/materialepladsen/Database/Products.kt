@@ -22,7 +22,7 @@ fun getProductsResultSet(): ResultSet {
     val selectSql = "SELECT * FROM [dbo].[v_mobileApp_products]"
     return getConnection(selectSql)!!
 }
-
+//initial
 fun getProducts(): List<Product> {
     val products = mutableListOf<Product>()
     val resultSet = getProductsResultSet()

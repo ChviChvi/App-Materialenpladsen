@@ -1,6 +1,6 @@
 package com.example.materialepladsen.ui.theme
 
-import androidx.compose.ui.tooling.preview.Preview
+
 import android.os.Bundle
 import android.annotation.SuppressLint
 import androidx.activity.ComponentActivity
@@ -32,8 +32,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.debugInspectorInfo
 import androidx.compose.ui.unit.Dp
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+
 
 import com.example.materialepladsen.viewmodel.MaterialList
 import com.example.materialepladsen.viewmodel.Material_list
@@ -60,7 +60,8 @@ class Materials : ComponentActivity() {
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Materialer (navController: NavController) {
+fun Materialer (navController: NavController,
+) {
     Column() {
 
         Logo2()
@@ -190,6 +191,7 @@ fun Materialer (navController: NavController) {
 
 
     }
+
 }
 
 @Composable

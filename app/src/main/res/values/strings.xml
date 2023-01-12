@@ -1,9 +1,9 @@
 <resources>
     <!--Login-->
     <string name="Login">Login</string>
-
+    <string name="LoginEllerRegistrer">Login eller opret bruger</string>
     <string name="app_name">Materialepladsen</string>
-    <string name="Registrer">Registrer</string>
+    <string name="OpretBruger">Opret bruger</string>
     <string name="Brugernavn">Brugernavn</string>
     <string name="Adgangskode">Adgangskode</string>
     <string name="Glemt">Glemt adgangskode eller brugernavn</string>

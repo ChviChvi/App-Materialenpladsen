@@ -55,7 +55,9 @@ fun MaterialepladsenApp(
             TopAppBar(
                 elevation = 4.dp,
                 title = {
-                    Row(modifier = Modifier.fillMaxSize(1f).padding(10.dp)) {
+                    Row(modifier = Modifier
+                        .fillMaxSize(1f)
+                        .padding(10.dp)) {
                         Image(painterResource(R.drawable.logo_materialepladsen), null)
                     }
                 },
@@ -71,12 +73,18 @@ fun MaterialepladsenApp(
                 })
         }
     ){
+
+
         NavHost(
             navController = navController,
             startDestination = "login"
         ) {
             composable(route = "login") {
-                Login(/*videoUri = getVideoUri()*/)
+                Login(/*videoUri = getVideoUri()*/
+                    navigateToOpretBruger = {navController.navigate("Opret Bruger")})
+            }
+            composable(route = "Opret Bruger") {
+                OpretBruger()
             }
             composable(route = "Pris udregning") {
                 PriceCalculatorScreen(navController = navController)
@@ -136,7 +144,10 @@ fun MaterialepladsenApp(
 
     }
 
+
 }
+
+
 
 
 
@@ -161,7 +172,7 @@ fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .clickable { func(); func1()  }
+            .clickable { func(); func1() }
             .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
         if (title.isNotEmpty()) {
@@ -170,3 +181,4 @@ fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
 
     }
 }
+

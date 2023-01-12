@@ -2,6 +2,7 @@ package com.example.materialepladsen.UIDesign
 
 import android.annotation.SuppressLint
 import android.widget.ScrollView
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -10,10 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -36,12 +34,13 @@ import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.BetalingViewModel
 
+@OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun OpretBruger() {
 
     Column (
-        modifier = Modifier.verticalScroll(rememberScrollState()),
+        modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
 
@@ -49,28 +48,34 @@ fun OpretBruger() {
 
     ) {
         // general information for oprettelse
-        val username = remember { mutableStateOf(TextFieldValue()) }
-        val password = remember { mutableStateOf(TextFieldValue()) }
-        val licenceplate = remember { mutableStateOf(TextFieldValue()) }
-        val firstname = remember { mutableStateOf(TextFieldValue()) }
-        val lastname = remember { mutableStateOf(TextFieldValue()) }
-        val adress = remember { mutableStateOf(TextFieldValue()) }
-        val cityname = remember { mutableStateOf(TextFieldValue()) }
-        val postalcode = remember { mutableStateOf(TextFieldValue()) }
-        val email = remember { mutableStateOf(TextFieldValue()) }
+        val username = remember { mutableStateOf(TextFieldValue("")) }
+        val password = remember { mutableStateOf(TextFieldValue("")) }
+        val licenceplate = remember { mutableStateOf(TextFieldValue("")) }
+        val licenceplateMax = 7
+        val firstname = remember { mutableStateOf(TextFieldValue("")) }
+        val lastname = remember { mutableStateOf(TextFieldValue("")) }
+        val adress = remember { mutableStateOf(TextFieldValue("")) }
+        val cityname = remember { mutableStateOf(TextFieldValue("")) }
+        val postalcode = remember { mutableStateOf(TextFieldValue("")) }
+        val postalcodeMax = 4
+        val phonenumber = remember { mutableStateOf(TextFieldValue("")) }
+        val phonenumberMax = 8
+        val email = remember { mutableStateOf(TextFieldValue("")) }
 
         // Card information
-        val cardtype = remember { mutableStateOf(TextFieldValue()) }
-        val cardnumber = remember { mutableStateOf(TextFieldValue()) }
-        val CVV = remember { mutableStateOf(TextFieldValue()) }
-        val experationdate = remember { mutableStateOf(TextFieldValue()) }
+        val cardtype = remember { mutableStateOf(TextFieldValue("")) }
+        val cardnumber = remember { mutableStateOf(TextFieldValue("")) }
+        val cardnumberMax = 16
+        val CVV = remember { mutableStateOf(TextFieldValue("")) }
+        val CVVMax = 3
+        val experationdate = remember { mutableStateOf(TextFieldValue("")) }
 
 
 
         Text(text = "Register user",
         fontSize = 30.sp)
         Spacer(modifier = Modifier.height(5.dp))
-        Text(text = "Please insert information")
+        Text(text = "Please insert your information")
         Spacer(modifier = Modifier.height(20.dp))
 
         // Username field with inputable data
@@ -94,7 +99,9 @@ fun OpretBruger() {
             label = { Text(text = "License plate") },
             value = licenceplate.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
-            onValueChange = { licenceplate.value = it })
+            onValueChange = {
+                if (it.text.length <= licenceplateMax) licenceplate.value = it
+            })
         Spacer(modifier = Modifier.height(20.dp))
 
         // first name
@@ -134,7 +141,19 @@ fun OpretBruger() {
             label = { Text(text = "Postal code") },
             value = postalcode.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-            onValueChange = { postalcode.value = it })
+            onValueChange = {
+                if (it.text.length <= postalcodeMax) postalcode.value = it
+            })
+        Spacer(modifier = Modifier.height(20.dp))
+
+        // Phone number
+        TextField(
+            label = { Text(text = "Phone number") },
+            value = phonenumber.value,
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+            onValueChange = {
+                if (it.text.length <= phonenumberMax) phonenumber.value = it
+            })
         Spacer(modifier = Modifier.height(20.dp))
 
         // Email
@@ -145,38 +164,82 @@ fun OpretBruger() {
             onValueChange = { email.value = it })
         Spacer(modifier = Modifier.height(20.dp))
 
-        // Cardtype
-        TextField(
-            label = { Text(text = "Cardtype") },
-            value = cardtype.value,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
-            onValueChange = { cardtype.value = it })
-        Spacer(modifier = Modifier.height(20.dp))
+        val options = listOf("Visa Debit", "Visa Elektron", "Mastercard", "American Express")
+        var expanded by remember { mutableStateOf(false) }
+        var selectedOptionText by remember { mutableStateOf(options[0]) }
 
-        // Cardnumber
-        TextField(
-            label = { Text(text = "Card number") },
-            value = cardnumber.value,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-            onValueChange = { cardnumber.value = it })
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = {
+                expanded = !expanded
+            }
+        ) {
+            TextField(
+                readOnly = true,
+                value = selectedOptionText,
+                onValueChange = { },
+                label = { Text("Card type") },
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(
+                        expanded = expanded
+                    )
+                },
+                colors = ExposedDropdownMenuDefaults.textFieldColors()
+            )
+            ExposedDropdownMenu(
+                expanded = expanded,
+                onDismissRequest = {
+                    expanded = false
+                }
+            ) {
+                options.forEach { selectionOption ->
+                    DropdownMenuItem(
+                        onClick = {
+                            selectedOptionText = selectionOption
+                            expanded = false
+                        }
+                    ) {
+                        Text(text = selectionOption)
+                    }
+                }
+            }
+        }
         Spacer(modifier = Modifier.height(20.dp))
+            // Cardnumber
+            TextField(
+                label = { Text(text = "Card number") },
+                value = cardnumber.value,
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                onValueChange = {
+                    if (it.text.length <= cardnumberMax) cardnumber.value = it
+                })
+            Spacer(modifier = Modifier.height(20.dp))
 
-        // CVV
-        TextField(
-            label = { Text(text = "CVV") },
-            value = CVV.value,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-            onValueChange = { CVV.value = it })
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+
+            modifier = Modifier.padding(start = 0.dp).fillMaxWidth()) {
+            // CVV
+            TextField(
+                label = { Text(text = "CVV") },
+                value = CVV.value,
+                modifier = Modifier.weight(1f).padding(start = 10.dp),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                onValueChange = {
+                    if (it.text.length <= CVVMax) CVV.value = it
+                })
+            Spacer(modifier = Modifier.width(20.dp))
+
+            // experation date
+            TextField(
+                label = { Text(text = "Experation Date") },
+                value = experationdate.value,
+                modifier = Modifier.weight(1f).padding(end = 10.dp),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                onValueChange = { experationdate.value = it })
+
+        }
         Spacer(modifier = Modifier.height(20.dp))
-
-        // experation date
-        TextField(
-            label = { Text(text = "Experation Date") },
-            value = experationdate.value,
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-            onValueChange = { experationdate.value = it })
-        Spacer(modifier = Modifier.height(20.dp))
-
     }
 }
 

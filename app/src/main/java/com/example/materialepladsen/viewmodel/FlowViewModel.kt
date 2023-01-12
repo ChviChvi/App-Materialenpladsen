@@ -7,6 +7,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 
+
 class FlowViewModel : ViewModel(){
     private val _uiState = MutableStateFlow(FlowUiState())
     val uiState: StateFlow<FlowUiState> = _uiState.asStateFlow()
@@ -14,7 +15,7 @@ class FlowViewModel : ViewModel(){
     fun Fejlstart(){
         _uiState.update { currentState ->
             currentState.copy(
-                State = "FejlStart"
+                state = StateOfStart.FejlStart,
             )
         }
     }
@@ -25,7 +26,7 @@ class FlowViewModel : ViewModel(){
             currentState.copy(
                 weighInWeight = 1850.00f,
                 middleWeight = 1850.00f,
-                State = "korrekt startet"
+                state = StateOfStart.KorrektStart,
             )
         }
 
@@ -57,12 +58,12 @@ class FlowViewModel : ViewModel(){
         middleWeight()
         _uiState.update { currentState ->
             currentState.copy(
-                State = "Betal"
+                state = StateOfStart.Betal
             )
         }
-
-
     }
+
+
 
 
 

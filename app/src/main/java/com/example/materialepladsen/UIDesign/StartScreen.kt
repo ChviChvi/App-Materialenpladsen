@@ -6,10 +6,11 @@ import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import com.example.materialepladsen.R
+import com.example.materialepladsen.viewmodel.StateOfStart
 
 @Composable
 fun StartScreen(
-                state: String,
+                state: StateOfStart,
                 userFound:Boolean,
                 navigateFunction :() -> Unit = {},
                 setFailState:() -> Unit = {},
@@ -19,10 +20,10 @@ fun StartScreen(
 
     Column {
 
-       if (state== stringResource(id = R.string.FejlStart))
+       if (state== StateOfStart.FejlStart)
        {Text(text = stringResource(id = R.string.ForbindelseFejlStart))}
 
-        if (state==stringResource(id = R.string.Start))
+        if (state==StateOfStart.Start)
         {Text(text = stringResource(id = R.string.VægtStart))}
 
 

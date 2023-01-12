@@ -1,43 +1,44 @@
 package com.example.materialepladsen.ui.theme
 
 import android.annotation.SuppressLint
-import android.net.Uri
-import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
-
 import androidx.compose.foundation.layout.*
-
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import com.example.materialepladsen.R
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Login (
     modifier: Modifier = Modifier,
-    videoUri: Uri
+    //videoUri: Uri,
+    navigateToOpretBruger :() -> Unit = {}
 ) {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         topBar = {
-            Logo()
+
 
         }
 
     ) {
+
+
 
         Divider(color = Color.Black, thickness = 1.dp)
         Column(
@@ -48,6 +49,8 @@ fun Login (
                 .height(800.dp)
 
         ) {
+
+
 
 
             Spacer(modifier = Modifier.height(26.dp))
@@ -65,14 +68,35 @@ fun Login (
 
 
                 ) {
-                // Login registrer knapper
-                LoginReg()
 
-                Spacer(modifier = Modifier.height(27.dp))
+                Spacer(modifier = Modifier.height(50.dp))
+
+                Text(text = stringResource(id = R.string.LoginEllerRegistrer),
+                    style = MaterialTheme.typography.h2)
+
+                Spacer(modifier = Modifier.height(50.dp))
 
                 // Bruger og adganskode textfields
                 //Grøn Login knap
                 BrugerAdgang()
+
+                Spacer(modifier = Modifier.height(32.dp))
+
+                TextButton(
+                    onClick = { navigateToOpretBruger() },
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = Color.Black,
+                        backgroundColor = Color.Transparent,
+
+                        )
+                ) {
+                    Text(
+                        stringResource(id = R.string.OpretBruger),
+                        style = MaterialTheme.typography.h2,
+                        textDecoration=TextDecoration.Underline
+
+                    )
+                }
 
                 Spacer(modifier = Modifier.height(300.dp))
 
@@ -117,55 +141,25 @@ fun Logo(){
     }
 }
 
-//Login registrer knapper
-@Composable
-fun LoginReg (){
-    Row(
-        modifier=Modifier.padding(start=20.dp,top=43.dp,end=30.dp)
-    ) {
-        Logreg(id = R.string.Login)
-        Spacer(modifier = Modifier.width(35.dp))
-        Logreg(id = R.string.Registrer)
-    }
-}
 
-//Login registrer knapper
-//Login register knapper samles i en?
-@Composable
-fun Logreg (@StringRes id:Int){
 
-    Column (){
-        TextButton(
-            onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(
-                contentColor = Color.Black,
-                backgroundColor = Color.Transparent,
 
-                )
-        ) {
-            Text(
-                stringResource(id = id),
-                style = MaterialTheme.typography.h2,
-                textDecoration=TextDecoration.Underline
-
-            )
-        }
-
-    }
-}
 
 // bruger og adgangskode texfields
 //Grøn Login knap
 @Composable
 fun BrugerAdgang (
+
 ) {
+    val brugernavn = remember { mutableStateOf(TextFieldValue()) }
+    val adgangskode = remember { mutableStateOf(TextFieldValue()) }
 
     OutlinedTextField(
         modifier = Modifier
             .width(180.dp)
-            .height(50.dp),
-        value ="" ,
-        onValueChange ={},
+            .height(60.dp),
+        value =brugernavn.value ,
+        onValueChange ={ brugernavn.value = it },
         label = { Text(stringResource(id = R.string.Brugernavn))},
         leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription =null ) },
         textStyle = MaterialTheme.typography.h1
@@ -174,9 +168,9 @@ fun BrugerAdgang (
     OutlinedTextField(
         modifier = Modifier
             .width(180.dp)
-            .height(50.dp),
-        value = "",
-        onValueChange = {},
+            .height(60.dp),
+        value = adgangskode.value,
+        onValueChange = {adgangskode.value=it},
         label = { Text(stringResource(id = R.string.Adgangskode))},
         leadingIcon= {
             Icon(imageVector = Icons.Default.Lock, contentDescription =null ) },
@@ -184,7 +178,6 @@ fun BrugerAdgang (
     )
     Spacer(modifier = Modifier.height(32.dp))
     Button(onClick = { /*TODO*/ },
-        modifier=Modifier.padding(),
         colors = ButtonDefaults.buttonColors(
             contentColor = Color.Black,
             backgroundColor =MaterialTheme.colors.secondary

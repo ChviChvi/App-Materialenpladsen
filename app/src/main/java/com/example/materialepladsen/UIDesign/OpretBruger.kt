@@ -11,6 +11,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,7 +41,9 @@ import com.example.materialepladsen.viewmodel.BetalingViewModel
 fun OpretBruger() {
 
     Column (
-        modifier = Modifier.verticalScroll(rememberScrollState()).fillMaxWidth(),
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
+            .fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally,
 
@@ -68,7 +71,8 @@ fun OpretBruger() {
         val cardnumberMax = 16
         val CVV = remember { mutableStateOf(TextFieldValue("")) }
         val CVVMax = 3
-        val experationdate = remember { mutableStateOf(TextFieldValue("")) }
+        val experationdate = remember { mutableStateOf(TextFieldValue("/")) }
+        val experationdateMax = 5
 
 
 
@@ -218,12 +222,16 @@ fun OpretBruger() {
         Row(
             horizontalArrangement = Arrangement.SpaceEvenly,
 
-            modifier = Modifier.padding(start = 0.dp).fillMaxWidth()) {
+            modifier = Modifier
+                .padding(start = 0.dp)
+                .fillMaxWidth()) {
             // CVV
             TextField(
                 label = { Text(text = "CVV") },
                 value = CVV.value,
-                modifier = Modifier.weight(1f).padding(start = 10.dp),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(start = 10.dp),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
                 onValueChange = {
                     if (it.text.length <= CVVMax) CVV.value = it
@@ -231,15 +239,28 @@ fun OpretBruger() {
             Spacer(modifier = Modifier.width(20.dp))
 
             // experation date
+
             TextField(
                 label = { Text(text = "Experation Date") },
                 value = experationdate.value,
-                modifier = Modifier.weight(1f).padding(end = 10.dp),
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(end = 10.dp),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
-                onValueChange = { experationdate.value = it })
+                onValueChange = {
+                    if (it.text.length <= experationdateMax) experationdate.value = it
+                })
 
         }
         Spacer(modifier = Modifier.height(20.dp))
+
+        // button for finishing registration. skal lave en funktion der gemmer val og sender dem til database
+        Button(onClick = { /*TODO*/},
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.DarkGray))
+        {
+            Text(text = "Finnish Registration",color = Color.White)
+        }
+
     }
 }
 

@@ -76,8 +76,20 @@ fun OpretBruger() {
         val experationdate = remember { mutableStateOf(TextFieldValue("")) }
         val experationdateMax = 5
 
+        Row(
+            modifier = Modifier.fillMaxWidth().padding(10.dp)
+        ) {
+            Button(onClick = {/*TODO*/},
+                colors = ButtonDefaults.buttonColors(backgroundColor = Color.LightGray) ) {
+                Image(
+                    painterResource(id = R.drawable.b_arrow),
+                    contentDescription ="Go back",
+                    modifier = Modifier.size(20.dp))
 
-
+                Text(text = "Tilbage",Modifier.padding(start = 10.dp))
+            }
+        }
+        
         Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Opret Bruger",
         fontSize = 30.sp)
@@ -291,6 +303,9 @@ fun OpretBruger() {
             if (lastname.value.text.isEmpty()){
                 Toast.makeText(Context, "Efternavn er ikke udfyldt", Toast.LENGTH_SHORT).show()
             }
+            if (adress.value.text.isEmpty()){
+                Toast.makeText(Context, "adresse er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
             if (cityname.value.text.isEmpty()){
                 Toast.makeText(Context, "By er ikke udfyldt", Toast.LENGTH_SHORT).show()
             }
@@ -313,7 +328,7 @@ fun OpretBruger() {
                 Toast.makeText(Context, "Udløbsdato er ikke udfyldt", Toast.LENGTH_SHORT).show()
             }
                          },
-            colors = ButtonDefaults.buttonColors(backgroundColor = Color.DarkGray))
+            colors = ButtonDefaults.buttonColors(backgroundColor = Green))
         {
             Text(text = "Finnish Registration",color = Color.White)
         }

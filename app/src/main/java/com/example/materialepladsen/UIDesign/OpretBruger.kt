@@ -78,10 +78,11 @@ fun OpretBruger() {
 
 
 
+        Spacer(modifier = Modifier.height(10.dp))
         Text(text = "Opret Bruger",
         fontSize = 30.sp)
-        Spacer(modifier = Modifier.height(5.dp))
-        Text(text = "Indsæt venligt nedestående informationer")
+        Spacer(modifier = Modifier.height(10.dp))
+        Text(text = "Indsæt venligt nedestående informationer", fontSize = 15.sp)
         Spacer(modifier = Modifier.height(20.dp))
 
         // Username field with inputable data
@@ -270,12 +271,48 @@ fun OpretBruger() {
         Spacer(modifier = Modifier.height(20.dp))
 
         val Context = LocalContext.current
+        val emptyFieldValue = 0
+
         //  Tjekker om alle felter er udfyldt
         // button for finishing registration. skal lave en funktion der gemmer val og sender dem til database
         Button(onClick = {
-            if (username.value != null){
-            Toast.makeText(Context, "Brugernavn er ikke udfyldt", Toast.LENGTH_LONG).show()
-            } },
+            if (username.value.text.isEmpty()){
+            Toast.makeText(Context, "Brugernavn er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (password.value.text.isEmpty()){
+                Toast.makeText(Context, "Kodeord er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (licenceplate.value.text.isEmpty()){
+                Toast.makeText(Context, "Nummerplade er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (firstname.value.text.isEmpty()){
+                Toast.makeText(Context, "Fornavn er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (lastname.value.text.isEmpty()){
+                Toast.makeText(Context, "Efternavn er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (cityname.value.text.isEmpty()){
+                Toast.makeText(Context, "By er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (postalcode.value.text.isEmpty()){
+                Toast.makeText(Context, "Postnummer er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (phonenumber.value.text.isEmpty()){
+                Toast.makeText(Context, "Mobil nummer er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (email.value.text.isEmpty()){
+                Toast.makeText(Context, "Email er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (cardnumber.value.text.isEmpty()){
+                Toast.makeText(Context, "Kortnummer er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (CVV.value.text.isEmpty()){
+                Toast.makeText(Context, "CVV er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+            if (experationdate.value.text.isEmpty()){
+                Toast.makeText(Context, "Udløbsdato er ikke udfyldt", Toast.LENGTH_SHORT).show()
+            }
+                         },
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.DarkGray))
         {
             Text(text = "Finnish Registration",color = Color.White)

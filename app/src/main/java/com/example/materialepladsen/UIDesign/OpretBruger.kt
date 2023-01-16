@@ -18,6 +18,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.TileMode
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -33,7 +34,9 @@ import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
-import com.example.materialepladsen.viewmodel.BetalingViewModel
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 
 @OptIn(ExperimentalMaterialApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -48,8 +51,7 @@ fun OpretBruger() {
         horizontalAlignment = Alignment.CenterHorizontally,
 
 
-
-    ) {
+        ) {
         // general information for oprettelse
         val username = remember { mutableStateOf(TextFieldValue("")) }
         val password = remember { mutableStateOf(TextFieldValue("")) }
@@ -71,20 +73,21 @@ fun OpretBruger() {
         val cardnumberMax = 16
         val CVV = remember { mutableStateOf(TextFieldValue("")) }
         val CVVMax = 3
-        val experationdate = remember { mutableStateOf(TextFieldValue("/")) }
+        val experationdate = remember { mutableStateOf(TextFieldValue("")) }
         val experationdateMax = 5
 
 
 
-        Text(text = "Register user",
+        Text(text = "Opret Bruger",
         fontSize = 30.sp)
         Spacer(modifier = Modifier.height(5.dp))
-        Text(text = "Please insert your information")
+        Text(text = "Indsæt venligt nedestående informationer")
         Spacer(modifier = Modifier.height(20.dp))
 
         // Username field with inputable data
         TextField(
-            label = { Text(text = "Username") },
+            label = { Text(text = "Brugernavn") },
+            placeholder = { Text(text = "Indsæt brugernavn her") },
             value = username.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = { username.value = it })
@@ -92,7 +95,8 @@ fun OpretBruger() {
 
         // password field with inputable data
         TextField(
-            label = { Text(text = "Password") },
+            label = { Text(text = "Kodeord") },
+            placeholder = { Text(text = "Indsæt Kodeord her") },
             value = password.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = { password.value = it })
@@ -100,7 +104,8 @@ fun OpretBruger() {
 
         // License plate
         TextField(
-            label = { Text(text = "License plate") },
+            label = { Text(text = "Nummer plade") },
+            placeholder = { Text(text = "Eksempel: DD12312") },
             value = licenceplate.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = {
@@ -110,7 +115,8 @@ fun OpretBruger() {
 
         // first name
         TextField(
-            label = { Text(text = "First name") },
+            label = { Text(text = "Fornanvn") },
+            placeholder = { Text(text = "Indsæt fornavn her") },
             value = firstname.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = { firstname.value = it })
@@ -118,7 +124,8 @@ fun OpretBruger() {
 
         // last name
         TextField(
-            label = { Text(text = "Last name") },
+            label = { Text(text = "Efternavn") },
+            placeholder = { Text(text = "Indsæt efternavn her") },
             value = lastname.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = { lastname.value = it })
@@ -126,7 +133,8 @@ fun OpretBruger() {
 
         // adress
         TextField(
-            label = { Text(text = "Adress") },
+            label = { Text(text = "Adresse") },
+            placeholder = { Text(text = "Indsæt adresse her") },
             value = adress.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = { adress.value = it })
@@ -134,7 +142,8 @@ fun OpretBruger() {
 
         // city name
         TextField(
-            label = { Text(text = "City") },
+            label = { Text(text = "By") },
+            placeholder = { Text(text = "Indsæt by her") },
             value = cityname.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = { cityname.value = it })
@@ -142,7 +151,8 @@ fun OpretBruger() {
 
         // postal code
         TextField(
-            label = { Text(text = "Postal code") },
+            label = { Text(text = "Postnummer") },
+            placeholder = { Text(text = "Eksempel: 2800") },
             value = postalcode.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
             onValueChange = {
@@ -152,7 +162,8 @@ fun OpretBruger() {
 
         // Phone number
         TextField(
-            label = { Text(text = "Phone number") },
+            label = { Text(text = "Mobil nummer") },
+            placeholder = { Text(text = "Eksempel: 11223344") },
             value = phonenumber.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
             onValueChange = {
@@ -162,7 +173,8 @@ fun OpretBruger() {
 
         // Email
         TextField(
-            label = { Text(text = "Email Adress") },
+            label = { Text(text = "Email Adresse") },
+            placeholder = { Text(text = "Indsæt email her") },
             value = email.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
             onValueChange = { email.value = it })
@@ -182,7 +194,7 @@ fun OpretBruger() {
                 readOnly = true,
                 value = selectedOptionText,
                 onValueChange = { },
-                label = { Text("Card type") },
+                label = { Text("kort type") },
                 trailingIcon = {
                     ExposedDropdownMenuDefaults.TrailingIcon(
                         expanded = expanded
@@ -211,7 +223,8 @@ fun OpretBruger() {
         Spacer(modifier = Modifier.height(20.dp))
             // Cardnumber
             TextField(
-                label = { Text(text = "Card number") },
+                label = { Text(text = "kort nummer") },
+                placeholder = { Text(text = " Maks. input: 16") },
                 value = cardnumber.value,
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
                 onValueChange = {
@@ -228,6 +241,7 @@ fun OpretBruger() {
             // CVV
             TextField(
                 label = { Text(text = "CVV") },
+                placeholder = { Text(text = "Eksempel: 321") },
                 value = CVV.value,
                 modifier = Modifier
                     .weight(1f)
@@ -241,7 +255,8 @@ fun OpretBruger() {
             // experation date
 
             TextField(
-                label = { Text(text = "Experation Date") },
+                label = { Text(text = "Korts Udløbs dato") },
+                placeholder = { Text(text = "Eksempel: 01/24") },
                 value = experationdate.value,
                 modifier = Modifier
                     .weight(1f)
@@ -254,8 +269,13 @@ fun OpretBruger() {
         }
         Spacer(modifier = Modifier.height(20.dp))
 
+        val Context = LocalContext.current
+        //  Tjekker om alle felter er udfyldt
         // button for finishing registration. skal lave en funktion der gemmer val og sender dem til database
-        Button(onClick = { /*TODO*/},
+        Button(onClick = {
+            if (username.value != null){
+            Toast.makeText(Context, "Brugernavn er ikke udfyldt", Toast.LENGTH_LONG).show()
+            } },
             colors = ButtonDefaults.buttonColors(backgroundColor = Color.DarkGray))
         {
             Text(text = "Finnish Registration",color = Color.White)

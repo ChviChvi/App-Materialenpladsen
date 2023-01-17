@@ -21,13 +21,16 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.rememberNavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.UIDesign.OpretBruger
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Login (
-    navigateToOpretBruger :() -> Unit = {}, navigatetoGlemt :() -> Unit = {}
+    navigateToOpretBruger :() -> Unit = {},
+    navigateToGlemt :() -> Unit = {},
+    navigateToForside :() -> Unit = {}
 ) {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
@@ -66,8 +69,8 @@ fun Login (
                 Spacer(modifier = Modifier.height(50.dp))
 
                 // Bruger og adganskode textfields
-                //Grøn Login knap
-                BrugerAdgang()
+                // Grøn Login knap
+                BrugerAdgang { navigateToForside() }
 
                 Spacer(modifier = Modifier.height(32.dp))
 
@@ -75,10 +78,7 @@ fun Login (
                     onClick = { navigateToOpretBruger() },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Black,
-                        backgroundColor = Color.Transparent,
-
-                        )
-                ) {
+                        backgroundColor = Color.Transparent)) {
                     Text(
                         text = "Opret bruger",
                         style = MaterialTheme.typography.h2,
@@ -86,10 +86,11 @@ fun Login (
 
                     )
                 }
-                TextButton(onClick = { navigatetoGlemt() },
+
+                TextButton(onClick = { navigateToGlemt() },
                     colors = ButtonDefaults.buttonColors(
                         backgroundColor = Color.Transparent,
-                        contentColor = Color.Black) ) {
+                        contentColor = Color.Black)) {
                     Text(
                         text = "Glemt Adgangskode",
                         style = MaterialTheme.typography.h2,
@@ -106,11 +107,9 @@ fun Login (
                     onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.Gray,
-                        backgroundColor = Color.Transparent,
-
-                        )
-                ) {
-                    Text(text = stringResource(id = R.string.Glemt),
+                        backgroundColor = Color.Transparent)) {
+                    Text(
+                        text = stringResource(id = R.string.Glemt),
                         style=MaterialTheme.typography.h4)
                 }
             }
@@ -134,7 +133,6 @@ fun Logo(){
                 .height(35.dp)
                 .padding(start = 18.dp, top = 5.dp)
         )
-
     }
 }
 
@@ -143,7 +141,7 @@ fun Logo(){
 //Grøn Login knap
 @Composable
 fun BrugerAdgang (
-
+    navigateToForside :() -> Unit = {}
 ) {
     val brugernavn = remember { mutableStateOf(TextFieldValue()) }
     val adgangskode = remember { mutableStateOf(TextFieldValue()) }
@@ -152,10 +150,10 @@ fun BrugerAdgang (
         modifier = Modifier
             .width(180.dp)
             .height(60.dp),
-        value =brugernavn.value ,
+        value = brugernavn.value ,
         onValueChange ={ brugernavn.value = it },
         label = { Text(stringResource(id = R.string.Brugernavn))},
-        leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription =null ) },
+        leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = null ) },
         textStyle = MaterialTheme.typography.h1
     )
     Spacer(modifier = Modifier.height(26.dp))
@@ -170,14 +168,17 @@ fun BrugerAdgang (
             Icon(imageVector = Icons.Default.Lock, contentDescription =null ) },
         textStyle = MaterialTheme.typography.h1
     )
+
     Spacer(modifier = Modifier.height(32.dp))
-    Button(onClick = { /*TODO*/ },
+
+    TextButton(
+        onClick = { navigateToForside() },
         colors = ButtonDefaults.buttonColors(
             contentColor = Color.White,
             backgroundColor = colorResource(id = R.color.DarkRed)
-        )
-    ) {
-        Text(text = stringResource(id =R.string.Login),
+        )) {
+        Text(
+            text = stringResource(id =R.string.Login),
             style = MaterialTheme.typography.h2)
     }
 

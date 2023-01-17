@@ -28,10 +28,6 @@ fun ReadyScreen(
     chooseMaterial: (Material) -> Unit,
     calculatePrice: () -> Unit = {},
 ){
-
-
-
-
     Column(
         modifier=Modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
@@ -76,7 +72,6 @@ fun ReadyScreen(
                             selectedOption = item
                             expanded = false
                             chooseMaterial(item)
-
                         }
                     ) {
                         Text(text = item.materialName +" ("+item.productSize+")")
@@ -98,7 +93,6 @@ fun ReadyScreen(
             Text(text = stringResource(id = R.string.vejigen),
             fontWeight = FontWeight.Bold
             )
-
         }
 
         TextButton(
@@ -118,10 +112,7 @@ fun ReadyScreen(
         }) {
             Text(text = stringResource(id = R.string.vejigenogbetal),
                 fontWeight = FontWeight.Bold)
-
         }
-
-
 
         Text(text = stringResource(id = R.string.dinindvejning)+"\n"+weighInWeight+ stringResource(id = R.string.Kg),
             modifier= Modifier.padding(top = 30.dp),
@@ -137,6 +128,5 @@ fun ReadyScreen(
             modifier= Modifier.padding(top = 30.dp),
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.overline )
-
     }
 }

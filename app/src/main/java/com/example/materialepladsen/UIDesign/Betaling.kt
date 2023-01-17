@@ -31,10 +31,11 @@ fun Betaling (
     materiale:Material,
     addToBuyHistory :(Order) -> Unit,
     price:Float,
-    navigateToOrderHistory:() -> Unit = {}
+    navigateToOrderHistory:() -> Unit = {},
+    resetBuy:() -> Unit = {},
 ) {
 
-    var ordre=Order(materiale,weighToPay, Date(),price)
+    val order=Order(materiale,weighToPay, Date(),price)
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -50,7 +51,7 @@ fun Betaling (
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Indvejningsvægt)+ weighInWeight,
+                text = stringResource(id = R.string.Indvejningsvægt)+" "+ weighInWeight+" KG",
                 modifier = Modifier
                     .padding(start = 15.dp)
                     .align(Alignment.Start),
@@ -59,7 +60,7 @@ fun Betaling (
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Udvejningsvægt)+outWeight,
+                text = stringResource(id = R.string.Udvejningsvægt)+" "+outWeight+" KG",
                 modifier = Modifier
                     .padding(start = 15.dp)
                     .align(Alignment.Start),
@@ -68,7 +69,7 @@ fun Betaling (
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
-                text = stringResource(id = R.string.Afrejningsvægt)+weighToPay,
+                text = stringResource(id = R.string.Afrejningsvægt)+" " +weighToPay+" KG",
                 modifier = Modifier
                     .padding(start = 15.dp)
                     .align(Alignment.Start),
@@ -89,34 +90,34 @@ fun Betaling (
                 AsyncImage(
                     model=materiale.picture,
                     contentDescription = null,
-                    placeholder = painterResource(id = R.drawable.loadingimage)
+                    placeholder = painterResource(id = R.drawable.loadingimage),
                 )
                 Spacer(modifier = Modifier.height(15.dp))
             }
 
             //Materiale
             Text(
-                text = stringResource(id = R.string.Materiale)+ materiale.materialName,
+                text = stringResource(id = R.string.Materiale)+" "+ materiale.materialName,
                 modifier = Modifier
-                    .padding(start = 15.dp)
+                    .padding(start = 15.dp,top=15.dp)
                     .align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
             Text(
-                text = stringResource(id = R.string.prisprkg)+ materiale.materialPrice,
+                text = stringResource(id = R.string.prisprkg)+" "+ materiale.materialPrice+ " DKK",
                 modifier = Modifier
-                    .padding(start = 15.dp)
+                    .padding(start = 15.dp,top=15.dp)
                     .align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
 
-            Spacer(modifier = Modifier.height(30.dp))
+
 
             //Pris
             Text(
-                text = stringResource(id = R.string.Samletpris)+price+"DKK",
+                text = stringResource(id = R.string.Samletpris)+" "+price+" DKK",
                 modifier = Modifier
-                    .padding(start = 15.dp)
+                    .padding(start = 15.dp,top=15.dp)
                     .align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
@@ -140,8 +141,10 @@ fun Betaling (
                         .width(200.dp)
                         .height(50.dp),
                     onClick = {
-                        addToBuyHistory(ordre)
-                        navigateToOrderHistory()},
+                        addToBuyHistory(order)
+                        resetBuy()
+                        navigateToOrderHistory()
+                        },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,
                         backgroundColor = colorResource(id = R.color.DarkRed),
@@ -164,8 +167,10 @@ fun Betaling (
                         .width(200.dp)
                         .height(50.dp),
                     onClick = {
-                        addToBuyHistory(ordre)
-                        navigateToOrderHistory()},
+                        addToBuyHistory(order)
+                        resetBuy()
+                        navigateToOrderHistory()
+                        },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,
                         backgroundColor = colorResource(id = R.color.DarkRed),
@@ -187,8 +192,9 @@ fun Betaling (
                         .width(200.dp)
                         .height(50.dp),
                     onClick = {
-                        addToBuyHistory(ordre)
-                        navigateToOrderHistory()},
+                        addToBuyHistory(order)
+                        resetBuy()
+                        navigateToOrderHistory() },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,
                         backgroundColor = colorResource(id = R.color.DarkRed),

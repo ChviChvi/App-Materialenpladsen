@@ -97,7 +97,8 @@ fun MaterialepladsenApp(
                     materiale = uiState.value.chosenMaterial,
                     price = uiState.value.price,
                     addToBuyHistory = {flowViewModel.addToBuyHistory(it)},
-                    navigateToOrderHistory = {navController.navigate("Købshistorik")}
+                    navigateToOrderHistory = {navController.navigate("Købshistorik")},
+                    resetBuy = {flowViewModel.resetBuy()}
                     )
             }
             composable(route = "Købshistorik") {
@@ -121,15 +122,13 @@ fun MaterialepladsenApp(
             composable(route = "Materialepladsen") {
                 if(uiState.value.state==StateOfStart.KorrektStart ){
                     ReadyScreen(
-                        onVejIgenButtonClicked = {flowViewModel.middleWeight()},
                         weighInWeight = uiState.value.weighInWeight,
                         middleWeight = uiState.value.middleWeight,
                         weighToPay = uiState.value.weighToPay,
-                        onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
-                        navigateToBetaling = { navController.navigate("Betaling") },
                         materiallist = uiState.value.materialList,
                         chooseMaterial = {flowViewModel.chooseMaterial(it)},
-                        calculatePrice = {flowViewModel.calculatePrice()}
+                        navigateToWaitingScreen2 = { navController.navigate("Waiting Screen2")},
+                        navigateToWaitingScreen3 = { navController.navigate("Waiting Screen3")},
                     )
                 }
                 if(uiState.value.state==StateOfStart.Betal ){
@@ -158,17 +157,28 @@ fun MaterialepladsenApp(
                     weighInFunction = {flowViewModel.weighIn()},
                 )
             }
+            composable(route = "Waiting Screen2") {
+                WaitingScreen2(
+                    middleWeight = {flowViewModel.middleWeight()},
+                    navigateFunction = {navController.navigate("Ready Screen")},
+                )
+            }
+            composable(route = "Waiting Screen3") {
+                WaitingScreen3(
+                    calculatePrice ={flowViewModel.calculatePrice()} ,
+                    onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
+                    navigateToBetaling = {navController.navigate("Betaling")},
+                )
+            }
             composable(route = "Ready Screen") {
                 ReadyScreen(
-                    onVejIgenButtonClicked = {flowViewModel.middleWeight()},
                     weighInWeight = uiState.value.weighInWeight,
                     middleWeight = uiState.value.middleWeight,
                     weighToPay = uiState.value.weighToPay,
-                    onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
-                    navigateToBetaling = { navController.navigate("Betaling")},
                     materiallist = uiState.value.materialList,
                     chooseMaterial = {flowViewModel.chooseMaterial(it)},
-                    calculatePrice = {flowViewModel.calculatePrice()}
+                    navigateToWaitingScreen2 = { navController.navigate("Waiting Screen2")},
+                    navigateToWaitingScreen3 = { navController.navigate("Waiting Screen3")},
                 )
             }
         }

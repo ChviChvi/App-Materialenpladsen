@@ -25,8 +25,6 @@ import com.example.materialepladsen.ui.theme.*
 @Composable
 fun Findos(navController: NavController) {
     Column() {
-        Logo3()
-
         Divider(modifier = Modifier.fillMaxWidth(),
             thickness = 2.dp,
             color = Color.Black)
@@ -89,31 +87,6 @@ fun Findos(navController: NavController) {
     }
 }
 
-@Composable
-fun Logo3(){
-    Row(modifier= Modifier
-        .height(41.dp)
-        .width(360.dp),
-        horizontalArrangement = Arrangement.Start)
-    {
-        Image(
-            painter = painterResource(id = R.drawable.unknown_1),
-            contentDescription =null,
-            modifier= Modifier
-                .width(118.dp)
-                .height(35.dp)
-                .padding(start = 18.dp, top = 5.dp)
-        )
-        Spacer(modifier = Modifier.width(200.dp))
-
-        Icon(modifier= Modifier
-            .height(25.dp)
-            .width(25.dp)
-            .align(Alignment.CenterVertically),
-            imageVector = Icons.Default.ShoppingCart,
-            contentDescription = null)
-    }
-}
 
 @Composable
 fun Initialize_Map(

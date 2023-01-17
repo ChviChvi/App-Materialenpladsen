@@ -143,8 +143,7 @@ fun Materialepladsen(
                 OrderHistory(buyHistory = uiState.value.orderhistory)
             }
             composable(route = "Materialer") {
-                Materialer(
-                )
+                Materialer()
             }
             composable(route = "Forside") {
                 Forside(navController = navController,

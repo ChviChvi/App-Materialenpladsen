@@ -22,7 +22,7 @@ class FlowViewModel : ViewModel(){
     }
 
     fun weighIn(){
-        matchLicensePlate()
+        //matchLicensePlate()
         _uiState.update { currentState ->
             currentState.copy(
                 weighInWeight = 1850.00f,
@@ -82,7 +82,9 @@ class FlowViewModel : ViewModel(){
 
     }
 
+    fun loading(){
 
+    }
 
 
 

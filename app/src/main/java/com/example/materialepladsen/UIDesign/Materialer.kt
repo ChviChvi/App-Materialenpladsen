@@ -5,12 +5,14 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.painterResource
@@ -53,16 +55,40 @@ fun Materialer(){
                             contentDescription = null,
                             placeholder = painterResource(id = R.drawable.loadingimage)
                         )
-                        Text(text = Material.materialName, fontSize = 40.sp,
-                            modifier = Modifier.align(Alignment.TopStart)
-                                .padding(bottom = 10.dp)
-                                .background(color = Color.White, shape = RectangleShape))
+                        Box(
+                            modifier = Modifier
+                                .align(Alignment.BottomStart)
+                                .offset(x = 10.dp, y= (-10).dp)
+                                .background(color = Color.Transparent)
+                                .border(5.dp, Color.Transparent, RoundedCornerShape(10))
+                                .clip(RoundedCornerShape(10))
 
-                        Text(text = Material.productSize, fontSize = 20.sp,
-                            modifier = Modifier.align(Alignment.BottomEnd).padding(bottom = 10.dp))
+                        ) {
+                            Text(text = Material.materialName, fontSize = 40.sp,
+                                modifier = Modifier.align(Alignment.TopStart)
+                                    .padding(bottom = 10.dp)
+                                    .background(color = Color.Red, shape = RectangleShape))
+                        }
 
-                        Text(text = Material.materialPrice.toString(), fontSize = 20.sp,
-                        modifier = Modifier.align(Alignment.BottomStart).padding(bottom = 10.dp))
+
+                        Box(
+                            modifier = Modifier.align(Alignment.BottomCenter)
+                                .background(color = Color.Transparent)
+                                .offset(x = 60.dp, y= (25).dp)
+                                .align(Alignment.BottomCenter)
+                        ) {
+                            Text(text = Material.productSize, fontSize = 20.sp,
+                                modifier = Modifier.align(Alignment.BottomEnd).padding(bottom = 10.dp))
+                        }
+                        Box(
+                            modifier = Modifier.align(Alignment.BottomCenter)
+                                .background(color = Color.Transparent)
+                                .offset(x = (-60).dp, y= (25).dp)
+                                .align(Alignment.BottomCenter)
+                        ) {
+                            Text(text = Material.materialPrice.toString(), fontSize = 20.sp,
+                                modifier = Modifier.align(Alignment.BottomStart).padding(bottom = 10.dp))
+                        }
                     }
                 }
             }

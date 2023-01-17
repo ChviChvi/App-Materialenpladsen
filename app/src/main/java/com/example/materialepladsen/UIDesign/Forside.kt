@@ -152,11 +152,7 @@ fun Forside(
                 style=MaterialTheme.typography.body1,
                 lineHeight = 20.sp)
         }
-        // Hent selv knap og beregn pris knap
-        item{
-            Buttons2()
 
-        }
         item{
             Spacer(modifier = Modifier.height(20.dp))
         }
@@ -210,38 +206,6 @@ fun TopBar(@StringRes id: Int){
     }
 }
 
-// Hent selv og beregn pris knapper
-@Composable
-fun Buttons2(){
-    Row (
-        horizontalArrangement = Arrangement.Center
-            ){
-        TextButton(
-            modifier = Modifier
-                .width(123.dp)
-                .height(40.dp),
-            onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(
-                contentColor = Color.White,
-                backgroundColor = colorResource(id = R.color.DarkRed)
-        )){
-           Text(text= stringResource(id = R.string.førsteknap), fontSize = 10.sp)
-            }
-        Spacer(modifier = Modifier.width(20.dp))
-        TextButton(
-            modifier = Modifier
-                .width(112.dp)
-                .height(40.dp),
-            onClick = { /*TODO*/ },
-            colors = ButtonDefaults.buttonColors(
-                contentColor = Color.White,
-                backgroundColor = colorResource(id = R.color.DarkRed)
-            )){
-            Text(text= stringResource(id = R.string.andenknap),fontSize = 10.sp)
-        }
-
-    }
-}
 
 //Se produkter og bestil elvering knapper
 @Composable

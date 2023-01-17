@@ -2,6 +2,7 @@ package com.example.materialepladsen.viewmodel
 
 
 import androidx.lifecycle.ViewModel
+import com.example.materialepladsen.API.NewOrderModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -29,11 +30,23 @@ class FlowViewModel : ViewModel(){
                 state = StateOfStart.KorrektStart,
             )
         }
-
     }
 
+
     fun matchLicensePlate(){
-        //TODO
+        //Simulate the picture taken of the cars license plate, by just having a string input instead
+        val stringInput = readLine()!!
+        val dataPlate = NewOrderModel().Licenseplate
+
+        if(dataPlate == ""){
+            println("No license plates!")
+        }
+
+        if(stringInput != dataPlate){
+            println("The license plates are not matching!")
+        } else {
+            println("The license plates are matching!")
+        }
     }
 
     fun middleWeight(){
@@ -52,7 +65,6 @@ class FlowViewModel : ViewModel(){
 
 
     }
-
 
     fun weighOutAndPay(){
         middleWeight()

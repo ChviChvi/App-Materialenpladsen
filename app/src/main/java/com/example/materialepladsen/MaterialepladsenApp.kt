@@ -69,8 +69,6 @@ fun MaterialepladsenApp(
                 })
         }
     ){
-
-
         NavHost(
             navController = navController,
             startDestination = "login"
@@ -144,7 +142,6 @@ fun MaterialepladsenApp(
                         navigateToOrderHistory = {navController.navigate("Købshistorik")}
                     )
                 }
-
                 else if (uiState.value.state==StateOfStart.Start ){
                 StartScreen(
                     state = uiState.value.state,
@@ -206,4 +203,3 @@ fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
 
     }
 }
-

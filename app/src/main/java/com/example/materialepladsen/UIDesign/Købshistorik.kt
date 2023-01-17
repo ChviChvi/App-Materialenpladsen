@@ -4,23 +4,19 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Divider
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.SpanStyle
-import androidx.compose.ui.text.buildAnnotatedString
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.withStyle
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
 import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.Order
+import com.example.materialepladsen.R
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -34,7 +30,6 @@ fun OrderHistory (
         verticalArrangement = Arrangement.Top,
         modifier = Modifier
             .fillMaxWidth()
-            .height(800.dp)
     ){
         items(buyHistory){Order->
             OrderItem(order = Order)
@@ -47,30 +42,22 @@ fun OrderHistory (
 fun OrderItem (order: Order
     ){
 
-    Column(
-
-        modifier=Modifier
-            .fillMaxWidth()
-    ) {
         // Materiale, Vægt og dato
         Row(
-            modifier=Modifier.padding(start=20.dp,top=20.dp),
+            modifier=Modifier.padding(start=20.dp,top=20.dp).
+            height(100.dp),
             horizontalArrangement = Arrangement.Start
         ) {
-            Text(
-                buildAnnotatedString {
-                    withStyle(SpanStyle(
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold,
-                        fontFamily = Inter)){
-                        append(order.materiale.materialName) }
-                    append(" ")
-                    withStyle(SpanStyle(
-                        fontSize = 12.sp,
-                        fontWeight = FontWeight.Normal,
-                        fontFamily = Inter)){
-                        append(order.weight.toString()) } },
-                modifier=Modifier.width(200.dp))
+
+            Text(text = stringResource(id = R.string.Materiale) + order.materiale.materialName
+            +"\n"+ stringResource(id = R.string.Udvejningsvægt)+order.weight.toString()+"\n"+
+            stringResource(id = R.string.prisprkg)+order.materiale.materialPrice+"\n"
+            +order.pris)
+
+            AsyncImage(model = order.materiale.picture,
+                contentDescription =null,
+                modifier = Modifier.size(40.dp) )
+
             
             Spacer(modifier = Modifier.width(80.dp))
 
@@ -79,36 +66,8 @@ fun OrderItem (order: Order
             style=MaterialTheme.typography.subtitle2)
         }
 
-        //Pris
-        Text(
-            buildAnnotatedString {
-                withStyle(style= SpanStyle(
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = Inter)){
-                    append("Pris - ")
-                }
-                withStyle(style= SpanStyle(
-                    fontSize = 12.sp,
-                    fontWeight = FontWeight.Normal,
-                    fontFamily = Inter)){
-                    append(order.pris.toString())
-                }
-                append("\n")
-            },
-            modifier=Modifier.padding(start=20.dp),
-        textAlign = TextAlign.Start,
-            lineHeight = 12.sp,)
 
-        //Ordrenummer
 
-        
-        Spacer(modifier = Modifier.height(10.dp))
-
-        Divider(modifier = Modifier.fillMaxWidth(),
-            thickness = 1.dp,
-            color = Color.Black)
-    }
 }
 
 @Preview(showBackground = true)

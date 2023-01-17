@@ -144,15 +144,20 @@ fun MaterialepladsenApp(
                     )
                 }
 
-                else{
+                else if (uiState.value.state==StateOfStart.Start ){
                 StartScreen(
                     state = uiState.value.state,
                     userFound = uiState.value.userFound,
-                    navigateFunction = { navController.navigate("Ready Screen") },
                     setFailState = {flowViewModel.Fejlstart()},
-                    weighInFunction = {flowViewModel.weighIn()}
+                    navigateFunction = {navController.navigate("Waiting Screen")}
                     )}
 
+            }
+            composable(route = "Waiting Screen") {
+                WaitingScreen(
+                    navigateFunction = { navController.navigate("Ready Screen") },
+                    weighInFunction = {flowViewModel.weighIn()},
+                )
             }
             composable(route = "Ready Screen") {
                 ReadyScreen(

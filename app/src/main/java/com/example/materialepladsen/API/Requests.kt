@@ -56,7 +56,7 @@ data class NewOrderModel(
     val Licenseplate: String = "",
     val WeightUnit: String = "",
     val WeightIn: Int = 0,
-    val WeightOut: Int = 0
+    val WeightOut: Int = 0,
     val WeightProduct: Int = 0,
     val OrderNumber: Int = 0,
     val CustomerId: Int = 0,

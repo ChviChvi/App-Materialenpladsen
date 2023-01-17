@@ -144,10 +144,10 @@
     <string name="PaybyPlate">Pay by Plate</string>
 
     <!--Flow-->
-    <string name="VægtStart">Kør hen på vægten og tryk start</string>
+    <string name="VægtStart">Velkommen til Materialepladsen.\nKør hen på vægten og tryk start, for at blive vejet og åbne bommen til indgangen.</string>
     <string name="ForbindelseFejlStart">Fejl i forbindelsen:\n Kør hen på vægten og tryk start</string>
     <string name="Readytopickmaterials">Du er nu klar til at vælge dine materialer\n
-        Kør til vægten for at blive vejet igen eller betale</string>
+        Kør til vægten for at blive vejet igen eller betale.</string>
     <string name="vejigen">Vej igen</string>
     <string name="vejigenogbetal">Vej igen og betal</string>
     <string name="dinindvejning">Dette var din indvejning: </string>
@@ -158,4 +158,5 @@
     <string name="FejlStart">FejlStart</string>
     <string name="Start">Start</string>
     <string name="Kg">Kg</string>
+    <string name="vent">Vent venligst mens vi scanner din nummerplade</string>
 </resources>

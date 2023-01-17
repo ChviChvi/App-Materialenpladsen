@@ -223,7 +223,7 @@ fun Buttons2(){
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
-                backgroundColor = colorResource(id = R.color.DarkGreen)
+                backgroundColor = colorResource(id = R.color.DarkRed)
         )){
            Text(text= stringResource(id = R.string.førsteknap), fontSize = 10.sp)
             }
@@ -235,7 +235,7 @@ fun Buttons2(){
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
-                backgroundColor = colorResource(id = R.color.DarkGreen)
+                backgroundColor = colorResource(id = R.color.DarkRed)
             )){
             Text(text= stringResource(id = R.string.andenknap),fontSize = 10.sp)
         }

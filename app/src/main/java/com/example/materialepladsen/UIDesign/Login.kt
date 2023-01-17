@@ -152,7 +152,9 @@ fun BrugerAdgang (
         leadingIcon = { Icon(imageVector = Icons.Default.Person, contentDescription = null ) },
         textStyle = MaterialTheme.typography.h1
     )
+
     Spacer(modifier = Modifier.height(26.dp))
+
     OutlinedTextField(
         modifier = Modifier
             .width(180.dp)
@@ -177,7 +179,6 @@ fun BrugerAdgang (
             text = stringResource(id =R.string.Login),
             style = MaterialTheme.typography.h2)
     }
-
 }
 
 

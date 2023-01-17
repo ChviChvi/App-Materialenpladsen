@@ -1,9 +1,6 @@
 package com.example.materialepladsen.UIDesign
 
 import android.annotation.SuppressLint
-import androidx.annotation.DrawableRes
-import androidx.annotation.StringRes
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -20,6 +17,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
+import coil.compose.AsyncImage
+import com.example.materialepladsen.viewmodel.Material1
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
@@ -30,10 +29,9 @@ fun Betaling (
     weighInWeight:Float,
     outWeight:Float,
     weighToPay:Float,
-    @DrawableRes materialeBillede: Int,
-    @StringRes materiale:Int,
-    price: Float,
-    addToBuyHistory :() -> Unit = {}
+    materiale:Material1,
+    addToBuyHistory :() -> Unit = {},
+    price:Float
 ) {
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -85,19 +83,24 @@ fun Betaling (
             // Det valgte materiale
             Row(modifier = Modifier.padding(start = 0.dp)) {
                 Spacer(modifier = Modifier.width(1.dp))
-                Image(
-                    painterResource(materialeBillede),
+                AsyncImage(
+                    model=materiale.picture,
                     contentDescription = null,
-                    modifier = Modifier
-                        .height(200.dp)
-                        .width(200.dp),
+                    placeholder = painterResource(id = R.drawable.loadingimage)
                 )
                 Spacer(modifier = Modifier.height(15.dp))
             }
 
             //Materiale
             Text(
-                text = stringResource(id = R.string.Materiale)+ stringResource(id = materiale),
+                text = stringResource(id = R.string.Materiale)+ materiale.material_name,
+                modifier = Modifier
+                    .padding(start = 15.dp)
+                    .align(Alignment.Start),
+                style = MaterialTheme.typography.h6,
+            )
+            Text(
+                text = stringResource(id = R.string.prisprkg)+ materiale.material_price,
                 modifier = Modifier
                     .padding(start = 15.dp)
                     .align(Alignment.Start),

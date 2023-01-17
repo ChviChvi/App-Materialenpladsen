@@ -122,8 +122,8 @@ fun Initialize_Map(
     Column(modifier = Modifier.width(500.dp)) {
         Image(
             modifier = Modifier
-                .height(280.dp)
-                .width(460.dp)
+                .height(260.dp)
+                .width(420.dp)
                 .align(Alignment.CenterHorizontally),
             painter = painterResource(id = billede),
             contentDescription = null
@@ -142,7 +142,7 @@ fun Rectanglefindos(
     Column(modifier = Modifier.width(screenWidth)) {
         Image(
             modifier = Modifier
-                .height(70.dp)
+                .height(60.dp)
                 .width(screenWidth)
                 .align(Alignment.CenterHorizontally),
             painter = painterResource(id = billede),
@@ -150,6 +150,7 @@ fun Rectanglefindos(
         )
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable

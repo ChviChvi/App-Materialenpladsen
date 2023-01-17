@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
@@ -111,10 +112,7 @@ fun Login (
                 ) {
                     Text(text = stringResource(id = R.string.Glemt),
                         style=MaterialTheme.typography.h4)
-
                 }
-
-
             }
         }
     }
@@ -139,9 +137,6 @@ fun Logo(){
 
     }
 }
-
-
-
 
 
 // bruger og adgangskode texfields
@@ -179,7 +174,7 @@ fun BrugerAdgang (
     Button(onClick = { /*TODO*/ },
         colors = ButtonDefaults.buttonColors(
             contentColor = Color.Black,
-            backgroundColor =MaterialTheme.colors.secondary
+            backgroundColor = colorResource(id = R.color.DarkRed)
         )
     ) {
         Text(text = stringResource(id =R.string.Login),

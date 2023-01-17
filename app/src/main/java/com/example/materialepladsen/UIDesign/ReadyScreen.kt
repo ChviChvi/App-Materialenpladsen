@@ -54,7 +54,7 @@ fun ReadyScreen(
         ) {
             TextField(
                 readOnly = true,
-                value = selectedOption.material_name,
+                value = selectedOption.materialName+" ("+selectedOption.productSize+")",
                 onValueChange = {chooseMaterial(selectedOption) },
                 label = { Text("Vælg dit materiale") },
                 trailingIcon = {
@@ -79,7 +79,7 @@ fun ReadyScreen(
 
                         }
                     ) {
-                        Text(text = item.material_name)
+                        Text(text = item.materialName +" ("+item.productSize+")")
                     }
                 }
             }

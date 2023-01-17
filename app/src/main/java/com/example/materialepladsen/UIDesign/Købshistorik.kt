@@ -63,7 +63,7 @@ fun OrderItem (order: Order
                         fontSize = 12.sp,
                         fontWeight = FontWeight.Bold,
                         fontFamily = Inter)){
-                        append(order.materiale.material_name) }
+                        append(order.materiale.materialName) }
                     append(" ")
                     withStyle(SpanStyle(
                         fontSize = 12.sp,

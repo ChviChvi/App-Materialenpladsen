@@ -101,7 +101,7 @@ class FlowViewModel : ViewModel(){
         }
     }
     fun calculatePrice(){
-        val price=_uiState.value.chosenMaterial.material_price*_uiState.value.weighToPay
+        val price=_uiState.value.chosenMaterial.materialPrice*_uiState.value.weighToPay
         _uiState.update { currentState ->
             currentState.copy(
                 price = price

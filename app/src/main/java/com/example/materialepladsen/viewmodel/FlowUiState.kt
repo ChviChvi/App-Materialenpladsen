@@ -12,8 +12,8 @@ data class FlowUiState(
     var outWeight: Float=0.0f,
     var weighToPay: Float=0.0f,
     var price:Float=200F,
-    var materialList1:List<Material> = Material_list,
-    var chosenMaterial: Material = materialList1[0],
+    var materialList:List<Material> = MaterialList,
+    var chosenMaterial: Material = materialList[0],
     var orderhistory:List<Order> =listOf()
     )
 

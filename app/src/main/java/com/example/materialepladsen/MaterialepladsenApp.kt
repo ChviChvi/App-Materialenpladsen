@@ -124,7 +124,7 @@ fun MaterialepladsenApp(
                         weighToPay = uiState.value.weighToPay,
                         onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
                         navigateToBetaling = { navController.navigate("Betaling") },
-                        materiallist = uiState.value.materialList1,
+                        materiallist = uiState.value.materialList,
                         chooseMaterial = {flowViewModel.chooseMaterial(it)},
                         calculatePrice = {flowViewModel.calculatePrice()}
                     )
@@ -164,7 +164,7 @@ fun MaterialepladsenApp(
                     weighToPay = uiState.value.weighToPay,
                     onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
                     navigateToBetaling = { navController.navigate("Betaling")},
-                    materiallist = uiState.value.materialList1,
+                    materiallist = uiState.value.materialList,
                     chooseMaterial = {flowViewModel.chooseMaterial(it)},
                     calculatePrice = {flowViewModel.calculatePrice()}
                 )

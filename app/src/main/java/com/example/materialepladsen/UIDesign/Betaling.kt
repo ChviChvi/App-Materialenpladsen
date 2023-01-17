@@ -33,7 +33,8 @@ fun Betaling (
     price:Float,
     navigateToOrderHistory:() -> Unit = {}
 ) {
-    val ordre=Order(materiale,weighToPay, Date(),price)
+
+    var ordre=Order(materiale,weighToPay, Date(),price)
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
@@ -95,14 +96,14 @@ fun Betaling (
 
             //Materiale
             Text(
-                text = stringResource(id = R.string.Materiale)+ materiale.material_name,
+                text = stringResource(id = R.string.Materiale)+ materiale.materialName,
                 modifier = Modifier
                     .padding(start = 15.dp)
                     .align(Alignment.Start),
                 style = MaterialTheme.typography.h6,
             )
             Text(
-                text = stringResource(id = R.string.prisprkg)+ materiale.material_price,
+                text = stringResource(id = R.string.prisprkg)+ materiale.materialPrice,
                 modifier = Modifier
                     .padding(start = 15.dp)
                     .align(Alignment.Start),

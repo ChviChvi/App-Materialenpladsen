@@ -34,7 +34,10 @@ import com.example.materialepladsen.R
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun Forside(navController: NavController) {
+fun Forside(
+    navController: NavController,
+    navigateToProducts :() -> Unit = {}
+) {
     LazyColumn(
         horizontalAlignment = CenterHorizontally,
         verticalArrangement = Arrangement.Top,
@@ -69,7 +72,7 @@ fun Forside(navController: NavController) {
         }
         //Se produkter og Bestil Levering knapper
         item {
-            Buttons()
+            Buttons { navigateToProducts() }
         }
         item{
             Divider(
@@ -242,7 +245,9 @@ fun Buttons2(){
 
 //Se produkter og bestil elvering knapper
 @Composable
-fun Buttons () {
+fun Buttons (
+    navigateToProducts :() -> Unit = {}
+) {
     Row(modifier = Modifier
         .padding(start = 40.dp, top = 8.dp)
         .fillMaxWidth(),
@@ -250,10 +255,10 @@ fun Buttons () {
     ) {
 
         TextButton(
-            onClick = { /*TODO*/ },
+            onClick = { navigateToProducts() },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
-                backgroundColor = colorResource(id = R.color.DarkGreen)
+                backgroundColor = colorResource(id = R.color.DarkRed)
             )) {
             Text(text = stringResource(id = R.string.se_produkter))
 
@@ -264,7 +269,7 @@ fun Buttons () {
             onClick = { /*TODO*/ },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
-                backgroundColor = colorResource(id = R.color.DarkGreen)
+                backgroundColor = colorResource(id = R.color.DarkRed)
             )) {
             Text(text = stringResource(id = R.string.Bestil_levering))
 

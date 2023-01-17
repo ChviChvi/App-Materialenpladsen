@@ -173,7 +173,7 @@ fun BrugerAdgang (
     Spacer(modifier = Modifier.height(32.dp))
     Button(onClick = { /*TODO*/ },
         colors = ButtonDefaults.buttonColors(
-            contentColor = Color.Black,
+            contentColor = Color.White,
             backgroundColor = colorResource(id = R.color.DarkRed)
         )
     ) {

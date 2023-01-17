@@ -1,11 +1,8 @@
 package com.example.materialepladsen.UIDesign
 
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.ButtonDefaults
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.material.TextButton
-import androidx.compose.runtime.Composable
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -15,17 +12,23 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.materialepladsen.R
+import com.example.materialepladsen.viewmodel.Material1
 
 
+@OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun ReadyScreen(
-                onVejIgenButtonClicked: () -> Unit = {},
-                onVejIgenOgBetalButtonClicked: () -> Unit = {},
-                weighInWeight:Float,
-                middleWeight:Float,
-                weighToPay: Float,
-                navigateToBetaling:() -> Unit = {}
+    onVejIgenButtonClicked: () -> Unit = {},
+    onVejIgenOgBetalButtonClicked: () -> Unit = {},
+    weighInWeight:Float,
+    middleWeight:Float,
+    weighToPay: Float,
+    navigateToBetaling:() -> Unit = {},
+    materiallist: List<Material1>,
+    chooseMaterial: (Material1) -> Unit,
+    calculatePrice: () -> Unit = {},
 ){
+
 
 
 
@@ -38,6 +41,49 @@ fun ReadyScreen(
             modifier= Modifier.padding(top = 30.dp, bottom = 30.dp),
             textAlign = TextAlign.Center,
             style = MaterialTheme.typography.overline)
+
+        var expanded by remember { mutableStateOf(false) }
+        var selectedOption by remember { mutableStateOf(materiallist[0]) }
+
+        ExposedDropdownMenuBox(
+            modifier = Modifier.padding(top=30.dp, bottom = 30.dp),
+            expanded = expanded,
+            onExpandedChange = {
+                expanded = !expanded
+            }
+        ) {
+            TextField(
+                readOnly = true,
+                value = selectedOption.material_name,
+                onValueChange = {chooseMaterial(selectedOption) },
+                label = { Text("Vælg dit materiale") },
+                trailingIcon = {
+                    ExposedDropdownMenuDefaults.TrailingIcon(
+                        expanded = expanded
+                    )
+                },
+                colors = ExposedDropdownMenuDefaults.textFieldColors()
+            )
+            ExposedDropdownMenu(
+                expanded = expanded,
+                onDismissRequest = {
+                    expanded = false
+                }
+            ) {
+                materiallist.forEach { item ->
+                    DropdownMenuItem(
+                        onClick = {
+                            selectedOption = item
+                            expanded = false
+                            chooseMaterial(item)
+
+                        }
+                    ) {
+                        Text(text = item.material_name)
+                    }
+                }
+            }
+        }
 
         TextButton(
             colors = ButtonDefaults.buttonColors(
@@ -65,13 +111,17 @@ fun ReadyScreen(
                 .width(150.dp)
                 .height(40.dp),
             onClick = {
-            onVejIgenOgBetalButtonClicked()
-            navigateToBetaling()
+                onVejIgenOgBetalButtonClicked()
+                calculatePrice()
+                navigateToBetaling()
+
         }) {
             Text(text = stringResource(id = R.string.vejigenogbetal),
                 fontWeight = FontWeight.Bold)
 
         }
+
+
 
         Text(text = stringResource(id = R.string.dinindvejning)+"\n"+weighInWeight+ stringResource(id = R.string.Kg),
             modifier= Modifier.padding(top = 30.dp),

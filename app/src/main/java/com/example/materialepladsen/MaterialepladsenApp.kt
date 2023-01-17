@@ -85,7 +85,7 @@ fun MaterialepladsenApp(
                     navigateToOpretBruger = {navController.navigate("Opret Bruger")})
             }
             composable(route = "Opret Bruger") {
-                OpretBruger()
+                OpretBruger(navigateFunction = {navController.navigate("login")})
             }
             composable(route = "Pris udregning") {
                 PriceCalculatorScreen(navController = navController)

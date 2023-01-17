@@ -8,7 +8,7 @@ data class Material(
     val materialPrice: Float,
     val picture:String,
 
-)
+    )
 
 
 
@@ -39,8 +39,8 @@ val GrusOgSand = listOf(
 
 val JordOgMuld = listOf(
     Material(materialName = "Muldjord Harpet", productSize ="0-10 mm" , materialPrice =0.45F , picture = "https://www.materialepladsen.dk/images/productimages/MuldjordHarpet0-10mm_cdecced4-3de3-4cda-8220-246636c38936.jpg"),
-    Material(materialName = "Plantemuld", productSize ="Ingen data" , materialPrice =1.12F , picture = "https://www.materialepladsen.dk/images/productimages/Plantemuld_c399a6cd-81e1-447d-a1c7-d76bac331510.jpg"),
-    Material("Spagnum","Ingen data", 1.95F,"https://www.materialepladsen.dk/images/productimages/Spagnum_e4c811ba-ff22-45d8-9ed1-416f910ca25e.jpg"),
+    Material(materialName = "Plantemuld", productSize ="" , materialPrice =1.12F , picture = "https://www.materialepladsen.dk/images/productimages/Plantemuld_c399a6cd-81e1-447d-a1c7-d76bac331510.jpg"),
+    Material("Spagnum","", 1.95F,"https://www.materialepladsen.dk/images/productimages/Spagnum_e4c811ba-ff22-45d8-9ed1-416f910ca25e.jpg"),
     Material("Topdress","0-8 mm",0.75F,"https://www.materialepladsen.dk/images/productimages/Topdress0-8mm_bac64fc4-c80e-40da-a5b5-c2abdabbdb76.jpg")
 )
 
@@ -53,8 +53,8 @@ val Sten = listOf(
 )
 
 val TræflisOgBark = listOf(
-    Material(materialName = "Træflis", productSize ="Ingen data" , materialPrice =1.95F , picture = "https://www.materialepladsen.dk/images/productimages/Træflis_70afa43f-456c-417b-966f-979498f7f67b.jpg"),
-    Material(materialName = "Bark", productSize ="Ingen data" , materialPrice =1.95F , picture = "https://www.materialepladsen.dk/images/productimages/Bark_80a40a07-2203-493b-9b3f-0770c5f56989.jpg")
+    Material(materialName = "Træflis", productSize ="" , materialPrice =1.95F , picture = "https://www.materialepladsen.dk/images/productimages/Træflis_70afa43f-456c-417b-966f-979498f7f67b.jpg"),
+    Material(materialName = "Bark", productSize ="" , materialPrice =1.95F , picture = "https://www.materialepladsen.dk/images/productimages/Bark_80a40a07-2203-493b-9b3f-0770c5f56989.jpg")
 )
 
 

@@ -35,6 +35,56 @@ import kotlinx.coroutines.launch
 @Composable
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 fun MaterialepladsenApp(
+){
+    val navController = rememberNavController()
+    NavHost(
+        navController = navController,
+        startDestination = "loginpladsen"
+    ) {
+        composable(route = "loginpladsen") {
+            LoginPladsen(navigateToForside = { navController.navigate("materialepladsen")})
+        }
+        composable(route = "materialepladsen") {
+            Materialepladsen()
+        }
+
+    }
+
+}
+
+
+@Composable
+fun DrawerView(navController: NavController, func1: () -> Unit) {
+    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os","Materialepladsen")
+    LazyColumn {
+        items(pages.size){ index->
+            AddDrawerContentView(
+                title = pages[index],
+                func = { navController.navigate(pages[index])},
+                func1 = func1)
+        }
+    }
+
+}
+
+@Composable
+fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
+    Row(
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = Modifier
+            .clickable { func(); func1() }
+            .padding(horizontal = 16.dp, vertical = 12.dp),
+    ) {
+        if (title.isNotEmpty()) {
+            Text(text = title, modifier = Modifier.weight(1f),fontSize = 12.sp)
+        }
+
+    }
+}
+
+@Composable
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+fun Materialepladsen(
     flowViewModel: FlowViewModel = viewModel()
 ){
 
@@ -71,21 +121,9 @@ fun MaterialepladsenApp(
     ){
         NavHost(
             navController = navController,
-            startDestination = "login"
+            startDestination = "Forside"
         ) {
-            composable(route = "login") {
-                Login(navigateToOpretBruger = {navController.navigate("Opret Bruger")},
-                    navigateToGlemt = {navController.navigate("Glemt adgangskode")},
-                    navigateToForside = {navController.navigate("Forside")})
-            }
-            composable(route = "Glemt adgangskode") {
-                GlemtAdgangskode(navigateGem = {navController.navigate("login")},
-                    navigateback = {navController.navigate("login")})
-            }
-            composable(route = "Opret Bruger") {
-                OpretBruger(navigateFunction = {navController.navigate("login")},
-                    navigateFunction1 = { navController.navigate("login") })
-            }
+
             composable(route = "Pris udregning") {
                 PriceCalculatorScreen(navController = navController)
             }
@@ -99,7 +137,7 @@ fun MaterialepladsenApp(
                     addToBuyHistory = {flowViewModel.addToBuyHistory(it)},
                     navigateToOrderHistory = {navController.navigate("Købshistorik")},
                     resetBuy = {flowViewModel.resetBuy()}
-                    )
+                )
             }
             composable(route = "Købshistorik") {
                 OrderHistory(buyHistory = uiState.value.orderhistory)
@@ -143,11 +181,11 @@ fun MaterialepladsenApp(
                     )
                 }
                 else if (uiState.value.state==StateOfStart.Start ){
-                StartScreen(
-                    state = uiState.value.state,
-                    userFound = uiState.value.userFound,
-                    setFailState = {flowViewModel.Fejlstart()},
-                    navigateFunction = {navController.navigate("Waiting Screen")}
+                    StartScreen(
+                        state = uiState.value.state,
+                        userFound = uiState.value.userFound,
+                        setFailState = {flowViewModel.Fejlstart()},
+                        navigateFunction = {navController.navigate("Waiting Screen")}
                     )}
 
             }
@@ -185,32 +223,55 @@ fun MaterialepladsenApp(
     }
 }
 
-
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun DrawerView(navController: NavController, func1: () -> Unit) {
-    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os","Materialepladsen")
-    LazyColumn {
-        items(pages.size){ index->
-            AddDrawerContentView(
-                title = pages[index],
-                func = { navController.navigate(pages[index])},
-                func1 = func1)
+fun LoginPladsen(
+    navigateToForside:() -> Unit = {}
+){
+    val navController = rememberNavController()
+
+    Scaffold(
+        modifier = Modifier.fillMaxWidth(),
+        topBar = {
+            TopAppBar(
+                elevation = 4.dp,
+                title = {
+                    Row(modifier = Modifier
+                        .fillMaxSize(1f)
+                        .padding(10.dp)) {
+                        Image(painterResource(R.drawable.logo_materialepladsen), null)
+                    }
+                },
+                backgroundColor =  colorResource(id = R.color.DarkRed),
+                )
         }
-    }
 
-}
 
-@Composable
-fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
-    Row(
-        verticalAlignment = Alignment.CenterVertically,
-        modifier = Modifier
-            .clickable { func(); func1() }
-            .padding(horizontal = 16.dp, vertical = 12.dp),
     ) {
-        if (title.isNotEmpty()) {
-            Text(text = title, modifier = Modifier.weight(1f),fontSize = 12.sp)
+        NavHost(
+            navController=navController,
+            startDestination = "login"
+        ){
+            composable(route = "login") {
+                Login(navigateToOpretBruger = {navController.navigate("Opret Bruger")},
+                    navigateToGlemt = {navController.navigate("Glemt adgangskode")},
+                    navigateToForside = {navigateToForside()})
+            }
+            composable(route = "Glemt adgangskode") {
+                GlemtAdgangskode(navigateGem = {navController.navigate("login")},
+                    navigateback = {navController.navigate("login")})
+            }
+            composable(route = "Opret Bruger") {
+                OpretBruger(navigateFunction = {navController.navigate("login")},
+                    navigateFunction1 = { navController.navigate("login") })
+            }
+
+
         }
 
     }
+
+
+
+
 }

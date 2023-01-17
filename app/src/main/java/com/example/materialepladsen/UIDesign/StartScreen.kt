@@ -119,7 +119,7 @@ fun WaitingScreen(
         )
 
         LaunchedEffect(Unit){
-            scope.launch {delay(2000); navigateFunction();weighInFunction() }
+            scope.launch {delay(1000); navigateFunction();weighInFunction() }
         }
 
 

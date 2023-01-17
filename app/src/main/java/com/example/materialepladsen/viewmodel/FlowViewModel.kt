@@ -109,6 +109,21 @@ class FlowViewModel : ViewModel(){
         }
     }
 
+    fun resetBuy(){
+
+        _uiState.update { currentState ->
+            currentState.copy(
+                weighInWeight = 0.0F,
+                state=StateOfStart.Start,
+                middleWeight = 0.0F,
+                outWeight = 0.0F,
+                weighToPay = 0.0F,
+                price = 0.0F
+
+            )
+        }
+    }
+
 
 
 }

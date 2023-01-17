@@ -159,4 +159,5 @@
     <string name="Start">Start</string>
     <string name="Kg">Kg</string>
     <string name="vent">Vent venligst mens vi scanner din nummerplade</string>
+    <string name="dinbilblirvejet">Vent venligst mens din bil bliver vejet</string>
 </resources>

@@ -36,7 +36,6 @@ fun Login (
         modifier = Modifier.fillMaxWidth(),
         topBar = {
         }
-
     ) {
 
         Divider(color = Color.Black, thickness = 1.dp)
@@ -56,10 +55,7 @@ fun Login (
                     .width(288.dp)
                     .height(691.dp)
                     .shadow(1.dp),
-                horizontalAlignment = Alignment.CenterHorizontally,
-
-
-                ) {
+                horizontalAlignment = Alignment.CenterHorizontally) {
 
                 Spacer(modifier = Modifier.height(50.dp))
 

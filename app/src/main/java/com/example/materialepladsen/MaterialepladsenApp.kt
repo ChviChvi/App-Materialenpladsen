@@ -108,7 +108,8 @@ fun MaterialepladsenApp(
                 )
             }
             composable(route = "Forside") {
-                Forside(navController = navController)
+                Forside(navController = navController,
+                    navigateToProducts = {navController.navigate("Materialer")})
             }
             composable(route = "Om os") {
                 Omos(navController = navController)

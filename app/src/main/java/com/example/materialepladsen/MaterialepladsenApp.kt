@@ -31,7 +31,6 @@ import com.example.materialepladsen.ui.theme.Materialer
 import com.example.materialepladsen.ui.theme.Omos
 import com.example.materialepladsen.viewmodel.FlowViewModel
 import com.example.materialepladsen.viewmodel.Købshistorikliste
-import com.example.materialepladsen.viewmodel.ProductListViewModel
 import com.example.materialepladsen.viewmodel.StateOfStart
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -96,8 +95,7 @@ fun MaterialepladsenApp(
                     weighInWeight = uiState.value.weighInWeight,
                     outWeight = uiState.value.outWeight,
                     weighToPay = uiState.value.weighToPay,
-                    materialeBillede = uiState.value.materialeBillede,
-                    materiale = uiState.value.materiale,
+                    materiale = uiState.value.chosenMaterial,
                     price = uiState.value.price,
                     addToBuyHistory = {flowViewModel.addToBuyHistory()}
                     )
@@ -106,8 +104,7 @@ fun MaterialepladsenApp(
                 Købshistorik(navController = navController, Købshistorikliste)
             }
             composable(route = "Materialer") {
-                Materialer(navController = navController,
-                            viewModel = ProductListViewModel()
+                Materialer(
                 )
             }
             composable(route = "Forside") {
@@ -128,7 +125,10 @@ fun MaterialepladsenApp(
                         middleWeight = uiState.value.middleWeight,
                         weighToPay = uiState.value.weighToPay,
                         onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
-                        navigateToBetaling = { navController.navigate("Betaling") }
+                        navigateToBetaling = { navController.navigate("Betaling") },
+                        materiallist = uiState.value.materialList1,
+                        chooseMaterial = {flowViewModel.chooseMaterial(it)},
+                        calculatePrice = {flowViewModel.calculatePrice()}
                     )
                 }
                 if(uiState.value.state==StateOfStart.Betal ){
@@ -137,8 +137,7 @@ fun MaterialepladsenApp(
                         weighInWeight = uiState.value.weighInWeight,
                         outWeight = uiState.value.outWeight,
                         weighToPay = uiState.value.weighToPay,
-                        materialeBillede = uiState.value.materialeBillede,
-                        materiale = uiState.value.materiale,
+                        materiale = uiState.value.chosenMaterial,
                         price = uiState.value.price,
                         addToBuyHistory = {flowViewModel.addToBuyHistory()}
                     )
@@ -166,7 +165,10 @@ fun MaterialepladsenApp(
                     middleWeight = uiState.value.middleWeight,
                     weighToPay = uiState.value.weighToPay,
                     onVejIgenOgBetalButtonClicked = {flowViewModel.weighOutAndPay()},
-                    navigateToBetaling = { navController.navigate("Betaling")}
+                    navigateToBetaling = { navController.navigate("Betaling")},
+                    materiallist = uiState.value.materialList1,
+                    chooseMaterial = {flowViewModel.chooseMaterial(it)},
+                    calculatePrice = {flowViewModel.calculatePrice()}
                 )
             }
 

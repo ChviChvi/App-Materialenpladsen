@@ -14,25 +14,27 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 import coil.compose.AsyncImage
-import com.example.materialepladsen.viewmodel.Material1
+import com.example.materialepladsen.viewmodel.Material
+import com.example.materialepladsen.viewmodel.Order
+import java.util.*
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Betaling (
-    modifier: Modifier = Modifier,
-    navController: NavController,
     weighInWeight:Float,
     outWeight:Float,
     weighToPay:Float,
-    materiale:Material1,
-    addToBuyHistory :() -> Unit = {},
-    price:Float
+    materiale:Material,
+    addToBuyHistory :(Order) -> Unit,
+    price:Float,
+    navigateToOrderHistory:() -> Unit = {}
 ) {
+    val ordre=Order(materiale,weighToPay, Date(),price)
+
         Column(
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -136,10 +138,12 @@ fun Betaling (
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = { addToBuyHistory()},
+                    onClick = {
+                        addToBuyHistory(ordre)
+                        navigateToOrderHistory()},
                     colors = ButtonDefaults.buttonColors(
-                        contentColor = Color.Blue,
-                        backgroundColor = colorResource(id = R.color.LyseGrå),
+                        contentColor = Color.White,
+                        backgroundColor = colorResource(id = R.color.DarkRed),
                     )
                 ) {
                     Text(
@@ -158,10 +162,12 @@ fun Betaling (
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = { addToBuyHistory },
+                    onClick = {
+                        addToBuyHistory(ordre)
+                        navigateToOrderHistory()},
                     colors = ButtonDefaults.buttonColors(
-                        contentColor = Color.Blue,
-                        backgroundColor = colorResource(id = R.color.LyseGrå),
+                        contentColor = Color.White,
+                        backgroundColor = colorResource(id = R.color.DarkRed),
                     )
                 ) {
                     Text(
@@ -179,10 +185,12 @@ fun Betaling (
                     modifier = Modifier
                         .width(200.dp)
                         .height(50.dp),
-                    onClick = { addToBuyHistory  },
+                    onClick = {
+                        addToBuyHistory(ordre)
+                        navigateToOrderHistory()},
                     colors = ButtonDefaults.buttonColors(
-                        contentColor = Color.Blue,
-                        backgroundColor = colorResource(id = R.color.LyseGrå),
+                        contentColor = Color.White,
+                        backgroundColor = colorResource(id = R.color.DarkRed),
                     )
                 ) {
                     Text(

@@ -42,7 +42,7 @@ class BetalingViewModel : ViewModel() {
         ordrenr: Int,
         navController: NavController
     ) {
-        Købshistorikliste.add(Order(materiale, vægt, dato, pris, ordrenr))
+
         navController.navigate("Købshistorik")
 
     }

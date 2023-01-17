@@ -12,7 +12,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.materialepladsen.R
-import com.example.materialepladsen.viewmodel.Material1
+import com.example.materialepladsen.viewmodel.Material
 
 
 @OptIn(ExperimentalMaterialApi::class)
@@ -24,8 +24,8 @@ fun ReadyScreen(
     middleWeight:Float,
     weighToPay: Float,
     navigateToBetaling:() -> Unit = {},
-    materiallist: List<Material1>,
-    chooseMaterial: (Material1) -> Unit,
+    materiallist: List<Material>,
+    chooseMaterial: (Material) -> Unit,
     calculatePrice: () -> Unit = {},
 ){
 

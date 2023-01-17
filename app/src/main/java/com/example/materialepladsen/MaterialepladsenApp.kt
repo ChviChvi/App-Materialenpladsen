@@ -30,7 +30,6 @@ import com.example.materialepladsen.ui.theme.Login
 import com.example.materialepladsen.ui.theme.Materialer
 import com.example.materialepladsen.ui.theme.Omos
 import com.example.materialepladsen.viewmodel.FlowViewModel
-import com.example.materialepladsen.viewmodel.Købshistorikliste
 import com.example.materialepladsen.viewmodel.StateOfStart
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -38,7 +37,6 @@ import kotlinx.coroutines.launch
 @Composable
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 fun MaterialepladsenApp(
-    modifier: Modifier = Modifier,
     flowViewModel: FlowViewModel = viewModel()
 ){
 
@@ -91,17 +89,17 @@ fun MaterialepladsenApp(
             }
             composable(route = "Betaling") {
                 Betaling(
-                    navController = navController,
                     weighInWeight = uiState.value.weighInWeight,
                     outWeight = uiState.value.outWeight,
                     weighToPay = uiState.value.weighToPay,
                     materiale = uiState.value.chosenMaterial,
                     price = uiState.value.price,
-                    addToBuyHistory = {flowViewModel.addToBuyHistory()}
+                    addToBuyHistory = {flowViewModel.addToBuyHistory(it)},
+                    navigateToOrderHistory = {navController.navigate("Købshistorik")}
                     )
             }
             composable(route = "Købshistorik") {
-                Købshistorik(navController = navController, Købshistorikliste)
+                OrderHistory(buyHistory = uiState.value.orderhistory)
             }
             composable(route = "Materialer") {
                 Materialer(
@@ -117,7 +115,7 @@ fun MaterialepladsenApp(
                 Findos(navController = navController)
             }
 
-            composable(route = "Start Screen") {
+            composable(route = "Materialepladsen") {
                 if(uiState.value.state==StateOfStart.KorrektStart ){
                     ReadyScreen(
                         onVejIgenButtonClicked = {flowViewModel.middleWeight()},
@@ -133,13 +131,13 @@ fun MaterialepladsenApp(
                 }
                 if(uiState.value.state==StateOfStart.Betal ){
                     Betaling(
-                        navController = navController,
                         weighInWeight = uiState.value.weighInWeight,
                         outWeight = uiState.value.outWeight,
                         weighToPay = uiState.value.weighToPay,
                         materiale = uiState.value.chosenMaterial,
                         price = uiState.value.price,
-                        addToBuyHistory = {flowViewModel.addToBuyHistory()}
+                        addToBuyHistory = {flowViewModel.addToBuyHistory(it)},
+                        navigateToOrderHistory = {navController.navigate("Købshistorik")}
                     )
                 }
 
@@ -186,7 +184,7 @@ fun MaterialepladsenApp(
 
 @Composable
 fun DrawerView(navController: NavController, func1: () -> Unit) {
-    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os","Start Screen")
+    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os","Materialepladsen")
     LazyColumn {
         items(pages.size){ index->
             AddDrawerContentView(

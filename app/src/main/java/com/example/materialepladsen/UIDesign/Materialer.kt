@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.materialepladsen.viewmodel.Material_list1
+import com.example.materialepladsen.viewmodel.Material_list
 
 @Composable
 fun Materialer(){
@@ -21,7 +21,7 @@ fun Materialer(){
             .fillMaxWidth()
             .height(800.dp)
     ){
-        items(Material_list1){ Material->
+        items(Material_list){ Material->
             Text(text = Material.material_name)
         }
     }

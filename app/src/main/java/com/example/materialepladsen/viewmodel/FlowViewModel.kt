@@ -78,12 +78,22 @@ class FlowViewModel : ViewModel(){
         }
     }
 
-    fun addToBuyHistory(){
+    fun addToBuyHistory(
+        order:Order
+        ){
+        val newList= ArrayList(_uiState.value.orderhistory)
+        newList.add(order)
+        _uiState.update { currentState ->
+            currentState.copy(
+                orderhistory = newList
+            )
+        }
+
 
     }
 
 
-    fun chooseMaterial(material:Material1){
+    fun chooseMaterial(material:Material){
         _uiState.update { currentState ->
             currentState.copy(
                 chosenMaterial=material

@@ -8,7 +8,6 @@ import com.example.materialepladsen.Database.getProducts2
 
 
 data class ProductListUistate(
-
     var Productslist: List<Product>? = null,
     val Hello: String = "LOL"
 )   {

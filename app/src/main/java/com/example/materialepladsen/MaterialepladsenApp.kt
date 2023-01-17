@@ -55,7 +55,7 @@ fun MaterialepladsenApp(
 
 @Composable
 fun DrawerView(navController: NavController, func1: () -> Unit) {
-    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os","Materialepladsen")
+    val pages = listOf("Forside", "Materialer", "Købshistorik", "Om os", "Find os","Materialepladsen")
     LazyColumn {
         items(pages.size){ index->
             AddDrawerContentView(

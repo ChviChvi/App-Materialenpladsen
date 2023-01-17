@@ -71,9 +71,6 @@ class Materials : ComponentActivity() {
 //            viewModel.fetchData()
 //        }
 
-
-
-
 //        println(viewModel)
 
 
@@ -342,46 +339,3 @@ fun Modifier.customTabIndicatorOffset(
         .offset(x = indicatorOffset)
         .width(currentTabWidth)
 }
-
-//@Composable
-//fun Materialeitem(
-//    //Strings for product - Product/
-//    @StringRes id_et: Int,
-//    @StringRes id_to: Int,
-//    @StringRes id_tre: Int,
-//    @DrawableRes billede: Int,
-//) {
-//
-//    Column(modifier = Modifier.width(140.dp)) {
-//        Image(
-//            modifier = Modifier
-//                .height(81.dp)
-//                .width(98.dp)
-//                .align(CenterHorizontally),
-//            painter = painterResource(id = billede),
-//            contentDescription = null
-//        )
-//        Text(text = stringResource(id = id_et),
-//            style=MaterialTheme.typography.subtitle1,
-//            textAlign = TextAlign.Center,
-//            modifier = Modifier.fillMaxWidth(),
-//            lineHeight = 14.sp
-//        )
-//
-//        Text(text = stringResource(id = id_to),
-//            style=MaterialTheme.typography.subtitle2,
-//            textAlign = TextAlign.Center,
-//            modifier = Modifier.fillMaxWidth(),
-//            lineHeight = 14.sp
-//        )
-//
-//        Text(text ="DKK "+ stringResource(id = id_tre),
-//            style=MaterialTheme.typography.h3,
-//            textAlign = TextAlign.Center,
-//            modifier = Modifier.fillMaxWidth(),
-//            lineHeight = 14.sp,
-//            color = MaterialTheme.colors.secondaryVariant
-//        )
-//    }
-//}
-

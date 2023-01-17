@@ -48,21 +48,21 @@ data class API(
  */
 @Serializable
 data class NewOrderModel(
-    val Created: String,
-    val Closed: String,
-    val Site: String?,
-    val SiteId: Int,
-    val TypeId: Int,
-    val Licenseplate: String,
-    val WeightUnit: String,
-    val WeightIn: Int,
-    val WeightOut: Int,
-    val WeightProduct: Int,
-    val OrderNumber: Int,
-    val CustomerId: Int,
-    val Description: String,
-    val ErrCode: Int,
-    val QueueStateId: Int
+    val Created: String = "",
+    val Closed: String = "",
+    val Site: String? = "",
+    val SiteId: Int = 0,
+    val TypeId: Int = 0,
+    val Licenseplate: String = "",
+    val WeightUnit: String = "",
+    val WeightIn: Int = 0,
+    val WeightOut: Int = 0
+    val WeightProduct: Int = 0,
+    val OrderNumber: Int = 0,
+    val CustomerId: Int = 0,
+    val Description: String = "",
+    val ErrCode: Int = 0,
+    val QueueStateId: Int = 0
 )
 
 fun run(url: String, callback: Callback) {

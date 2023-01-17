@@ -31,7 +31,7 @@ fun StartScreen(
 
 ){
 
-    start(state = state,
+    Start(state = state,
         userFound =userFound,
         setFailState,
         navigateToWaitingScreen = navigateFunction,

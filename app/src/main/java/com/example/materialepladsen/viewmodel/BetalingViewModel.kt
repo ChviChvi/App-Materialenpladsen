@@ -20,8 +20,6 @@ class BetalingViewModel : ViewModel() {
         material: String,
         materialPicture: Int,
         price: Float,
-
-
         ) {
         _uiState.update { currentState ->
             currentState.copy(
@@ -33,8 +31,6 @@ class BetalingViewModel : ViewModel() {
                 price = price
             )
         }
-
-
     }
 
     //tilføjer købet til købshistoriklisten

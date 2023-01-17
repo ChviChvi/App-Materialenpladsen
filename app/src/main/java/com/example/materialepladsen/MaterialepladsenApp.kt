@@ -16,6 +16,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -59,7 +60,7 @@ fun MaterialepladsenApp(
                         Image(painterResource(R.drawable.logo_materialepladsen), null)
                     }
                 },
-                backgroundColor =  MaterialTheme.colors.primarySurface,
+                backgroundColor =  colorResource(id = R.color.DarkRed),
                 navigationIcon = {
                     IconButton(onClick = {
                         scope.launch {
@@ -174,17 +175,9 @@ fun MaterialepladsenApp(
                     calculatePrice = {flowViewModel.calculatePrice()}
                 )
             }
-
         }
-
-
     }
-
-
 }
-
-
-
 
 
 @Composable
@@ -203,8 +196,6 @@ fun DrawerView(navController: NavController, func1: () -> Unit) {
 
 @Composable
 fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
-
-
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier

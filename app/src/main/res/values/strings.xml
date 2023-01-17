@@ -142,11 +142,12 @@
     <string name="Betalingkort">Betalingkort</string>
     <string name="Mobilepay">Mobilepay</string>
     <string name="PaybyPlate">Pay by Plate</string>
+    <string name="prisprkg">Pris pr kg:</string>
 
     <!--Flow-->
     <string name="VægtStart">Velkommen til Materialepladsen.\nKør hen på vægten og tryk start, for at blive vejet og åbne bommen til indgangen.</string>
     <string name="ForbindelseFejlStart">Fejl i forbindelsen:\n Kør hen på vægten og tryk start</string>
-    <string name="Readytopickmaterials">Du er nu klar til at vælge dine materialer\n
+    <string name="Readytopickmaterials">Du er nu klar til at vælge dine materialer.\n
         Kør til vægten for at blive vejet igen eller betale.</string>
     <string name="vejigen">Vej igen</string>
     <string name="vejigenogbetal">Vej igen og betal</string>

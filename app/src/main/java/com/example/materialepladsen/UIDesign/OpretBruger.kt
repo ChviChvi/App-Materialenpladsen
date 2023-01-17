@@ -29,7 +29,8 @@ import androidx.compose.runtime.remember
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun OpretBruger(
-    navigateFunction :() -> Unit = {}
+    navigateFunction :() -> Unit = {}, navigateFunction1 :() -> Unit = {}
+
 ) {
 
     Column (
@@ -263,7 +264,7 @@ fun OpretBruger(
                 modifier = Modifier
                     .weight(1f)
                     .padding(end = 10.dp),
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
+                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                 onValueChange = {
                     if (it.text.length <= experationdateMax) experationdate.value = it
                 })
@@ -316,6 +317,7 @@ fun OpretBruger(
             if (experationdate.value.text.isEmpty()){
                 Toast.makeText(Context, "Udløbsdato er ikke udfyldt", Toast.LENGTH_SHORT).show()
             }
+            else {navigateFunction1()}
                          },
             colors = ButtonDefaults.buttonColors(backgroundColor = Green))
         {

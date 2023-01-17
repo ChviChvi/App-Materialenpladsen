@@ -21,24 +21,19 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.materialepladsen.R
+import com.example.materialepladsen.UIDesign.OpretBruger
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Login (
-    modifier: Modifier = Modifier,
-    //videoUri: Uri,
-    navigateToOpretBruger :() -> Unit = {}
+    navigateToOpretBruger :() -> Unit = {}, navigatetoGlemt :() -> Unit = {}
 ) {
     Scaffold(
         modifier = Modifier.fillMaxWidth(),
         topBar = {
-
-
         }
 
     ) {
-
-
 
         Divider(color = Color.Black, thickness = 1.dp)
         Column(
@@ -50,12 +45,7 @@ fun Login (
 
         ) {
 
-
-
-
             Spacer(modifier = Modifier.height(26.dp))
-
-
 
             Column(
                 modifier = Modifier
@@ -63,8 +53,6 @@ fun Login (
                     .height(691.dp)
                     .shadow(1.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
-
-
 
 
                 ) {
@@ -91,11 +79,22 @@ fun Login (
                         )
                 ) {
                     Text(
-                        stringResource(id = R.string.OpretBruger),
+                        text = "Opret bruger",
                         style = MaterialTheme.typography.h2,
                         textDecoration=TextDecoration.Underline
 
                     )
+                }
+                TextButton(onClick = { navigatetoGlemt() },
+                    colors = ButtonDefaults.buttonColors(
+                        backgroundColor = Color.Transparent,
+                        contentColor = Color.Black) ) {
+                    Text(
+                        text = "Glemt Adgangskode",
+                        style = MaterialTheme.typography.h2,
+                        textDecoration=TextDecoration.Underline
+                    )
+
                 }
 
                 Spacer(modifier = Modifier.height(300.dp))
@@ -190,9 +189,8 @@ fun BrugerAdgang (
 }
 
 
-@Preview(showBackground = true)
+@Preview (showBackground = true)
 @Composable
-fun DefaultPreview2() {
-    MaterialepladsenTheme {
-       //Login(videoUri = Uri)
-    }}
+fun ComposablePreview2() {
+    Login()
+}

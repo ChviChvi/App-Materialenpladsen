@@ -78,11 +78,16 @@ fun MaterialepladsenApp(
             startDestination = "login"
         ) {
             composable(route = "login") {
-                Login(/*videoUri = getVideoUri()*/
-                    navigateToOpretBruger = {navController.navigate("Opret Bruger")})
+                Login(navigateToOpretBruger = {navController.navigate("Opret Bruger")},
+                    navigatetoGlemt = {navController.navigate("Glemt adgangskode")} )
+            }
+            composable(route = "Glemt adgangskode") {
+                GlemtAdgangskode(navigateGem = {navController.navigate("login")},
+                    navigateback = {navController.navigate("login")})
             }
             composable(route = "Opret Bruger") {
-                OpretBruger(navigateFunction = {navController.navigate("login")})
+                OpretBruger(navigateFunction = {navController.navigate("login")},
+                    navigateFunction1 = { navController.navigate("login") })
             }
             composable(route = "Pris udregning") {
                 PriceCalculatorScreen(navController = navController)

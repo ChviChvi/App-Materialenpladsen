@@ -28,12 +28,18 @@ import com.example.materialepladsen.ui.theme.Green
 import androidx.compose.material.*
 import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material.SnackbarDefaults.backgroundColor
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.text.style.TextDecoration
 import com.example.materialepladsen.R
+
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun GlemtAdgangskode(){
+fun GlemtAdgangskode(
+    navigateGem :() -> Unit = {}, navigateback :() -> Unit = {}
+){
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
@@ -48,7 +54,7 @@ fun GlemtAdgangskode(){
         Row(
             modifier = Modifier.fillMaxWidth().padding(10.dp)
         ) {
-            Button(onClick = {},
+            Button(onClick = {navigateback()},
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.LightGray) ) {
                 Image(
                     painterResource(id = R.drawable.b_arrow),
@@ -75,23 +81,37 @@ fun GlemtAdgangskode(){
 
         TextField(
             label = { Text(text = " Gentag Ny Adgangskode") },
+            visualTransformation = PasswordVisualTransformation(),
             value = RepeatNewpassword.value,
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
             onValueChange = { RepeatNewpassword.value = it })
+
         Spacer(modifier = Modifier.height(20.dp))
 
         val Context = LocalContext.current
         //Chekker om de to koder mathcer hinanden og displayer en message for "godkent" og "ikke godkendt"
         Button(onClick = {
-            if (Newpassword.value.equals(RepeatNewpassword.value) && (Newpassword.value.text.isNotEmpty()))
-            { Toast.makeText(Context, "Kode er Godkendt", Toast.LENGTH_SHORT).show()}
-            if (Newpassword.value.text.isEmpty())
-            { Toast.makeText(Context, "Felter er tomme, skriv kode", Toast.LENGTH_SHORT).show()}
-                else {Toast.makeText(Context, "koder matcher ikke", Toast.LENGTH_SHORT).show()}
+            if (Newpassword.value.equals(RepeatNewpassword.value) && (Newpassword.value.text.isNotEmpty()) && (RepeatNewpassword.value.text.isNotEmpty()) )
+            {  Toast.makeText(Context, "Kode er Godkendt", Toast.LENGTH_SHORT).show() }
+
+            if (Newpassword.value.text.isEmpty() && (RepeatNewpassword.value.text.isEmpty()))
+            { Toast.makeText(Context, " ét eller flere Felter er tomme", Toast.LENGTH_SHORT).show()}
+
+            if (Newpassword.value != (RepeatNewpassword.value))
+            {Toast.makeText(Context, "koder matcher ikke", Toast.LENGTH_SHORT).show()}
         },
-            colors = ButtonDefaults.buttonColors(backgroundColor = Green))
+            colors = ButtonDefaults.buttonColors(backgroundColor = Color.White))
         {
-            Text(text = "Gem Ny adgankskode",color = Color.White)
+            Text(text = "Check Adgangskode",color = Color.Black)
+        }
+
+        Button(onClick = { navigateGem() },
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Green,
+                contentColor = Color.White) ) {
+            Text(text = "Gem Adgangskode",
+            )
+
         }
         
     }

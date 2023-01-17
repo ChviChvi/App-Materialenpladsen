@@ -26,10 +26,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.materialepladsen.UIDesign.*
-import com.example.materialepladsen.ui.theme.Forside
-import com.example.materialepladsen.ui.theme.Login
-import com.example.materialepladsen.ui.theme.Materialer
-import com.example.materialepladsen.ui.theme.Omos
+import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.FlowViewModel
 import com.example.materialepladsen.viewmodel.StateOfStart
 import kotlinx.coroutines.delay
@@ -80,7 +77,8 @@ fun MaterialepladsenApp(
         ) {
             composable(route = "login") {
                 Login(navigateToOpretBruger = {navController.navigate("Opret Bruger")},
-                    navigatetoGlemt = {navController.navigate("Glemt adgangskode")} )
+                    navigateToGlemt = {navController.navigate("Glemt adgangskode")},
+                    navigateToForside = {navController.navigate("Forside")})
             }
             composable(route = "Glemt adgangskode") {
                 GlemtAdgangskode(navigateGem = {navController.navigate("login")},

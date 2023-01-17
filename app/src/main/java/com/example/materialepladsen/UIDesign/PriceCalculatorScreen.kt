@@ -7,6 +7,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
@@ -41,12 +42,13 @@ fun PriceCalculatorScreen(
 fun Purchase(text: String, onClick: () -> Unit) {
     TextButton(
         onClick = onClick,
-        colors = ButtonDefaults.textButtonColors(backgroundColor = Color.hsl(156f, 1f, 0.67f)),
+        colors = ButtonDefaults.textButtonColors(backgroundColor = colorResource(id = R.color.DarkRed)),
         modifier = Modifier.padding(vertical = 4.dp))
     {
         Text(
             text = text,
-            modifier = Modifier.padding(8.dp)
+            modifier = Modifier.padding(8.dp),
+            color = Color.White
         )
     }
 }
@@ -68,7 +70,10 @@ fun ChosenMaterial(material: String) {
 @Composable
 fun DeliveryMethods(tabs: List<String>) {
     val selected = remember{ mutableStateOf(0) }
-    TabRow(selectedTabIndex = selected.value) {
+    TabRow(
+        selectedTabIndex = selected.value,
+        backgroundColor = colorResource(id = R.color.DarkRed
+        )) {
         tabs.forEachIndexed { index, text ->
             Tab(
                 selected = selected.value == index,
@@ -78,7 +83,8 @@ fun DeliveryMethods(tabs: List<String>) {
             ) {
                 Text(
                     text = text,
-                    modifier = Modifier.padding(16.dp)
+                    modifier = Modifier.padding(16.dp),
+                    color = Color.White
                 )
             }
         }
@@ -163,7 +169,7 @@ fun WeightSlider(modifier: Modifier = Modifier,
         steps = 35,
         colors = SliderDefaults.colors(
             thumbColor = Color.Red,
-            activeTickColor = Color.Magenta,
+            activeTickColor = colorResource(id = R.color.DarkRed),
             inactiveTickColor = Color.Yellow
         )
     )

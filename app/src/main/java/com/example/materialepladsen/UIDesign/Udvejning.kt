@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.Inter
-import com.example.materialepladsen.ui.theme.Logo2
 import com.example.materialepladsen.ui.theme.MaterialepladsenTheme
 import com.example.materialepladsen.ui.theme.TopBar
 
@@ -41,7 +40,7 @@ fun Udvejning() {
             horizontalAlignment = Alignment.CenterHorizontally
                 ){
 
-            Logo2()
+
 
             Divider(modifier = Modifier.fillMaxWidth(),
                 thickness = 1.dp,

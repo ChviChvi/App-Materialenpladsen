@@ -82,7 +82,7 @@ fun newOrder(url: String,customerId: String, licensePlate: String): NewOrderMode
 
             }
             override fun onResponse(call: Call, response: Response) {
-                newOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+                newOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string()?: "")
             }
         })
     return newOrder
@@ -96,7 +96,7 @@ fun weighIn(url: String,customerId: String, licensePlate: String, ordreNumber: S
 
             }
             override fun onResponse(call: Call, response: Response) {
-                weighIn = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+                weighIn = Json.decodeFromString<NewOrderModel>(response.body()?.string()?: "")
             }
         })
     return weighIn
@@ -110,7 +110,7 @@ fun paymentOrder(url: String,customerId: String, licensePlate: String, ordreNumb
 
             }
             override fun onResponse(call: Call, response: Response) {
-                paymentOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+                paymentOrder = Json.decodeFromString<NewOrderModel>(response.body()?.string()?: "")
             }
         })
     return paymentOrder
@@ -124,7 +124,7 @@ fun iocBarrier(url: String,siteID: String): NewOrderModel? {
 
             }
             override fun onResponse(call: Call, response: Response) {
-                iocBarrier = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+                iocBarrier = Json.decodeFromString<NewOrderModel>(response.body()?.string()?: "")
             }
         })
     return iocBarrier
@@ -138,7 +138,7 @@ fun webcamSnapshot(url: String,siteID: Int): NewOrderModel? {
 
             }
             override fun onResponse(call: Call, response: Response) {
-                webcamSnapshot = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+                webcamSnapshot = Json.decodeFromString<NewOrderModel>(response.body()?.string()?: "")
             }
         })
     return webcamSnapshot
@@ -153,13 +153,12 @@ fun weightRequest(url: String, siteID: Int): NewOrderModel? {
 
             }
             override fun onResponse(call: Call, response: Response) {
-                weightRequest = Json.decodeFromString<NewOrderModel>(response.body()?.string() ?: "")
+                weightRequest = Json.decodeFromString<NewOrderModel>(response.body()?.string()?: "")
             }
         })
     return weightRequest
 }
 
-//url
 
 fun main() {
     val url = "http://152.115.71.190:41000/?user=DTUMP3&password=MPor2hRrSE&request=EC02E425-B6BD-4D82-A9A2-F58507385B41&type=requestOrderNew&customerid=215632&licenseplate=215721"

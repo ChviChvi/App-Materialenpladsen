@@ -1,13 +1,18 @@
 package com.example.materialepladsen.ui.theme
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,9 +22,15 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.example.materialepladsen.R
 
+
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun Omos(navController: NavController) {
+
+    val context = LocalContext.current
+    val Link1 = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.materialepladsen.dk/trailerudlejning")) }
+    val Link2 = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.materialepladsen.dk/vejning")) }
+    val Link3 = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.materialepladsen.dk/aftalevejning")) }
     LazyColumn(
         horizontalAlignment = CenterHorizontally,
         verticalArrangement = Arrangement.Top,
@@ -101,16 +112,16 @@ fun Omos(navController: NavController) {
                 lineHeight = 15.sp
             )
         }
-        item {
-            Text(
-                modifier = Modifier
-                    .padding(start = 10.dp, top = 8.dp)
-                    .width(350.dp),
-                text = stringResource(id = R.string.Link1),
-                style = MaterialTheme.typography.body2,
-                lineHeight = 15.sp
-            )
-        }
+//        item {
+//            Text(
+//                modifier = Modifier
+//                    .padding(start = 10.dp, top = 8.dp)
+//                    .width(350.dp),
+//                text = stringResource(id = R.string.Link1),
+//                style = MaterialTheme.typography.body2,
+//                lineHeight = 15.sp
+//            )
+//        }
 
         item {
             Spacer(modifier = Modifier.height(20.dp))
@@ -167,7 +178,9 @@ fun Omos(navController: NavController) {
             Text(
                 modifier = Modifier
                     .padding(start = 10.dp, top = 8.dp)
-                    .width(350.dp),
+                    .width(350.dp)
+                    .clickable( enabled = true,
+                        onClick = { context.startActivity(Link1) }),
                 text = stringResource(id = R.string.Link2),
                 style = MaterialTheme.typography.body2,
                 lineHeight = 15.sp
@@ -203,7 +216,9 @@ fun Omos(navController: NavController) {
             Text(
                 modifier = Modifier
                     .padding(start = 10.dp, top = 8.dp)
-                    .width(350.dp),
+                    .width(350.dp)
+                    .clickable( enabled = true,
+                        onClick = { context.startActivity(Link2) }),
                 text = stringResource(id = R.string.Link3),
                 style = MaterialTheme.typography.body2,
                 lineHeight = 15.sp
@@ -213,7 +228,8 @@ fun Omos(navController: NavController) {
             Text(
                 modifier = Modifier
                     .padding(start = 10.dp, top = 8.dp)
-                    .width(350.dp),
+                    .width(350.dp).clickable( enabled = true,
+                        onClick = { context.startActivity(Link3) }),
                 text = stringResource(id = R.string.Link4),
                 style = MaterialTheme.typography.body2,
                 lineHeight = 15.sp
@@ -244,16 +260,17 @@ fun Omos(navController: NavController) {
                 style=MaterialTheme.typography.body1,
                 lineHeight = 15.sp)
         }
-        item {
-            Text(
-                modifier = Modifier
-                    .padding(start = 10.dp, top = 8.dp)
-                    .width(350.dp),
-                text = stringResource(id = R.string.Link5),
-                style = MaterialTheme.typography.body2,
-                lineHeight = 15.sp
-            )
-        }
+//        item {
+//            Text(
+//                modifier = Modifier
+//                    .padding(start = 10.dp, top = 8.dp)
+//                    .width(350.dp).clickable( enabled = true,
+//                        onClick = { context.startActivity() }),
+//                text = stringResource(id = R.string.Link5),
+//                style = MaterialTheme.typography.body2,
+//                lineHeight = 15.sp
+//            )
+//        }
     }
 }
 

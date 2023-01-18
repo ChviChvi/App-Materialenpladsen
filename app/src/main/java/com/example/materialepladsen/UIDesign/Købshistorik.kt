@@ -30,16 +30,21 @@ fun OrderHistory (
     state: StateOfStart,
     resetBuy:() -> Unit = {},
     ){
+    val scope = rememberCoroutineScope()
+
+    LaunchedEffect(Unit){
+        scope.launch { delay(2500); resetBuy() }
+    }
 
     if (state==StateOfStart.Betal){
     val openDialog = remember{ mutableStateOf(true) }
 
     if (openDialog.value) {
 
-        val scope = rememberCoroutineScope()
+
 
         LaunchedEffect(Unit){
-            scope.launch { delay(3000); openDialog.value=false;resetBuy() }
+            scope.launch { delay(2500); openDialog.value=false; }
         }
         AlertDialog(
             modifier = Modifier.width(200.dp),

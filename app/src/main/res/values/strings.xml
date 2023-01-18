@@ -77,8 +77,9 @@
     <string name="Dato5">12/09/2022</string>
     <string name="Pris5">3.810,49 kr</string>
     <string name="Ordrenummer5">102000–000001</string>
-
-
+    <string name="Tak">Tak!</string>
+    <string name="Takfordi">Din ordre er betalt.\nTak fordi du handlede hos os</string>
+    <string name="SelvTak">Selv Tak</string>
 
     <!--Udvejning-->
 

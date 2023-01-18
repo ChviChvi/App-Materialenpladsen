@@ -55,7 +55,7 @@ fun MaterialepladsenApp(
 
 @Composable
 fun DrawerView(navController: NavController, func1: () -> Unit) {
-    val pages = listOf("Forside", "Materialer", "Pris udregning", "Købshistorik", "Om os", "Find os","Materialepladsen")
+    val pages = listOf("Forside", "Materialer", "Købshistorik", "Om os", "Find os","Materialepladsen")
     LazyColumn {
         items(pages.size){ index->
             AddDrawerContentView(
@@ -103,7 +103,8 @@ fun Materialepladsen(
                 title = {
                     Row(modifier = Modifier
                         .fillMaxSize(1f)
-                        .padding(10.dp)) {
+                        .padding(10.dp)
+                        .clickable { navController.navigate("Forside") }) {
                         Image(painterResource(R.drawable.logo_materialepladsen), null)
                     }
                 },

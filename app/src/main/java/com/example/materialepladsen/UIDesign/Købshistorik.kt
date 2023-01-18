@@ -4,13 +4,12 @@ import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Divider
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.material.*
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -19,13 +18,54 @@ import coil.compose.AsyncImage
 import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.Order
 import com.example.materialepladsen.R
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun OrderHistory (
-    buyHistory: List<Order>
+    buyHistory: List<Order>,
     ){
+    val openDialog = remember{ mutableStateOf(true) }
+
+    if (openDialog.value) {
+
+        val scope = rememberCoroutineScope()
+
+        LaunchedEffect(Unit){
+            scope.launch { delay(3000); openDialog.value=false }
+        }
+        AlertDialog(
+            modifier = Modifier.width(200.dp),
+            onDismissRequest = { openDialog.value = false},
+            title = { Text(
+                    text = stringResource(id = R.string.Tak),
+                    color = colorResource(id = R.color.DarkRed),
+                    style = MaterialTheme.typography.overline
+
+
+                ) },
+            text = { Text(
+                    text = stringResource(id = R.string.Takfordi),
+                    color = colorResource(id = R.color.DarkRed),
+                    style = MaterialTheme.typography.overline) },
+            confirmButton = {
+                Button(onClick = { openDialog.value = false},
+                    colors = ButtonDefaults.buttonColors(
+                        contentColor = Color.White,
+                        backgroundColor = colorResource(
+                            id = R.color.DarkRed
+                        ))) {
+                    Text(text = stringResource(id = R.string.SelvTak,
+                    ))
+                }
+            }
+        )
+
+    }
+
+
 
     LazyColumn(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -73,10 +113,9 @@ fun OrderItem (order: Order
             style=MaterialTheme.typography.subtitle2)
 
         }
-
-
-
 }
+
+
 
 @Preview(showBackground = true)
 @Composable

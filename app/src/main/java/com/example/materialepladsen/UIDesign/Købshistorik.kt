@@ -18,6 +18,7 @@ import coil.compose.AsyncImage
 import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.Order
 import com.example.materialepladsen.R
+import com.example.materialepladsen.viewmodel.StateOfStart
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -26,7 +27,11 @@ import kotlinx.coroutines.launch
 @Composable
 fun OrderHistory (
     buyHistory: List<Order>,
+    state: StateOfStart,
+    resetBuy:() -> Unit = {},
     ){
+
+    if (state==StateOfStart.Betal){
     val openDialog = remember{ mutableStateOf(true) }
 
     if (openDialog.value) {
@@ -34,7 +39,7 @@ fun OrderHistory (
         val scope = rememberCoroutineScope()
 
         LaunchedEffect(Unit){
-            scope.launch { delay(3000); openDialog.value=false }
+            scope.launch { delay(3000); openDialog.value=false;resetBuy() }
         }
         AlertDialog(
             modifier = Modifier.width(200.dp),
@@ -63,7 +68,7 @@ fun OrderHistory (
             }
         )
 
-    }
+    }}
 
 
 

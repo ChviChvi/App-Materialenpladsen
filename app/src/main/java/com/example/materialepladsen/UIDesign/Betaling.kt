@@ -32,7 +32,6 @@ fun Betaling (
     addToBuyHistory :(Order) -> Unit,
     price:Float,
     navigateToOrderHistory:() -> Unit = {},
-    resetBuy:() -> Unit = {},
 ) {
 
     val order=Order(materiale,weighToPay, Date(),price)
@@ -142,7 +141,6 @@ fun Betaling (
                         .height(50.dp),
                     onClick = {
                         addToBuyHistory(order)
-                        resetBuy()
                         navigateToOrderHistory()
                         },
                     colors = ButtonDefaults.buttonColors(
@@ -168,7 +166,6 @@ fun Betaling (
                         .height(50.dp),
                     onClick = {
                         addToBuyHistory(order)
-                        resetBuy()
                         navigateToOrderHistory()
                         },
                     colors = ButtonDefaults.buttonColors(
@@ -193,7 +190,6 @@ fun Betaling (
                         .height(50.dp),
                     onClick = {
                         addToBuyHistory(order)
-                        resetBuy()
                         navigateToOrderHistory() },
                     colors = ButtonDefaults.buttonColors(
                         contentColor = Color.White,

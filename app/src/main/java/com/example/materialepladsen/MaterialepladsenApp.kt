@@ -137,11 +137,14 @@ fun Materialepladsen(
                     price = uiState.value.price,
                     addToBuyHistory = {flowViewModel.addToBuyHistory(it)},
                     navigateToOrderHistory = {navController.navigate("Købshistorik")},
-                    resetBuy = {flowViewModel.resetBuy()}
+
                 )
             }
             composable(route = "Købshistorik") {
-                OrderHistory(buyHistory = uiState.value.orderhistory)
+                OrderHistory(
+                    buyHistory = uiState.value.orderhistory,
+                    state = uiState.value.state,
+                    resetBuy = {flowViewModel.resetBuy()})
             }
             composable(route = "Materialer") {
                 Materialer()

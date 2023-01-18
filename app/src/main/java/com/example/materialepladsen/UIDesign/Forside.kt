@@ -1,6 +1,8 @@
 package com.example.materialepladsen.ui.theme
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import androidx.annotation.StringRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
@@ -12,12 +14,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.runtime.remember
 
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
@@ -212,6 +216,8 @@ fun TopBar(@StringRes id: Int){
 fun Buttons (
     navigateToProducts :() -> Unit = {}
 ) {
+    val context = LocalContext.current
+    val Link = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://materialepladsen.dk/leveringsmetode")) }
     Row(modifier = Modifier
         .padding(start = 40.dp, top = 8.dp)
         .fillMaxWidth(),
@@ -230,7 +236,7 @@ fun Buttons (
 
         TextButton(
             modifier=Modifier.padding(start=11.dp),
-            onClick = { /*TODO*/ },
+            onClick = { context.startActivity(Link) },
             colors = ButtonDefaults.buttonColors(
                 contentColor = Color.White,
                 backgroundColor = colorResource(id = R.color.DarkRed)

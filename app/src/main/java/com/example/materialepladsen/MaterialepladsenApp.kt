@@ -103,7 +103,8 @@ fun Materialepladsen(
                 title = {
                     Row(modifier = Modifier
                         .fillMaxSize(1f)
-                        .padding(10.dp)) {
+                        .padding(10.dp)
+                        .clickable { navController.navigate("Forside") }) {
                         Image(painterResource(R.drawable.logo_materialepladsen), null)
                     }
                 },

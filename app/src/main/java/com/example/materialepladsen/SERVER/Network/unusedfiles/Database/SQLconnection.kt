@@ -1,4 +1,4 @@
-package com.example.materialepladsen.Database
+package com.example.materialepladsen.SERVER.Network.unusedfiles.Database
 
 import java.sql.*
 
@@ -95,7 +95,7 @@ fun getConnection(query: String): ResultSet? {
 
     }
 
-    fun main() {
+    fun main111() {
         //val results = getConnection("SELECT * FROM [dbo].[v_mobileApp_products]")
         val results = getProducts2()
         println(results)

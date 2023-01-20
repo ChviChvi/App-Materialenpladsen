@@ -1,4 +1,4 @@
-package com.example.materialepladsen.API
+package com.example.materialepladsen.SERVER.Network.unusedfiles.Database.API
 
 
 
@@ -184,7 +184,7 @@ fun startRetrofit(): Call<ResponseBody> {
 //    return api.getData(username, password, request, Type, CustromerID, Licenseplate, Ordrenumber, siteid)
 //}
 
-fun main() {
+fun main55() {
     print(startRetrofit())
     //startRetrofit2(typeSTART,12562,"DA65205",null,null)
 }

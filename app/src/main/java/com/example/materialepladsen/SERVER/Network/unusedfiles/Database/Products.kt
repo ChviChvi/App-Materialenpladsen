@@ -1,4 +1,5 @@
-package com.example.materialepladsen.Database
+package com.example.materialepladsen.SERVER.Network.unusedfiles.Database
+
 
 import java.sql.ResultSet
 
@@ -49,7 +50,7 @@ fun getProducts2(): List<Product> {
 
     val products = mutableListOf<Product>()
     val resultSet = getProductsResultSet()
-            //getConnection()
+    //getConnection(resultSet)
     while (resultSet.next()) {
         val product = Product(
             resultSet.getString("product_group"),
@@ -75,7 +76,7 @@ fun listreturner(): List<Product>{
     return productlist
 }
 
-fun main(){
+fun main12(){
     var productlist= getProducts2()
     println()
     println(productlist)

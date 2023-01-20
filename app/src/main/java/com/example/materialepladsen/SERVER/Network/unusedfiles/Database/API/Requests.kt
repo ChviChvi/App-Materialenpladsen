@@ -1,4 +1,4 @@
-package com.example.materialepladsen.API
+package com.example.materialepladsen.SERVER.Network.unusedfiles.Database.API
 
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.decodeFromString
@@ -165,7 +165,7 @@ fun weightRequest(url: String, siteID: Int): NewOrderModel? {
 // &type=requestOrderNew
 // &customerid=12542&licenseplate=CC11345
 
-fun main() {
+fun main21() {
     val url = "http://152.115.71.190:41000/?user=DTUMP3&password=MPor2hRrSE&request=EC02E425-B6BD-4D82-A9A2-F58507385B41&type=requestOrderNew&customerid=215632&licenseplate=215721"
     println(newOrder(url,"215632", "215721")?.ErrCode ?: "null")
 }

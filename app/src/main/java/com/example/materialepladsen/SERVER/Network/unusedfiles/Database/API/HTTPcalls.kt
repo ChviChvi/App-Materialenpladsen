@@ -1,4 +1,4 @@
-package com.example.materialepladsen.API
+package com.example.materialepladsen.SERVER.Network.unusedfiles.Database.API
 
 import com.google.gson.JsonObject
 import retrofit2.Response
@@ -30,7 +30,7 @@ interface RetrofitAPI {
     }
 }
 
-suspend fun main() {
+suspend fun main41() {
     val api = RetrofitAPI()
     val jsonResponse = api.getJson_requestOrderNew("DTUMP3","MPor2hRrSE","EC02E425-B6BD-4D82-A9A2-F58507385B41", "requestOrderNew","12542","CC11345")
     println(jsonResponse.body())

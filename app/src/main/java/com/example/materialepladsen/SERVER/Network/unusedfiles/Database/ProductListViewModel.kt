@@ -1,17 +1,13 @@
-package com.example.materialepladsen.viewmodel
+package com.example.materialepladsen.SERVER.Network.unusedfiles.Database
 
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.materialepladsen.Database.Product
-import com.example.materialepladsen.Database.getProducts2
+//import com.example.materialepladsen.Database.getProducts2
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 private val _uiState = MutableStateFlow(ProductListUistate())
 

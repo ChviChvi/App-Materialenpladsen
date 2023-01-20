@@ -25,6 +25,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.materialepladsen.SERVER.Network.Network1.ApiService
 import com.example.materialepladsen.UIDesign.*
 import com.example.materialepladsen.ui.theme.*
 import com.example.materialepladsen.viewmodel.FlowViewModel
@@ -34,8 +35,7 @@ import kotlinx.coroutines.launch
 
 @Composable
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-fun MaterialepladsenApp(
-){
+fun MaterialepladsenApp(apiService: ApiService) {
     val navController = rememberNavController()
     NavHost(
         navController = navController,
@@ -45,7 +45,7 @@ fun MaterialepladsenApp(
             LoginPladsen(navigateToForside = { navController.navigate("materialepladsen")})
         }
         composable(route = "materialepladsen") {
-            Materialepladsen()
+            Materialepladsen(apiService)
         }
 
     }
@@ -64,7 +64,6 @@ fun DrawerView(navController: NavController, func1: () -> Unit) {
                 func1 = func1)
         }
     }
-
 }
 
 @Composable
@@ -84,8 +83,8 @@ fun AddDrawerContentView(title: String, func: () -> Unit, func1: () -> Unit) {
 
 @Composable
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-fun Materialepladsen(
-    flowViewModel: FlowViewModel = viewModel()
+fun Materialepladsen(apiService: ApiService,
+                     flowViewModel: FlowViewModel = viewModel()
 ){
 
     val scaffoldState = rememberScaffoldState()
@@ -154,9 +153,11 @@ fun Materialepladsen(
                     navigateToProducts = {navController.navigate("Materialer")})
             }
             composable(route = "Om os") {
-                Omos(navController = navController)
+                Omos(navController = navController, apiService
+                    )
             }
             composable(route = "Find os") {
+
                 Findos(navController = navController)
             }
 

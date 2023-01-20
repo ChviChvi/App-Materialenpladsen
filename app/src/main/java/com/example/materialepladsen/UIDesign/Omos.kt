@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.produceState
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
@@ -15,22 +16,56 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import com.example.materialepladsen.SERVER.Network.Models.ResponseModel
+import com.example.materialepladsen.SERVER.Network.Network1.ApiService
 import com.example.materialepladsen.R
+import com.example.materialepladsen.SERVER.Network.http.requestOrderNew
+import com.example.materialepladsen.SERVER.Network.http.requestOrderPayment
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import io.ktor.client.statement.*
+import org.json.JSONObject
 
 
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter", "SuspiciousIndentation",
+    "CoroutineCreationDuringComposition"
+)
 @Composable
-fun Omos(navController: NavController) {
+fun Omos(navController: NavController,apiService: ApiService) {
 
     val context = LocalContext.current
     val Link1 = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.materialepladsen.dk/trailerudlejning")) }
     val Link2 = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.materialepladsen.dk/vejning")) }
     val Link3 = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.materialepladsen.dk/aftalevejning")) }
+
+    //TEST
+    val products = produceState(
+        initialValue = emptyList<ResponseModel>(),
+        producer = {
+            value = apiService.getProducts()
+        }
+    )
+    println("hello " +products.value)
+    CoroutineScope(Dispatchers.Main).launch {
+        val read = requestOrderNew("12542", "CC11345")
+        println(read.execute().readText())
+
+        val jsonObject = JSONObject(read.execute().readText())
+        val orderNumber = jsonObject.getInt("OrderNumber").toString()
+
+
+        println("did this work?")
+        val read1 = requestOrderPayment("12542", "CC11345",orderNumber)
+        println(read1.execute().readText())
+
+    }
+
+    //TEST
+
     LazyColumn(
         horizontalAlignment = CenterHorizontally,
         verticalArrangement = Arrangement.Top,
@@ -274,10 +309,12 @@ fun Omos(navController: NavController) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ComposablePreview() {
-    MaterialepladsenTheme {
-        val navController = rememberNavController()
-        Omos(navController = navController)
-    }}
+
+
+//@Preview(showBackground = true)
+//@Composable
+//fun ComposablePreview() {
+//    MaterialepladsenTheme {
+//        val navController = rememberNavController()
+//        Omos(navController = navController, apiService = ApiService)
+//    }}

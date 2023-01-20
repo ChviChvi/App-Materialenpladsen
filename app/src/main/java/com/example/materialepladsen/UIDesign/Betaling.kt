@@ -17,8 +17,8 @@ import androidx.compose.ui.unit.sp
 import com.example.materialepladsen.R
 import com.example.materialepladsen.ui.theme.*
 import coil.compose.AsyncImage
-import com.example.materialepladsen.viewmodel.Material
-import com.example.materialepladsen.viewmodel.Order
+import com.example.materialepladsen.Data.Material
+import com.example.materialepladsen.Data.Order
 import java.util.*
 
 
@@ -34,7 +34,7 @@ fun Betaling (
     navigateToOrderHistory:() -> Unit = {},
 ) {
 
-    val order=Order(materiale,weighToPay, Date(),price)
+    val order= Order(materiale,weighToPay, Date(),price)
 
         Column(
             horizontalAlignment = Alignment.CenterHorizontally

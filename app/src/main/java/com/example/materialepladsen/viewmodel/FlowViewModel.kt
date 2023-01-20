@@ -2,7 +2,9 @@ package com.example.materialepladsen.viewmodel
 
 
 import androidx.lifecycle.ViewModel
-import com.example.materialepladsen.API.NewOrderModel
+import com.example.materialepladsen.Data.Material
+import com.example.materialepladsen.Data.Order
+import com.example.materialepladsen.SERVER.Network.unusedfiles.Database.API.NewOrderModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -79,7 +81,7 @@ class FlowViewModel : ViewModel(){
     }
 
     fun addToBuyHistory(
-        order:Order
+        order: Order
         ){
         val newList= ArrayList(_uiState.value.orderhistory)
         newList.add(order)
@@ -93,7 +95,7 @@ class FlowViewModel : ViewModel(){
     }
 
 
-    fun chooseMaterial(material:Material){
+    fun chooseMaterial(material: Material){
         _uiState.update { currentState ->
             currentState.copy(
                 chosenMaterial=material

@@ -1,7 +1,8 @@
 package com.example.materialepladsen.viewmodel
 
-
-
+import com.example.materialepladsen.Data.Material
+import com.example.materialepladsen.Data.MaterialList
+import com.example.materialepladsen.Data.Order
 
 
 data class FlowUiState(

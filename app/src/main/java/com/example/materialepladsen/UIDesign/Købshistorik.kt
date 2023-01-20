@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.materialepladsen.ui.theme.*
-import com.example.materialepladsen.viewmodel.Order
+import com.example.materialepladsen.Data.Order
 import com.example.materialepladsen.R
 import com.example.materialepladsen.viewmodel.StateOfStart
 import kotlinx.coroutines.delay

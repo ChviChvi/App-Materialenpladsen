@@ -43,25 +43,21 @@ fun Omos(navController: NavController,apiService: ApiService) {
     val Link3 = remember { Intent(Intent.ACTION_VIEW, Uri.parse("https://www.materialepladsen.dk/aftalevejning")) }
 
     //TEST
-    val products = produceState(
-        initialValue = emptyList<ResponseModel>(),
-        producer = {
-            value = apiService.getProducts()
-        }
-    )
-    println("hello " +products.value)
+    var hasRun = false
+
     CoroutineScope(Dispatchers.Main).launch {
-        val read = requestOrderNew("12542", "CC11345")
-        println(read.execute().readText())
+        if (!hasRun) {
+            hasRun = true
+            val read = requestOrderNew("12542", "CC11345")
+            println(read.execute().readText())
 
-        val jsonObject = JSONObject(read.execute().readText())
-        val orderNumber = jsonObject.getInt("OrderNumber").toString()
+            val jsonObject = JSONObject(read.execute().readText())
+            val orderNumber = jsonObject.getInt("OrderNumber").toString()
 
-
-        println("did this work?")
-        val read1 = requestOrderPayment("12542", "CC11345",orderNumber)
-        println(read1.execute().readText())
-
+            println("did this work?")
+            val read1 = requestOrderPayment("12542", "CC11345",orderNumber)
+            println(read1.execute().readText())
+        }
     }
 
     //TEST

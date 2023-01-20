@@ -1,58 +1,37 @@
 package com.example.materialepladsen.Database
 
-import android.R
-import android.content.Context
-import android.widget.ArrayAdapter
-import android.widget.ListView
 import java.sql.*
-import java.util.Collections.list
-
 
 fun getConnection(query: String): ResultSet? {
 
-    var resultSet: ResultSet? = null
-    // Replace these values with your own server name, database name, and credentials
-    val server = "152.115.71.190:48123"
-    val database = "materialepladsen_core_DTUMP3"
-    val username = "DTUMP3"
-    val password = "MPor2hRrSE"
+        var resultSet: ResultSet? = null
 
-    try {
-        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver")
-    } catch (e: Exception) {
-        e.printStackTrace()
+        val server = "152.115.71.190:48123"
+        val database = "materialepladsen_core_DTUMP3"
+        val username = "DTUMP3"
+        val password = "MPor2hRrSE"
+
+        try {
+            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver")
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+
+        val connectionUrl =
+            "jdbc:sqlserver://$server;databaseName=$database;user=$username;password=$password;encrypt=false;trustServerCertificate=true"
+        var connection: Connection? = null
+        try {
+            connection = DriverManager.getConnection(connectionUrl)
+        } catch (e: SQLException) {
+            e.printStackTrace()
+        }
+
+        connection?.let {
+            val statement: Statement = it.createStatement()
+            resultSet = statement.executeQuery(query)
+        }
+        return resultSet
     }
-
-    val connectionUrl = "jdbc:sqlserver://$server;databaseName=$database;user=$username;password=$password;encrypt=false;trustServerCertificate=true"
-    var connection: Connection? = null
-    try {
-        connection = DriverManager.getConnection(connectionUrl)
-    } catch (e: SQLException) {
-        e.printStackTrace()
-    }
-
-    connection?.let {
-        val statement: Statement = it.createStatement()
-        resultSet = statement.executeQuery(query)
-    }
-
-//    try {
-//        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver")
-//        connection = DriverManager.getConnection(connectionUrl)
-//        if(connection!= null) {
-//            print("succession")
-//
-//            try {
-//                val statement: Statement = connection.createStatement()
-//                resultSet = statement.executeQuery(query)
-//            } catch (e: SQLException) {
-//                e.printStackTrace()
-//            }
-//        } else { println("there was no connection :(!") }
-
-    println("\n\n\n\n@@@@@@@@@@@@@@@@@@@@@@@@"+ resultSet + "@@@@@@@@@@@@@@@@@@@@@@@@@@\n\n\n\n")
-    return resultSet
-}
 
 //fun connectiontryout(){
 //    val connection = getConnection()
@@ -87,8 +66,6 @@ fun getConnection(query: String): ResultSet? {
 //}
 
 
-
-
 //    if (connection != null) {
 //        val statement = connection.createStatement()
 //        val Table_info = statement.executeQuery("SELECT * FROM materialepladsen_core_DTUMP3")
@@ -108,15 +85,24 @@ fun getConnection(query: String): ResultSet? {
 //    }
 //}
 
-fun main() {
-    //val results = getConnection("SELECT * FROM [dbo].[v_mobileApp_products]")
-    val results = getProducts2()
-    println(results)
-    //val list: MutableList<Int> = mutableListOf()
-    // loadData(list,this)
+    fun startSQLconnection() {
+        //val results = getConnection("SELECT * FROM [dbo].[v_mobileApp_products]")
+        val results = getProducts2()
+        println(results)
+        //val list: MutableList<Int> = mutableListOf()
+        // loadData(list,this)
 
 
+    }
+
+    fun main() {
+        //val results = getConnection("SELECT * FROM [dbo].[v_mobileApp_products]")
+        val results = getProducts2()
+        println(results)
+        //val list: MutableList<Int> = mutableListOf()
+        // loadData(list,this)
 
 
-}
+    }
+
 

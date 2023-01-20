@@ -1,7 +1,7 @@
 package com.example.materialepladsen
 
+import com.example.materialepladsen.Data.Material
 import com.example.materialepladsen.viewmodel.FlowViewModel
-import com.example.materialepladsen.viewmodel.Material
 import com.example.materialepladsen.viewmodel.StateOfStart
 import org.junit.Assert
 import org.junit.Before

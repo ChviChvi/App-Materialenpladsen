@@ -1,4 +1,4 @@
-# MaterialPladsen APP (MP3)
+# Materialpladsen APP (MP3)
 
 This is an App created for a school project, as requested by a company *(materialenpladsen)* to make it easier for the customer to buy materials in their unmanned 'raw industrial material' shop.
 Customers can come and weigh their load and through our app make the transactions. When the transaction is made, through the app, the gate automatically opens.
